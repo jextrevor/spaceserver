@@ -11,11 +11,6 @@ except IOError:
 # IMPORTANT: Put any additional includes below this line.  If placed above this
 # line, it's possible required libraries won't be in your searchable path
 #
-from main import app as application
-from main import socketio
-#
-# Below for testing only
-#
 from flask import Flask,render_template,request,redirect,url_for
 from flask.ext.socketio import SocketIO, emit, join_room, leave_room
 import urllib
