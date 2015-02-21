@@ -18,16 +18,20 @@
 <noscript>
 <div style="display:initial" class="col-lg-12"><div class="alert alert-dismissable alert-danger">Javascript is not supported or is blocked. Please enable Javascript or upgrade your browser.</div></div>
 </noscript>
+<form action="" method="get" id="stationform">
 <input type="text" class="form-control" name="name" id="name" placeholder="Please enter your name" />
-<div class="row">
-<button class="btn btn-lg btn-info col-xs-2">Commander</button>
-<button class="btn btn-lg btn-info col-xs-2">Navigator</button>
-<button class="btn btn-lg btn-info col-xs-2">Tactical</button>
-<button class="btn btn-lg btn-info col-xs-2">Operations</button>
-<button class="btn btn-lg btn-info col-xs-2">Engineer</button>
-<button class="btn btn-lg btn-info col-xs-2">Main View Screen</button>
-</div>
-<button class="btn btn-lg btn-info col-xs-12">Flight Director</button>
+</form>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('commander')">Commander</button>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('navigator')">Navigator</button>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('tactical')">Tactical</button>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('operations')">Operations</button>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('engineer')">Engineer</button>
+<button class="btn btn-lg btn-info col-xs-2" onclick="dosubmit('mvs')">Main View Screen</button>
+<br />
+<form action="fd/" method="get" id="fdform">
+<input type="password" class="form-control" name="pass" id="pass" placeholder="Enter the FD password" />
+</form>
+<button class="btn btn-lg btn-info col-xs-12" onclick="dologin()">Flight Director</button>
 </div>
 </body>
 </html>
