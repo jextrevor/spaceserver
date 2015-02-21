@@ -1,3 +1,21 @@
+#!/usr/bin/python
+import os
+
+virtenv = os.path.join(os.environ.get('OPENSHIFT_PYTHON_DIR','.'), 'virtenv')
+virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
+try:
+    execfile(virtualenv, dict(__file__=virtualenv))
+except IOError:
+    pass
+#
+# IMPORTANT: Put any additional includes below this line.  If placed above this
+# line, it's possible required libraries won't be in your searchable path
+#
+from main import app as application
+from main import socketio
+#
+# Below for testing only
+#
 from flask import Flask,render_template,request,redirect,url_for
 from flask.ext.socketio import SocketIO, emit, join_room, leave_room
 import urllib
@@ -92,4 +110,4 @@ def no_cache(response):
     return response
 if __name__ == '__main__':
     print "Server running"
-    socketio.run(app, "0.0.0.0",80)
+    socketio.run(app, "0.0.0.0",8051)
