@@ -1,2 +1,2 @@
-# spaceserver
-My Space Simulation Server, created in HTML, CSS, and Javascript, using SocketIO, ThreeJS, and Bootstrap.
+# Space Server
+My Space Simulation Server, created in HTML, CSS, Javascript, and PHP: using SocketIO and Bootstrap.
