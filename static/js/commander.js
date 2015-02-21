@@ -4,5 +4,12 @@ var conn_options = {
 data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/commander',conn_options);
 socket.on("update",function(json){
-	alert('hi');
+	for (var key in json) {
+  if (json.hasOwnProperty(key)) {
+    data[key] = json[key];
+    if(key == "missiondata"){
+    	document.getElementById("missiondata").innerHTML = markdown.toHTML(json[key]);
+    }
+  }
+}
 });

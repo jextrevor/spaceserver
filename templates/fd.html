@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Space Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/bootstrap.js"></script>
+<script src="/static/js/socket.io.js"></script>
+<script src="/static/js/fd.js"></script>
+</head>
+<body>
+<div class="row">
+<div class="col-md-2">
+	<h5>Mission Data</h5>
+	 <textarea id="missiondata" rows="4" cols="30" onchange="socket.emit('update',{'missiondata':document.getElementById('missiondata').value});"></textarea> 
+</div>
+</div>
+</body>
+</html>

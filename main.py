@@ -5,6 +5,49 @@ import os
 app = Flask(__name__)
 socketio = SocketIO(app)
 dictionary = {}
+def emittoallstations(event,data):
+	socketio.emit(event,data, namespace="/commander")
+	socketio.emit(event,data, namespace="/navigator")
+	socketio.emit(event,data, namespace="/tactical")
+	socketio.emit(event,data, namespace="/engineer")
+	socketio.emit(event,data, namespace="/operations")
+	socketio.emit(event,data, namespace="/mvs")
+	socketio.emit(event,data, namespace="/fd")
+@socketio.on('update', namespace="/commander")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/navigator")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/tactical")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/operations")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/engineer")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/mvs")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
+@socketio.on('update', namespace="/fd")
+def update(json):
+	for key,value in json.items():
+		dictionary[key] = value
+	emittoallstations("update",json)
 @socketio.on('connect', namespace="/commander")
 def stationconnect():
     emit("update",dictionary)
@@ -31,46 +74,43 @@ def home():
     templateData = {
         }
     return render_template('main.html', **templateData)
-@app.route("/commander/", methods=['POST'])
+@app.route("/commander/")
 def commander():
 	templateData = {
-		'name':request.form.get("name")
 	}
 	return render_template("commander.html", **templateData)
-@app.route("/navigator/", methods=['POST'])
+@app.route("/navigator/")
 def navigator():
 	templateData = {
-		'name':request.form.get("name")
 	}
 	return render_template("navigator.html", **templateData)
-@app.route("/tactical/", methods=['POST'])
+@app.route("/tactical/")
 def tactical():
 	templateData = {
-		'name':request.form.get("name")
 	}
 	return render_template("tactical.html", **templateData)
-@app.route("/operations/", methods=['POST'])
+@app.route("/operations/")
 def operations():
 	templateData = {
-		'name':request.form.get("name")
+		
 	}
 	return render_template("operations.html", **templateData)
-@app.route("/engineer/", methods=['POST'])
+@app.route("/engineer/")
 def engineer():
 	templateData = {
-		'name':request.form.get("name")
+		
 	}
 	return render_template("engineer.html", **templateData)
-@app.route("/mvs/", methods=['POST'])
+@app.route("/mvs/")
 def mvs():
 	templateData = {
-		'name':request.form.get("name")
+		
 	}
 	return render_template("mvs.html", **templateData)
 @app.route("/fd/", methods=['POST'])
 def fd():
 	templateData = {
-		'name':request.form.get("name")
+		
 	}
 	return render_template("fd.html", **templateData)
 @app.errorhandler(404)
@@ -93,4 +133,4 @@ def no_cache(response):
     return response
 if __name__ == '__main__':
     print "Server running"
-    socketio.run(app, "0.0.0.0",int(os.environ['PORT']))
+    socketio.run(app, "0.0.0.0",80)
