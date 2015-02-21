@@ -133,4 +133,4 @@ def no_cache(response):
     return response
 if __name__ == '__main__':
     print "Server running"
-    socketio.run(app, "0.0.0.0",80)
+    socketio.run(app, "0.0.0.0",int(os.environ['PORT']))
