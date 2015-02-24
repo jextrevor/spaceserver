@@ -22,10 +22,13 @@ window.existingcall.close();
 }
 navigator.getUserMedia({audio: false, video: false}, function(stream){
 // Set your video displays
-document.getElementById("yourvideo").src = URL.createObjectURL(stream);
+//document.getElementById("yourvideo").src = URL.createObjectURL(stream);
 window.localStream = stream;
 });
 var call = peer.call(peerid, window.localStream);
+call.on('stream', function(remoteStream) {
+      document.getElementById("theirvideo").src = URL.createObjectURL(stream);
+    });
 window.existingcall = call;
 }
 function hail(peerid){
@@ -35,8 +38,8 @@ window.existinghail.close();
 navigator.getUserMedia({audio: data['fdaudio'], video: data['fdvideo']}, function(stream){
 // Set your video displays
 document.getElementById("yourvideo").src = URL.createObjectURL(stream);
-window.localStream = stream;
+window.hailStream = stream;
 });
-var call = peer.call(peerid, window.localStream);
+var call = peer.call(peerid, window.hailStream);
 window.existinghail = call;
 }
