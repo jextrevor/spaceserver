@@ -20,7 +20,7 @@ function call(peerid){
 if(window.existingcall){
 window.existingcall.close();
 }
-navigator.getUserMedia({audio: false, video: false}, function(stream){
+navigator.getUserMedia({audio: true, video: true}, function(stream){
 // Set your video displays
 //document.getElementById("yourvideo").src = URL.createObjectURL(stream);
 window.localStream = stream;
