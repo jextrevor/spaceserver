@@ -10,3 +10,4 @@ socket.on("update",function(json){
   }
 }
 });
+var peer = new Peer("navigator",{key: 'x7imbejnpg2pgb9'});

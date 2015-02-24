@@ -10,3 +10,5 @@ socket.on("update",function(json){
   }
 }
 });
+var peer1 = new Peer("mvs",{key: 'x7imbejnpg2pgb9'});
+var peer2 = new Peer("hailing",{key: 'x7imbejnpg2pgb9'});

@@ -13,3 +13,4 @@ socket.on("update",function(json){
   }
 }
 });
+var peer = new Peer("commander",{key: 'x7imbejnpg2pgb9'});

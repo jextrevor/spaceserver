@@ -10,3 +10,4 @@ socket.on("update",function(json){
   }
 }
 });
+var peer = new Peer("operations",{key: 'x7imbejnpg2pgb9'});
