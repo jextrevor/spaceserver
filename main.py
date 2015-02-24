@@ -109,6 +109,9 @@ def mvs():
 	return render_template("mvs.html", **templateData)
 @app.route("/fd/", methods=['POST'])
 def fd():
+	personId = request.form['pass']
+	if personId != "123456789":
+	    return "<h1> You are not authorized to access the Flight Director station. Go away!</h1>"
 	templateData = {
 		
 	}
