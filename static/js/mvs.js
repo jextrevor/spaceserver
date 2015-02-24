@@ -10,5 +10,15 @@ socket.on("update",function(json){
   }
 }
 });
-var peer1 = new Peer("mvs",{key: 'x7imbejnpg2pgb9'});
-var peer2 = new Peer("hailing",{key: 'x7imbejnpg2pgb9'});
+var peer = new Peer("mvs",{key: 'x7imbejnpg2pgb9'});
+var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+peer.on('call', function(call) {
+  getUserMedia({video: false, audio: false}, function(stream) {
+    call.answer(stream); // Answer the call with an A/V stream.
+    call.on('stream', function(remoteStream) {
+	document.getElementById("hailing").src = URL.createObjectURL(stream);
+    });
+  }, function(err) {
+    console.log('Failed to get local stream' ,err);
+  });
+});
