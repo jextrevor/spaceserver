@@ -25,7 +25,7 @@ navigator.getUserMedia({audio: false, video: false}, function(stream){
 //document.getElementById("yourvideo").src = URL.createObjectURL(stream);
 window.localStream = stream;
 },function(err){console.log("no!!!")});
-var call = peer.call(peerid, window.localStream);
+var call = peer1.call(peerid, window.localStream);
 call.on('stream', function(remoteStream) {
       document.getElementById("theirvideo").src = URL.createObjectURL(stream);
     });
@@ -40,6 +40,6 @@ navigator.getUserMedia({audio: data['fdaudio'], video: data['fdvideo']}, functio
 document.getElementById("yourvideo").src = URL.createObjectURL(stream);
 window.hailStream = stream;
 });
-var call = peer.call(peerid, window.hailStream);
+var call = peer2.call(peerid, window.hailStream);
 window.existinghail = call;
 }
