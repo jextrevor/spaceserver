@@ -24,7 +24,7 @@ navigator.getUserMedia({audio: false, video: false}, function(stream){
 // Set your video displays
 //document.getElementById("yourvideo").src = URL.createObjectURL(stream);
 window.localStream = stream;
-}),function(err){console.log("no!!!")};
+},function(err){console.log("no!!!")});
 var call = peer.call(peerid, window.localStream);
 call.on('stream', function(remoteStream) {
       document.getElementById("theirvideo").src = URL.createObjectURL(stream);
