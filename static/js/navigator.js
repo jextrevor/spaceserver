@@ -14,5 +14,14 @@ function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
     data[key] = json[key];
+    if(key == "x"){
+    	document.getElementById("x").innerHTML = json[key];
+    }
+    if(key == "y"){
+    	document.getElementById("y").innerHTML = json[key];
+    }
+    if(key == "z"){
+    	document.getElementById("z").innerHTML = json[key];
+    }
   }
 }
