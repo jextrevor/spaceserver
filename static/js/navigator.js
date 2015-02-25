@@ -24,6 +24,7 @@ function update(json){
     	document.getElementById("cz").innerHTML = json[key];
     }
   }
+	}
 }
 function setcourse(){
 	document.getElementById("xerror").className = "";
