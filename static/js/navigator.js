@@ -24,8 +24,156 @@ function update(json){
     if(key == "z"){
     	document.getElementById("cz").innerHTML = json[key];
     }
+    if(key == "warp"){
+    	if(json[key] == '0'){
+		document.getElementById("warp0button").style['box-shadow'] = "0 0 30px #CCCCCC";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '1'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "0 0 30px #00FF00";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '2'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "0 0 30px #00FF00";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '3'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "0 0 30px #00FF00";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '4'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "0 0 30px #0000FF";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '5'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "0 0 30px #0000FF";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '6'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "0 0 30px #0000FF";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '7'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "0 0 30px #FFFF00";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '8'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "0 0 30px #FFFF00";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '9'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "0 0 30px #FF0000";
+		document.getElementById("warp99button").style['box-shadow'] = "none";
+	}
+	if(json[key] == '9.9'){
+		document.getElementById("warp0button").style['box-shadow'] = "none";
+		document.getElementById("warp1button").style['box-shadow'] = "none";
+		document.getElementById("warp2button").style['box-shadow'] = "none";
+		document.getElementById("warp3button").style['box-shadow'] = "none";
+		document.getElementById("warp4button").style['box-shadow'] = "none";
+		document.getElementById("warp5button").style['box-shadow'] = "none";
+		document.getElementById("warp6button").style['box-shadow'] = "none";
+		document.getElementById("warp7button").style['box-shadow'] = "none";
+		document.getElementById("warp8button").style['box-shadow'] = "none";
+		document.getElementById("warp9button").style['box-shadow'] = "none";
+		document.getElementById("warp99button").style['box-shadow'] = "0 0 30px #FF0000";
+	}
+    }
   }
 	}
+}
+function setwarp(warp){
+	emit("update",{"warp":warp});
 }
 function setcourse(){
 	x = document.getElementById("x").value;
