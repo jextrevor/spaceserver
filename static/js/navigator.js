@@ -28,24 +28,13 @@ function update(json){
 	}
 }
 function setcourse(){
-	document.getElementById("xerror").className = "";
-	document.getElementById("yerror").className = "";
-	document.getElementById("zerror").className = "";
-	x = parseFloat(document.getElementById("x").value)
-	y = parseFloat(document.getElementById("y").value)
-	z = parseFloat(document.getElementById("z").value)
-	if(isNaN(x)){
-		document.getElementById("xerror").className = "has-error";
-	}
-	else if(isNaN(y)){
-		document.getElementById("yerror").className = "has-error";
-	}
-	else if(isNaN(z)){
-		document.getElementById("zerror").className = "has-error";
-	}
-	else{
-		emit("update",{"x":x,"y":y,"z":z});
-	}
+	x = document.getElementById("x").value;
+	y = document.getElementById("y").value;
+	z = document.getElementById("z").value;
+	emit("update",{"x":x,"y":y,"z":z});
+	document.getElementById("x").value = "";
+	document.getElementById("y").value = "";
+	document.getElementById("z").value = "";
 }
 function showengines(){
 	document.getElementById("enginespage").style.display = "initial";
