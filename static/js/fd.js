@@ -5,7 +5,7 @@ data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 socket.on("update",function(json){
 	update(json);
-}
+
 });
 function emit(key,json){
 socket.emit(key,json);
