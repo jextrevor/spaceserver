@@ -1,5 +1,6 @@
 var conn_options = {
-  'sync disconnect on unload':true
+  'sync disconnect on unload':true,
+  'transports':['htmlfile', 'xhr-polling', 'jsonp-polling']
 };
 data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
