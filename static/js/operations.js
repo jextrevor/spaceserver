@@ -16,3 +16,4 @@ function update(json){
     data[key] = json[key];
   }
 }
+}
