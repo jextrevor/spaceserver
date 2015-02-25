@@ -25,3 +25,27 @@ function update(json){
     }
   }
 }
+function showengines(){
+	document.getElementById("enginespage").style.display = "initial";
+	document.getElementById("radarpage").style.display = "none";
+	document.getElementById("settingspage").style.display = "none";
+	document.getElementById("enginestab").className = "active";
+	document.getElementById("radartab").className = "";
+	document.getElementById("settingstab").className = "";
+}
+function showradar(){
+	document.getElementById("enginespage").style.display = "none";
+	document.getElementById("radarpage").style.display = "initial";
+	document.getElementById("settingspage").style.display = "none";
+	document.getElementById("enginestab").className = "";
+	document.getElementById("radartab").className = "active";
+	document.getElementById("settingstab").className = "";
+}
+function showsettings(){
+	document.getElementById("enginespage").style.display = "none";
+	document.getElementById("radarpage").style.display = "none";
+	document.getElementById("settingspage").style.display = "initial";
+	document.getElementById("enginestab").className = "";
+	document.getElementById("radartab").className = "";
+	document.getElementById("settingstab").className = "active";
+}
