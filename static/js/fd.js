@@ -1,6 +1,6 @@
 var conn_options = {
   'sync disconnect on unload':true,
-  'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling']
+  'transports':['websocket','flashsocket','htmlfile','xhr-polling','jsonp-polling']
 };
 data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
@@ -8,6 +8,7 @@ socket.on("update",function(json){
 	update(json);
 
 });
+setTimeout(function(){if(socket.socket.connected == false){socket.socket.transports = ['flashsocket','htmlfile','xhr-polling','jsonp-polling'];}},5000)
 function emit(key,json){
 socket.emit(key,json);
 }
