@@ -15,15 +15,35 @@ function update(json){
   if (json.hasOwnProperty(key)) {
     data[key] = json[key];
     if(key == "x"){
-    	document.getElementById("x").innerHTML = json[key];
+    	document.getElementById("cx").innerHTML = json[key];
     }
     if(key == "y"){
-    	document.getElementById("y").innerHTML = json[key];
+    	document.getElementById("cy").innerHTML = json[key];
     }
     if(key == "z"){
-    	document.getElementById("z").innerHTML = json[key];
+    	document.getElementById("cz").innerHTML = json[key];
     }
   }
+}
+function setcourse(){
+	document.getElementById("xerror").className = "";
+	document.getElementById("yerror").className = "";
+	document.getElementById("zerror").className = "";
+	x = parseFloat(document.getElementById("x").value)
+	y = parseFloat(document.getElementById("y").value)
+	z = parseFloat(document.getElementById("z").value)
+	if(isNaN(x)){
+		document.getElementById("xerror").className = "has-error";
+	}
+	else if(isNaN(y)){
+		document.getElementById("yerror").className = "has-error";
+	}
+	else if(isNaN(z)){
+		document.getElementById("zerror").className = "has-error";
+	}
+	else{
+		emit("update",{"x":x,"y":y,"z":z});
+	}
 }
 function showengines(){
 	document.getElementById("enginespage").style.display = "initial";
