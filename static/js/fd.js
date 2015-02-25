@@ -8,7 +8,16 @@ socket.on("update",function(json){
 	update(json);
 
 });
-setTimeout(function(){if(socket.socket.connected == false){socket.socket.transports = ['flashsocket','htmlfile','xhr-polling','jsonp-polling'];}},5000)
+setTimeout(function(){doconnect();},5000);
+function doconnect(){
+	if(socket.socket.connected == false){
+		conn_options = {
+  'sync disconnect on unload':true,
+  'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling']
+};
+socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
+	}
+}
 function emit(key,json){
 socket.emit(key,json);
 }
