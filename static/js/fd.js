@@ -1,6 +1,6 @@
 var conn_options = {
   'sync disconnect on unload':true,
-  'transports':['jsonp-polling','xhr-polling', 'websocket']
+  'transports':['websocket','flashsocket','htmlfile','xhr-polling','jsonp-polling']
 };
 data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
