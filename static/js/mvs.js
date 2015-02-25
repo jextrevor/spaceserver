@@ -14,4 +14,5 @@ function update(json){
   if (json.hasOwnProperty(key)) {
     data[key] = json[key];
   }
+	}
 }
