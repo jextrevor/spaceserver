@@ -38,6 +38,9 @@ Impulse:<input type="text" id="impulse" class="formcontrol" onchange="emit('upda
 <div id="backwardthruster" class="col-xs-4">Backward</div>
 <div class="col-xs-4"></div>
 </div>
+<h5>ETA</h5>
+<div id="etatext"></div>
+<input type="text" id="eta" class="formcontrol" onchange="emit('update',{'eta':parseInt(document.getElementById('eta').value)})" />
 </div>
 <div class="col-md-2">
 </div>
