@@ -195,6 +195,18 @@ function setwarp(warp){
 function setimpulse(warp){
 	emit("update",{"impulse":warp});
 }
+function setthruster(thruster){
+	thruster = thruster+"thruster";
+	json = {}
+	json[thruster] = true;
+	emit("update",json);
+}
+function releasethruster(thruster){
+	thruster = thruster+"thruster";
+	json = {}
+	json[thruster] = false;
+	emit("update",json);
+}
 function setcourse(){
 	x = document.getElementById("x").value;
 	y = document.getElementById("y").value;

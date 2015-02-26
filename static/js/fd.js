@@ -43,6 +43,54 @@ for (var key in json) {
     if(key == "impulse"){
       document.getElementById("impulse").value = json[key];
     }
+    if(key == "forwardthruster"){
+      if(json[key] == true){
+        document.getElementById("forwardthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("forwardthruster").style['background-color'] = "transparent";
+      }
+    }
+    if(key == "backwardthruster"){
+      if(json[key] == true){
+        document.getElementById("backwardthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("backwardthruster").style['background-color'] = "transparent";
+      }
+    }
+    if(key == "leftthruster"){
+      if(json[key] == true){
+        document.getElementById("leftthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("leftthruster").style['background-color'] = "transparent";
+      }
+    }
+    if(key == "rightthruster"){
+      if(json[key] == true){
+        document.getElementById("rightthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("rightthruster").style['background-color'] = "transparent";
+      }
+    }
+    if(key == "upthruster"){
+      if(json[key] == true){
+        document.getElementById("upthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("upthruster").style['background-color'] = "transparent";
+      }
+    }
+    if(key == "downthruster"){
+      if(json[key] == true){
+        document.getElementById("downthruster").style['background-color'] = "#00FF00";
+      }
+      else{
+        document.getElementById("downthruster").style['background-color'] = "transparent";
+      }
+    }
   }
 }
 }
