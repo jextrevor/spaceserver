@@ -37,6 +37,12 @@ for (var key in json) {
     if(key == "z"){
     	document.getElementById("z").value = json[key];
     }
+    if(key == "warp"){
+      document.getElementById("warp").value = json[key];
+    }
+    if(key == "impulse"){
+      document.getElementById("impulse").value = json[key];
+    }
   }
 }
 }

@@ -24,6 +24,23 @@ function update(json){
     if(key == "z"){
     	document.getElementById("cz").innerHTML = json[key];
     }
+    if(key == "impulse"){
+    	if(json[key] == '0'){
+		document.getElementById("impulse0button").style['box-shadow'] = "0 0 30px #CCCCCC";
+		document.getElementById("impulsehalfbutton").style['box-shadow'] = "none";
+		document.getElementById("impulsefullbutton").style['box-shadow'] = "none";
+	}
+	if(json[key] == '0.5'){
+		document.getElementById("impulse0button").style['box-shadow'] = "none";
+		document.getElementById("impulsehalfbutton").style['box-shadow'] = "0 0 30px #0000FF";
+		document.getElementById("impulsefullbutton").style['box-shadow'] = "none";
+	}
+	if(json[key] == '1'){
+		document.getElementById("impulse0button").style['box-shadow'] = "none";
+		document.getElementById("impulsehalfbutton").style['box-shadow'] = "none";
+		document.getElementById("impulsefullbutton").style['box-shadow'] = "0 0 30px #00FF00";
+	}
+    }
     if(key == "warp"){
     	if(json[key] == '0'){
 		document.getElementById("warp0button").style['box-shadow'] = "0 0 30px #CCCCCC";
@@ -174,6 +191,9 @@ function update(json){
 }
 function setwarp(warp){
 	emit("update",{"warp":warp});
+}
+function setimpulse(warp){
+	emit("update",{"impulse":warp});
 }
 function setcourse(){
 	x = document.getElementById("x").value;
