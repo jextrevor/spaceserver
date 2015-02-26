@@ -33,7 +33,7 @@ for (var key in json) {
       document.getElementById("warp").value = json[key];
     }
     if(key == "eta"){
-    	document.getElementById("etatext").value = json[key];
+    	document.getElementById("etatext").innerHTML = json[key];
     }
     if(key == "impulse"){
       document.getElementById("impulse").value = json[key];
