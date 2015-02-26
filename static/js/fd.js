@@ -9,7 +9,7 @@ socket.on("update",function(json){
 	update(json);
 
 });
-eta = setInterval(function(){if(data.hasOwnProperty('eta')){emit('update',{'eta':data['eta']-1})}},1000);
+eta = setInterval(function(){if(data.hasOwnProperty('eta')){if(data['eta']>0){emit('update',{'eta':data['eta']-1})}}},1000);
 function emit(key,json){
 socket.emit(key,json);
 }
