@@ -3,21 +3,13 @@ var conn_options = {
   'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {}
+
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 socket.on("update",function(json){
 	update(json);
 
 });
-setTimeout(function(){doconnect();},5000);
-function doconnect(){
-	if(socket.socket.connected == false){
-		conn_options = {
-  'sync disconnect on unload':true,
-  'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling']
-};
-socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
-	}
-}
+eta = setInterval(function(){if(data.hasOwnProperty('eta')){emit('update',{'eta':data['eta']-1})}},1000);
 function emit(key,json){
 socket.emit(key,json);
 }
@@ -39,6 +31,9 @@ for (var key in json) {
     }
     if(key == "warp"){
       document.getElementById("warp").value = json[key];
+    }
+    if(key == "eta"){
+    	document.getElementById("etatext").value = json[key];
     }
     if(key == "impulse"){
       document.getElementById("impulse").value = json[key];
