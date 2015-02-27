@@ -77,7 +77,32 @@
 <input type="text" name="z" id="z" class="form-control" />
 </div>
 <br />
-<button class="btn btn-success" onclick="setcourse();processsound();">Set Course</button>
+<button class="btn btn-success" onclick="setcourse();processsound();">Set Course</button><br />
+<hr />
+<h4>Estimated Time of Arrival</h4>
+<div id="eta"></div>
+<h4>Maps</h4>
+<div class="input-group">
+<input type="text" class="form-control" id="mapsearch">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" onclick="search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+</span>
+</div>
+<br />
+<div class="row">
+<div class="col-xs-4">
+<div class="panel panel-primary nopadding">
+<div class="panel-heading"><h3 class="panel-title">Search Results</h3></div>
+<div class="list-group scrollbar maxheight" id="results">
+</div>
+</div>
+</div>
+<div class="col-xs-8">
+<div class="panel panel-primary nopadding">
+<div class="panel-heading"><h3 class="panel-title">Place Info</h3></div>
+<div class="panel-body maxheight" id="placeinfo">
+</div>
+</div>
 </div>
 </div>
 <div class="container" id="settingspage" style="display:none">

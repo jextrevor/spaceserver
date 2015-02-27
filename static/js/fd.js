@@ -13,6 +13,74 @@ eta = setInterval(function(){if(data.hasOwnProperty('eta')){if(data['eta']>0){em
 function emit(key,json){
 socket.emit(key,json);
 }
+function handleaddship(e){
+  if(e.keyCode === 13){
+            addship();
+        }
+
+}
+function addship(){
+  if(data.hasOwnProperty('ships')){
+  newjson = data['ships'];
+}
+else{
+  newjson = {};
+}
+  newjson[document.getElementById("addship").value] = {'x':document.getElementById("shipx").value,'y':document.getElementById("shipy").value,'z':document.getElementById("shipz").value,'info':document.getElementById("shipinfo").value};
+  emit("update",{'ships':newjson});
+}
+function doships(json){
+document.getElementById("radarlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("radarlist").innerHTML += "<span onclick='removeship(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].x+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"x\")' /><input type='text' value='"+json[key].y+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"y\")' /><input type='text' value='"+json[key].z+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"z\")' />"+json[key]['info']+"<br />";
+  }
+}
+}
+function changeship(object,ship,property){
+  newjson = data['ships'];
+  newjson[ship][property] = object.value;
+emit("update",{'ships':newjson});
+}
+function removeship(key){
+  newjson = data['ships'];
+  delete newjson[key];
+  emit("update",{'ships':newjson});
+}
+function handleaddmap(e){
+  if(e.keyCode === 13){
+            addmap();
+        }
+
+}
+function addmap(){
+  if(data.hasOwnProperty('maps')){
+  newjson = data['maps'];
+}
+else{
+  newjson = {};
+}
+  newjson[document.getElementById("addmap").value] = {'x':document.getElementById("mapx").value,'y':document.getElementById("mapy").value,'z':document.getElementById("mapz").value,'info':document.getElementById("mapinfo").value};
+  emit("update",{'maps':newjson});
+}
+function domaps(json){
+document.getElementById("maplist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("maplist").innerHTML += "<span onclick='removemap(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].x+"' style='width:30px' onchange='changemap(this,\""+key+"\",\"x\")' /><input type='text' value='"+json[key].y+"' style='width:30px' onchange='changemap(this,\""+key+"\",\"y\")' /><input type='text' value='"+json[key].z+"' style='width:30px' onchange='changemap(this,\""+key+"\",\"z\")' />"+json[key]['info']+"<br />";
+  }
+}
+}
+function changemap(object,map,property){
+  newjson = data['maps'];
+  newjson[map][property] = object.value;
+emit("update",{'maps':newjson});
+}
+function removemap(key){
+  newjson = data['maps'];
+  delete newjson[key];
+  emit("update",{'maps':newjson});
+}
 function update(json){
 for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -37,6 +105,12 @@ for (var key in json) {
     }
     if(key == "impulse"){
       document.getElementById("impulse").value = json[key];
+    }
+    if(key == "ships"){
+      doships(json[key]);
+    }
+    if(key == "maps"){
+      domaps(json[key]);
     }
     if(key == "forwardthruster"){
       if(json[key] == true){

@@ -11,6 +11,28 @@ socket.on("update",function(json){
 function emit(key,json){
 	socket.emit(key,json);
 }
+function search(){
+document.getElementById("placeinfo").innerHTML = "";
+document.getElementById("results").innerHTML = "";
+for(var key in data['maps']){
+  if (data['maps'].hasOwnProperty(key)) {
+    if(key.indexOf(document.getElementById("mapsearch").value) > -1){
+    	document.getElementById("results").innerHTML += "<a class=\"list-group-item\" onclick='showsearchinfo(this,\""+key+"\");buttonsound();'>"+key+"</a>";
+    }
+    }
+}
+}
+function showsearchinfo(obj,json){
+for(i = 0; i < document.getElementById("results").children.length; i++){
+//object.removeAttribute("class")
+document.getElementById("results").children[i].className = "list-group-item";
+}
+obj.className = "list-group-item active"
+//alert(data);
+//json = JSON.parse(data);
+//alert(json['message']);
+document.getElementById("placeinfo").innerHTML = data['maps'][json]['info'];
+}
 function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -23,6 +45,21 @@ function update(json){
     }
     if(key == "z"){
     	document.getElementById("cz").innerHTML = json[key];
+    }
+    if(key == "eta"){
+    	if(!isNaN(json[key])){
+    		if(json[key] >= 0){
+    	var minutes = Math.floor(json[key] / 60);
+    	var seconds = json[key] - minutes * 60;
+    	document.getElementById("eta").innerHTML = minutes+" Minutes, "+seconds+" Seconds";
+    }
+    else{
+    	document.getElementById("eta").innerHTML = "";
+    }
+    }
+    else{
+    	document.getElementById("eta").innerHTML = "";
+    }
     }
     if(key == "impulse"){
     	if(json[key] == '0'){

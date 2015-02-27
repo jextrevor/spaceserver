@@ -1,6 +1,6 @@
 @font-face {
    font-family: Electrolize;
-   src: url(../font/electrolize.ttf);
+   src: url(../fonts/electrolize.ttf);
 }
 body {
     overflow:hidden;
@@ -116,9 +116,9 @@ transition: opacity 0.5s ease-in;
    /*margin: 0 !important;*/
 }
 .maxheight{
-max-height: 300px !important;
-min-height: 300px !important;
-height:300px !important;
+max-height: 250px !important;
+min-height: 250px !important;
+height:250px !important;
 overflow-y:auto !important; 
 }
 .scrollbar::-webkit-scrollbar-track
