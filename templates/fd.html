@@ -58,7 +58,15 @@ Add Ship:<br />
 <input type="text" id="shipx" class="formcontrol" style="width:50px" />
 <input type="text" id="shipy" class="formcontrol" style="width:50px" />
 <input type="text" id="shipz" class="formcontrol" style="width:50px" /><br />
+<input type="text" id="shipshields" style="width:40px" />
+<input type="text" id="shiphull" style="width:40px" />
+<input type="text" id="shipengines" style="width:40px" />
+<input type="text" id="shipsystems" style="width:40px" /><br />
 <input type="text" id="shipinfo" class="formcontrol" onkeypress="handleaddship(event)" />
+<h5>Targeting</h5>
+<input type="text" id="target" onchange="emit('update',{'target':document.getElementById('target').value})" />
+<h5>Shields</h5>
+<input type="checkbox" id="shields" onchange="emit('update',{'shields':document.getElementById('shields').checked})" />
 </div>
 <div class="col-md-2">
 	

@@ -2,7 +2,7 @@ var conn_options = {
 'sync disconnect on unload':true,
 'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
-data = {}
+data = {};
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/navigator',conn_options);
 socket.on("update",function(json){
 	update(json);
@@ -33,6 +33,14 @@ obj.className = "list-group-item active"
 //alert(json['message']);
 document.getElementById("placeinfo").innerHTML = data['maps'][json]['info'];
 }
+function doships(json){
+document.getElementById("radarlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("radarlist").innerHTML += "<div class='well' ><h5>"+key+"</h5>Coordinates- X:"+json[key].x+", Y:"+json[key].y+", Z:"+json[key].z+"<br/><p>"+json[key]['info']+"</p></div>";
+  }
+}
+}
 function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -45,6 +53,9 @@ function update(json){
     }
     if(key == "z"){
     	document.getElementById("cz").innerHTML = json[key];
+    }
+    if(key == "ships"){
+    	doships(json[key]);
     }
     if(key == "eta"){
     	if(!isNaN(json[key])){

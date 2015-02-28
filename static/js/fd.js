@@ -2,7 +2,7 @@ var conn_options = {
   'sync disconnect on unload':true,
   'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
-data = {}
+data = {};
 
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 socket.on("update",function(json){
@@ -26,14 +26,14 @@ function addship(){
 else{
   newjson = {};
 }
-  newjson[document.getElementById("addship").value] = {'x':document.getElementById("shipx").value,'y':document.getElementById("shipy").value,'z':document.getElementById("shipz").value,'info':document.getElementById("shipinfo").value};
+  newjson[document.getElementById("addship").value] = {'x':document.getElementById("shipx").value,'y':document.getElementById("shipy").value,'z':document.getElementById("shipz").value,'info':document.getElementById("shipinfo").value,'shields':document.getElementById("shipshields").value,'hull':document.getElementById("shiphull").value,'engines':document.getElementById("shipengines").value,'systems':document.getElementById("shipsystems").value};
   emit("update",{'ships':newjson});
 }
 function doships(json){
 document.getElementById("radarlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("radarlist").innerHTML += "<span onclick='removeship(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].x+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"x\")' /><input type='text' value='"+json[key].y+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"y\")' /><input type='text' value='"+json[key].z+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"z\")' />"+json[key]['info']+"<br />";
+    document.getElementById("radarlist").innerHTML += "<span onclick='removeship(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].x+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"x\")' /><input type='text' value='"+json[key].y+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"y\")' /><input type='text' value='"+json[key].z+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"z\")' /><input type='text' value='"+json[key].shields+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"shields\")' /><input type='text' value='"+json[key].hull+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"hull\")' /><input type='text' value='"+json[key].engines+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"engines\")' /><input type='text' value='"+json[key].systems+"' style='width:30px' onchange='changeship(this,\""+key+"\",\"systems\")' />"+json[key]['info']+"<br />";
   }
 }
 }
@@ -99,6 +99,12 @@ for (var key in json) {
     }
     if(key == "warp"){
       document.getElementById("warp").value = json[key];
+    }
+    if(key == "target"){
+      document.getElementById("target").value = json[key];
+    }
+    if(key == "shields"){
+      document.getElementById("shields").checked = json[key];
     }
     if(key == "eta"){
     	document.getElementById("etatext").innerHTML = json[key];
