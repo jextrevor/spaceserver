@@ -22,6 +22,9 @@ function update(json){
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
   }
+  if(key == "torpedoes"){
+  	document.getElementById("torpedoes").innerHTML = json[key];
+  }
   if(key == "shields"){
   	if(json[key] == true){
   		document.getElementById("shields").innerHTML ="Up";
@@ -31,6 +34,15 @@ function update(json){
   	}
   }
 }
+}
+function torpedo(){
+	newdata = data['torpedoes'];
+	newdata -= 1;
+	data.ships[data.target].shields -= 10;
+	if(data.ships[data.target].shields < 0){
+		data.ships[data.target].shields = 0;
+	}
+	emit('update',{'torpedoes':newdata,'ships':data.ships});
 }
 function doships(json){
 document.getElementById("radarlist").innerHTML = "";
