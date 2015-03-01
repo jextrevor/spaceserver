@@ -75,9 +75,6 @@ function decline(){
 function hail(){
 	emit('update',{'hailing':document.getElementById("tohail").value});
 }
-function close(){
-	emit('update',{'hailing':""});
-}
 function send1(){
 	emit('update',{'team1':document.getElementById("team1").value});
 }
