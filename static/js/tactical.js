@@ -110,6 +110,7 @@ function fire1(){
 	if(data.ships[data.target].shields < 0){
 		data.ships[data.target].shields = 0;
 	}
+	emit('update',{'ships':data.ships});
 	$("#phaser1").animate({
     width: "0%"
 }, 500);
@@ -126,6 +127,7 @@ function fire2(){
 	if(data.ships[data.target].shields < 0){
 		data.ships[data.target].shields = 0;
 	}
+	emit('update',{'ships':data.ships});
 	$("#phaser2").animate({
     width: "0%"
 }, 500);
@@ -142,6 +144,7 @@ function fire3(){
 	if(data.ships[data.target].shields < 0){
 		data.ships[data.target].shields = 0;
 	}
+	emit('update',{'ships':data.ships});
 	$("#phaser3").animate({
     width: "0%"
 }, 500);
