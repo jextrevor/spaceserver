@@ -22,6 +22,12 @@ function update(json){
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
   	document.getElementById("target2").innerHTML = json[key];
+  	if(json[key] == ""){
+  		document.getElementById("infoc").style.display = "none";
+  	}
+  	else{
+  		document.getElementById("infoc").style.display = "initial";
+  	}
   	document.getElementById("cshields").innerHTML = data.ships[json[key]]['shields'];
     	document.getElementById("chull").innerHTML = data.ships[json[key]]['hull'];
     	document.getElementById("cengines").innerHTML = data.ships[json[key]]['engines'];
