@@ -32,7 +32,24 @@
 </div>
 <div class="container" id="weaponpage" style="display:none">
 <div class="container">
+<h4>Currently Targeted: <span id="target2"></span></h4>
+<h4>Shields: <span id="cshields"></span>, Hull: <span id="chull"></span>, Engines: <span id="cengines"></span>, Systems: <span id="csystems"></span></h4>
 <h4>Phasers</h4>
+<div class="progress">
+  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser1" style="width: 0%;">
+  </div>
+</div>
+<button onclick="charge1()" class="btn btn-success">Charge Phaser 1</button><button onclick="fire1()" class="btn btn-danger">Fire Phaser 1</button><br /><br />
+<div class="progress">
+  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser2" style="width: 0%;">
+  </div>
+</div>
+<button onclick="charge2()" class="btn btn-success">Charge Phaser 2</button><button onclick="fire2()" class="btn btn-danger">Fire Phaser 2</button><br /><br />
+<div class="progress">
+  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser3" style="width: 0%;">
+  </div>
+</div>
+<button onclick="charge3()" class="btn btn-success">Charge Phaser 3</button><button onclick="fire3()" class="btn btn-danger">Fire Phaser 3</button><br /><br />
 <h4>Torpedoes</h4>
 <h4><span id="torpedoes"></span> Left</h4>
 <button onclick="torpedo()" class="btn btn-lg btn-danger">Fire Torpedo</button>
@@ -40,6 +57,29 @@
 </div>
 <div class="container" id="securitypage" style="display:none">
 <div class="container">
+<h4 class="text-danger" id="securityalert"></h4>
+<h4>Security Teams</h4>
+<h5>Team 1</h5>
+<input type="text" class="form-control" id="team1" />
+<button class="btn btn-info" onclick="send1()">Send</button>
+<button class="btn btn-info" onclick="retreat1()">Retreat</button>
+<h5>Team 2</h5>
+<input type="text" class="form-control" id="team2" />
+<button class="btn btn-info" onclick="send2()">Send</button>
+<button class="btn btn-info" onclick="retreat2()">Retreat</button>
+<h5>Team 3</h5>
+<input type="text" class="form-control" id="team3" />
+<button class="btn btn-info" onclick="send3()">Send</button>
+<button class="btn btn-info" onclick="retreat3()">Retreat</button>
+<h5>Team 4</h5>
+<input type="text" class="form-control" id="team4" />
+<button class="btn btn-info" onclick="send4()">Send</button>
+<button class="btn btn-info" onclick="retreat4()">Retreat</button>
+<h4>Hailing</h4>
+<h4 class="text-info" id="hailed"></h4>
+<input type="text" class="form-control" id="tohail" />
+<button class="btn btn-success" onclick="hail()">Open Hailing Frequencies</button>
+<h4 class="text-info">Currently Hailing: <span id="hailing"></span></h4>
 </div>
 </div>
 </body>

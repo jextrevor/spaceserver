@@ -14,7 +14,7 @@
 <div class="row">
 <div class="col-md-2">
 	<h5>Mission Data</h5>
-	 <textarea id="missiondata" rows="4" cols="30" onchange="emit('update',{'missiondata':document.getElementById('missiondata').value});"></textarea><br />
+	 <textarea id="missiondata" rows="4" cols="20" onchange="emit('update',{'missiondata':document.getElementById('missiondata').value});"></textarea><br />
 <h5>Course</h5>
 X:<input type="text" id="x" class="formcontrol" onchange="emit('update',{'x':document.getElementById('x').value})" /><br />
 Y:<input type="text" id="y" class="formcontrol" onchange="emit('update',{'y':document.getElementById('y').value})" /><br />
@@ -42,7 +42,7 @@ Impulse:<input type="text" id="impulse" class="formcontrol" onchange="emit('upda
 <div id="etatext"></div>
 <input type="text" id="eta" class="formcontrol" onchange="emit('update',{'eta':parseInt(document.getElementById('eta').value)})" />
 <h5>Maps</h5>
-<div id="maplist" style="overflow-y:auto;max-height:200px;"></div>
+<div id="maplist" style="overflow-y:auto;max-height:150px;"></div>
 Add Place:<br />
 <input type="text" id="addmap" class="formcontrol" /><br />
 <input type="text" id="mapx" class="formcontrol" style="width:50px" />
@@ -52,7 +52,7 @@ Add Place:<br />
 </div>
 <div class="col-md-2">
 <h5>Ships on Radar</h5>
-<div id="radarlist" style="overflow-y:auto;max-height:200px;"></div>
+<div id="radarlist" style="overflow-y:auto;max-height:150px;"></div>
 Add Ship:<br />
 <input type="text" id="addship" class="formcontrol" /><br />
 <input type="text" id="shipx" class="formcontrol" style="width:50px" />
@@ -67,6 +67,18 @@ Add Ship:<br />
 <input type="text" id="target" onchange="emit('update',{'target':document.getElementById('target').value})" />
 <h5>Shields</h5>
 <input type="checkbox" id="shields" onchange="emit('update',{'shields':document.getElementById('shields').checked})" />
+<h5>Torpedoes</h5>
+<input type="text" id="torpedoes" onchange="emit('update',{'torpedoes':parseInt(document.getElementById('torpedoes').value)})" />
+<h5>Security Alerts</h5>
+<input type="text" id="securityalert" onchange="emit('update',{'securityalert':document.getElementById('securityalert').value})" />
+<h5>Hailing</h5>
+<input type="text" id="hailed" onchange="emit('update',{'hailed':document.getElementById('hailed').value})" />
+<input type="text" id="hailing" onchange="emit('update',{'hailing':document.getElementById('hailing').value})" />
+<h5>Security Teams</h5>
+<input type="text" id="team1" onchange="emit('update',{'team1':document.getElementById('team1').value})" /><br />
+<input type="text" id="team2" onchange="emit('update',{'team2':document.getElementById('team2').value})" /><br />
+<input type="text" id="team3" onchange="emit('update',{'team3':document.getElementById('team3').value})" /><br />
+<input type="text" id="team4" onchange="emit('update',{'team4':document.getElementById('team4').value})" /><br />
 </div>
 <div class="col-md-2">
 	

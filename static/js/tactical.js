@@ -21,9 +21,29 @@ function update(json){
     }
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
+  	document.getElementById("target2").innerHTML = json[key];
+  	document.getElementById("cshields").innerHTML = data.ships[json[key]]['shields'];
+    	document.getElementById("chull").innerHTML = data.ships[json[key]]['hull'];
+    	document.getElementById("cengines").innerHTML = data.ships[json[key]]['engines'];
+    	document.getElementById("csystems").innerHTML = data.ships[json[key]]['systems'];
   }
+  if(key == "team1"){
+    	document.getElementById("team1").value = json[key];
+    }
+    if(key == "team2"){
+    	document.getElementById("team2").value = json[key];
+    }
+    if(key == "team3"){
+    	document.getElementById("team3").value = json[key];
+    }
+    if(key == "team4"){
+    	document.getElementById("team4").value = json[key];
+    }
   if(key == "torpedoes"){
   	document.getElementById("torpedoes").innerHTML = json[key];
+  }
+  if(key == "securityalert"){
+  	document.getElementById("securityalert").innerHTML = json[key];
   }
   if(key == "shields"){
   	if(json[key] == true){
@@ -33,10 +53,103 @@ function update(json){
   		document.getElementById("shields").innerHTML ="Down";
   	}
   }
+  if(key == "hailing"){
+  	document.getElementById("hailing").innerHTML = json[key];
+  }
+  if(key == "hailed"){
+  	if(json[key] == ""){
+  		document.getElementById("hailed").innerHTML = "";
+  	}
+  	else{
+    	document.getElementById("hailed").innerHTML = "Currently being hailed by "+json[key]+" <button class='btn btn-success' onclick='answer()'>Answer</button><button class='btn btn-warning' onclick='decline()'>Decline</button>";
+  	}
+    }
 }
+}
+function answer(){
+	emit('update',{'hailing':data.hailed,'hailed':""});
+}
+function decline(){
+	emit('update',{'hailed':""});
+}
+function hail(){
+	emit('update',{'hailing':document.getElementById("tohail").value});
+}
+function send1(){
+	emit('update',{'team1':document.getElementById("team1").value});
+}
+function retreat1(){
+	emit('update',{'team1':""});
+}
+function send2(){
+	emit('update',{'team2':document.getElementById("team2").value});
+}
+function retreat2(){
+	emit('update',{'team2':""});
+}
+function send3(){
+	emit('update',{'team3':document.getElementById("team3").value});
+}
+function retreat3(){
+	emit('update',{'team3':""});
+}
+function send4(){
+	emit('update',{'team4':document.getElementById("team4").value});
+}
+function retreat4(){
+	emit('update',{'team4':""});
+}
+function charge1(){
+	$("#phaser1").animate({
+    width: "100%"
+}, 5000);
+}
+function fire1(){
+	if(document.getElementById("phaser1").style.width == "100%"){
+		data.ships[data.target].shields -= 5;
+	if(data.ships[data.target].shields < 0){
+		data.ships[data.target].shields = 0;
+	}
+	$("#phaser1").animate({
+    width: "0%"
+}, 500);
+	}
+}
+function charge2(){
+	$("#phaser2").animate({
+    width: "100%"
+}, 5000);
+}
+function fire2(){
+	if(document.getElementById("phaser2").style.width == "100%"){
+		data.ships[data.target].shields -= 5;
+	if(data.ships[data.target].shields < 0){
+		data.ships[data.target].shields = 0;
+	}
+	$("#phaser2").animate({
+    width: "0%"
+}, 500);
+	}
+}
+function charge3(){
+	$("#phaser3").animate({
+    width: "100%"
+}, 5000);
+}
+function fire3(){
+	if(document.getElementById("phaser3").style.width == "100%"){
+		data.ships[data.target].shields -= 5;
+	if(data.ships[data.target].shields < 0){
+		data.ships[data.target].shields = 0;
+	}
+	$("#phaser3").animate({
+    width: "0%"
+}, 500);
+	}
 }
 function torpedo(){
 	newdata = data['torpedoes'];
+	if(newdata > 0){
 	newdata -= 1;
 	data.ships[data.target].shields -= 10;
 	if(data.ships[data.target].shields < 0){
@@ -44,11 +157,18 @@ function torpedo(){
 	}
 	emit('update',{'torpedoes':newdata,'ships':data.ships});
 }
+}
 function doships(json){
 document.getElementById("radarlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
     document.getElementById("radarlist").innerHTML += "<option>"+key+"</option>";
+    if(key == data.target){
+    	document.getElementById("cshields").innerHTML = json[key]['shields'];
+    	document.getElementById("chull").innerHTML = json[key]['hull'];
+    	document.getElementById("cengines").innerHTML = json[key]['engines'];
+    	document.getElementById("csystems").innerHTML = json[key]['systems'];
+    }
   }
 }
 }

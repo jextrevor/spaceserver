@@ -112,6 +112,30 @@ for (var key in json) {
     if(key == "impulse"){
       document.getElementById("impulse").value = json[key];
     }
+    if(key == "securityalert"){
+      document.getElementById("securityalert").value = json[key];
+    }
+    if(key == "hailing"){
+    	document.getElementById("hailing").value = json[key];
+    }
+    if(key == "hailed"){
+    	document.getElementById("hailed").value = json[key];
+    }
+    if(key == "torpedoes"){
+      document.getElementById("torpedoes").value = json[key];
+    }
+    if(key == "team1"){
+    	document.getElementById("team1").value = json[key];
+    }
+    if(key == "team2"){
+    	document.getElementById("team2").value = json[key];
+    }
+    if(key == "team3"){
+    	document.getElementById("team3").value = json[key];
+    }
+    if(key == "team4"){
+    	document.getElementById("team4").value = json[key];
+    }
     if(key == "ships"){
       doships(json[key]);
     }
