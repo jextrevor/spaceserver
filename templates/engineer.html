@@ -11,5 +11,30 @@
 <script src="/static/js/engineer.js"></script>
 </head>
 <body>
+	<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" class="active" onclick="showengines();shortsound();" id="enginestab"><a>Power</a></li>
+  <li role="presentation" onclick="showradar();shortsound();" id="radartab"><a>Repair</a></li>
+  <li role="presentation" onclick="showsettings();shortsound();" id="settingstab"><a>Settings</a></li>
+</ul>
+<div class="container" id="enginespage" style="display:initial">
+<div class="container">
+<h4>Power</h4>
+Main Computer <button class="btn btn-info btn-xs">Decrease Power</button><button class="btn btn-info btn-xs">Increase Power</button>
+<div class="progress">
+  <div class="progress-bar progress-bar-info" role="progressbar" id="maincomputer" style="width: 0%;">
+  </div>
+</div>
+<h4>Heat</h4>
+<h4>Remaining Coolant: <span id="coolant"></span></h4>
+</div>
+</div>
+<div class="container" id="radarpage" style="display:none">
+<div class="container">
+</div>
+</div>
+<div class="container" id="settingspage" style="display:none">
+<div class="container">
+</div>
+</div>
 </body>
 </html>
