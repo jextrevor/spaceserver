@@ -81,7 +81,21 @@ Add Ship:<br />
 <input type="text" id="team4" onchange="emit('update',{'team4':document.getElementById('team4').value})" /><br />
 </div>
 <div class="col-md-2">
-	
+<h5>Objects</h5>
+<div id="objectlist" style="overflow-y:auto;max-height:150px;"></div>
+Add Place:<br />
+<input type="text" id="addobject" class="formcontrol" /><br />
+<input type="text" id="objectplace" class="formcontrol" onkeypress="handleaddobject(event)"/><br />
+<h5>Alert Status</h5>
+<input type="text" id="alert" onchange="emit('update',{'alert':document.getElementById('alert').value})" />
+<h5>Probing</h5>
+<input type="text" id="probing" onchange="emit('update',{'probing':document.getElementById('probing').value})" />
+<input type="text" id="probe" onchange="emit('update',{'probe':document.getElementById('probe').value})" />
+<h5>Scanning</h5>
+<input type="text" id="scanning" onchange="emit('update',{'scanning':document.getElementById('scanning').value})" />
+<input type="text" id="scan" onchange="emit('update',{'scan':document.getElementById('scan').value})" />
+<h5>Analysis</h5>
+<input type="text" id="analysis" onchange="emit('update',{'analysis':document.getElementById('analysis').value})" />
 </div>
 <div class="col-md-2">
 	

@@ -11,5 +11,49 @@
 <script src="/static/js/operations.js"></script>
 </head>
 <body>
+<ul class="nav nav-tabs nav-justified">
+  <li role="presentation" class="active" onclick="showengines();shortsound();" id="enginestab"><a>Probing</a></li>
+  <li role="presentation" onclick="showradar();shortsound();" id="radartab"><a>Sensors</a></li>
+  <li role="presentation" onclick="showsettings();shortsound();" id="settingstab"><a>Transporter</a></li>
+</ul>
+<div class="container" id="enginespage" style="display:initial">
+<div class="container">
+<h4>Available Ships</h4>
+<div class="list-group" id="radarlist">
+</div>
+<h4 id="probing" class="text-info"></h4>
+<h4>Probe Results</h4>
+<p id="probe" class="text-primary"></p>
+</div>
+</div>
+<div class="container" id="radarpage" style="display:none">
+<div class="container">
+<h4>Sensor Scans</h4>
+<input type="text" class="form-control" id="scanfor" />
+<button class="btn btn-primary btn-lg" onclick="emit('update',{'scanning':document.getElementById('scanfor').value})">Initiate Scan</button>
+<h4 id="scanning" class="text-info"></h4>
+<h4>Scan Results</h4>
+<p id="scan" class="text-primary"></p>
+<hr />
+<h4>Sensor Analysis</h4>
+<button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':'Probing'})">Analyse Probing Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':'Sensors'})">Analyse Sensors Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':''})">Cancel Analysis</button>
+<h4 id="analysing" class="text-info"></h4>
+<h4>Analysis Results</h4>
+<p id="analysis" class="text-primary"></p>
+</div>
+</div>
+<div class="container" id="settingspage" style="display:none">
+<div class="container">
+<h4>Transporter</h4>
+<h4>Available to Send:</h4>
+<select id="transports" class="form-control"></select><br />
+<input type="text" placeholder="Destination" id="destination" class="form-control" /><br />
+<button class="btn btn-lg btn-success" onclick="beam()">Beam Down</button>
+<h4>Available to Receive:</h4>
+<select id="outsides" class="form-control"></select><br />
+<button class="btn btn-lg btn-primary" onclick="lock()">Get Lock</button>
+<button class="btn btn-lg btn-success" disabled="true" onclick="receive()">Beam Up</button>
+</div>
+</div>
 </body>
 </html>

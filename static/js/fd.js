@@ -81,6 +81,40 @@ function removemap(key){
   delete newjson[key];
   emit("update",{'maps':newjson});
 }
+function doobjects(json){
+document.getElementById("objectlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("objectlist").innerHTML += "<span onclick='removeobject(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].place+"' onchange='changeobject(this,\""+key+"\",\"place\")' /><br />";
+  }
+}
+}
+function addobject(){
+  if(data.hasOwnProperty('objects')){
+  newjson = data['objects'];
+}
+else{
+  newjson = {};
+}
+  newjson[document.getElementById("addobject").value] = {'place':document.getElementById("objectplace").value};
+  emit("update",{'objects':newjson});
+}
+function changeobject(object,object,property){
+  newjson = data['objects'];
+  newjson[object][property] = object.value;
+emit("update",{'objects':newjson});
+}
+function removeobject(key){
+  newjson = data['objects'];
+  delete newjson[key];
+  emit("update",{'objects':newjson});
+}
+function handleaddobject(e){
+  if(e.keyCode === 13){
+            addobject();
+        }
+
+}
 function update(json){
 for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -90,6 +124,24 @@ for (var key in json) {
     }
     if(key == "x"){
     	document.getElementById("x").value = json[key];
+    }
+    if(key == "alert"){
+      document.getElementById("alert").value = json[key];
+    }
+    if(key == "probing"){
+      document.getElementById("probing").value = json[key];
+    }
+    if(key == "scanning"){
+      document.getElementById("scanning").value = json[key];
+    }
+    if(key == "scan"){
+      document.getElementById("scan").value = json[key];
+    }
+    if(key == "analysis"){
+      document.getElementById("analysis").value = json[key];
+    }
+    if(key == "probe"){
+      document.getElementById("probe").value = json[key];
     }
     if(key == "y"){
     	document.getElementById("y").value = json[key];
@@ -141,6 +193,9 @@ for (var key in json) {
     }
     if(key == "maps"){
       domaps(json[key]);
+    }
+    if(key == "objects"){
+      doobjects(json[key]);
     }
     if(key == "forwardthruster"){
       if(json[key] == true){

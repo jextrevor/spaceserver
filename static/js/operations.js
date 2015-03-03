@@ -15,6 +15,84 @@ function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
     data[key] = json[key];
+    if(key == "ships"){
+    	doships(json[key]);
+    }
+    if(key == "probing"){
+    	if(json[key] == ""){
+    		document.getElementById("probing").innerHTML = "";
+    	}
+    	else{
+    	document.getElementById("probing").innerHTML = "Currently Probing: "+json[key]+" <button class='btn btn-warning' onclick=\"probe('')\">Cancel</button>";
+    }
+}
+    if(key == "probe"){
+    	document.getElementById("probe").innerHTML = json[key];
+    }
+    if(key == "analysis"){
+    	if(json[key] == ""){
+    		document.getElementById("analysing").innerHTML = "";
+    		document.getElementById("analysis").innerHTML = "";
+    	}
+    	else if(json[key] == "Probing"){
+    		document.getElementById("analysing").innerHTML = "Analysing Probing Data";
+    		document.getElementById("analysis").innerHTML = "";
+    	}
+    	else if(json[key] == "Sensors"){
+    		document.getElementById("analysing").innerHTML = "Analysing Sensors Data";
+    		document.getElementById("analysis").innerHTML = "";
+    	}
+    	else{
+    		document.getElementById("analysing").innerHTML = "";
+    		document.getElementById("analysis").innerHTML = json[key];
+    	}
+    }
+    if(key == "scanning"){
+    	if(json[key] == ""){
+    		document.getElementById("scanning").innerHTML = "";
+    	}
+    	else{
+    	document.getElementById("scanning").innerHTML = "Currently Scanning: "+json[key]+" <button class='btn btn-warning' onclick=\"emit('update',{'scanning':''})\">Cancel</button>";
+    }
+    }
+    if(key == "scan"){
+    	document.getElementById("scan").innerHTML = json[key];
+    }
   }
 }
+}
+function doships(json){
+document.getElementById("radarlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\")'>"+key+"</a>";
+  }
+}
+}
+function probe(key){
+	emit('update',{'probing':key});
+}
+function showengines(){
+	document.getElementById("enginespage").style.display = "initial";
+	document.getElementById("radarpage").style.display = "none";
+	document.getElementById("settingspage").style.display = "none";
+	document.getElementById("enginestab").className = "active";
+	document.getElementById("radartab").className = "";
+	document.getElementById("settingstab").className = "";
+}
+function showradar(){
+	document.getElementById("enginespage").style.display = "none";
+	document.getElementById("radarpage").style.display = "initial";
+	document.getElementById("settingspage").style.display = "none";
+	document.getElementById("enginestab").className = "";
+	document.getElementById("radartab").className = "active";
+	document.getElementById("settingstab").className = "";
+}
+function showsettings(){
+	document.getElementById("enginespage").style.display = "none";
+	document.getElementById("radarpage").style.display = "none";
+	document.getElementById("settingspage").style.display = "initial";
+	document.getElementById("enginestab").className = "";
+	document.getElementById("radartab").className = "";
+	document.getElementById("settingstab").className = "active";
 }
