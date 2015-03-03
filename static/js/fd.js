@@ -85,7 +85,11 @@ function doobjects(json){
 document.getElementById("objectlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("objectlist").innerHTML += "<span onclick='removeobject(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].place+"' onchange='changeobject(this,\""+key+"\",\"place\")' /><br />";
+    var bg = "transparent";
+    if(json[key].lockable == true){
+      bg = "#00FF00";
+    }
+    document.getElementById("objectlist").innerHTML += "<span onclick='removeobject(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].place+"' onchange='changeobject(this,\""+key+"\",\"place\")' /><span style='background-color:"+bg+";' onmousedown='changecheck(this,\""+key+"\",\"lockable\")'>Lockable</span><br />";
   }
 }
 }
@@ -96,13 +100,22 @@ function addobject(){
 else{
   newjson = {};
 }
-  newjson[document.getElementById("addobject").value] = {'place':document.getElementById("objectplace").value};
+  newjson[document.getElementById("addobject").value] = {'place':document.getElementById("objectplace").value,'lockable':document.getElementById("objectlock").checked};
   emit("update",{'objects':newjson});
 }
-function changeobject(object,object,property){
+function changeobject(object,ship,property){
   newjson = data['objects'];
-  newjson[object][property] = object.value;
+  newjson[ship][property] = object.value;
 emit("update",{'objects':newjson});
+}
+function changecheck(object,ship,property){
+  newjson = data['objects'];
+  var checked = false;
+  if(object.style['background-color'] == "transparent"){
+      checked = true;
+    }
+  newjson[ship][property] = checked;
+  emit("update",{'objects':newjson});
 }
 function removeobject(key){
   newjson = data['objects'];

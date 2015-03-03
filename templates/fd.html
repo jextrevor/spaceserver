@@ -83,8 +83,9 @@ Add Ship:<br />
 <div class="col-md-2">
 <h5>Objects</h5>
 <div id="objectlist" style="overflow-y:auto;max-height:150px;"></div>
-Add Place:<br />
+Add Object:<br />
 <input type="text" id="addobject" class="formcontrol" /><br />
+<input type="checkbox" id="objectlock" class="formcontrol" />
 <input type="text" id="objectplace" class="formcontrol" onkeypress="handleaddobject(event)"/><br />
 <h5>Alert Status</h5>
 <input type="text" id="alert" onchange="emit('update',{'alert':document.getElementById('alert').value})" />

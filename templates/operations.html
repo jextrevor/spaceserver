@@ -50,9 +50,9 @@
 <input type="text" placeholder="Destination" id="destination" class="form-control" /><br />
 <button class="btn btn-lg btn-success" onclick="beam()">Beam Down</button>
 <h4>Available to Receive:</h4>
-<select id="outsides" class="form-control"></select><br />
-<button class="btn btn-lg btn-primary" onclick="lock()">Get Lock</button>
-<button class="btn btn-lg btn-success" disabled="true" onclick="receive()">Beam Up</button>
+<select id="outsides" class="form-control" onchange="unlock()"></select><br />
+<button class="btn btn-lg btn-primary" onclick="dolock()">Get Lock</button>
+<button class="btn btn-lg btn-success" disabled="true" id="tsbutton" onclick="receive()">Beam Up</button>
 </div>
 </div>
 </body>

@@ -3,6 +3,7 @@ var conn_options = {
 'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {}
+lock = false;
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/operations',conn_options);
 socket.on("update",function(json){
 	update(json);
@@ -17,6 +18,9 @@ function update(json){
     data[key] = json[key];
     if(key == "ships"){
     	doships(json[key]);
+    }
+    if(key == "objects"){
+        doobjects(json[key]);
     }
     if(key == "probing"){
     	if(json[key] == ""){
@@ -68,6 +72,41 @@ for(var key in json){
     document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\")'>"+key+"</a>";
   }
 }
+}
+function beam(){
+    newjson = data['objects'];
+  newjson[document.getElementById("transports").value].place = document.getElementById("destination").value;
+emit("update",{'objects':newjson});
+}
+function unlock(){
+lock = false;
+document.getElementById("tsbutton").disabled = true;
+}
+function dolock(){
+    if(data.objects[document.getElementById("outsides").value].lockable == true){
+        lock = true;
+        document.getElementById("tsbutton").disabled = false;
+    }
+}
+function receive(){
+    newjson = data['objects'];
+  newjson[document.getElementById("outsides").value].place = "";
+emit("update",{'objects':newjson});
+}
+function doobjects(json){
+    unlock();
+    document.getElementById("transports").innerHTML = "";
+    document.getElementById("outsides").innerHTML = "";
+  for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    if(json[key].place == ""){
+    document.getElementById("transports").innerHTML += "<option>"+key+"</option>";
+}
+else{
+    document.getElementById("outsides").innerHTML += "<option>"+key+"</option>";
+}
+  }
+}  
 }
 function probe(key){
 	emit('update',{'probing':key});
