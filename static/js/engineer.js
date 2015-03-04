@@ -12,13 +12,40 @@ socket.on("update",function(json){
 function emit(key,json){
 	socket.emit(key,json);
 }
+function dosystems(json){
+document.getElementById("repairlist").innerHTML = "";
+document.getElementById("powerlist").innerHTML = "";
+document.getElementById("heatlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("powerlist").innerHTML += key+' <button class="btn btn-info btn-xs" onclick="decrease(\''+key+'\')" >Decrease Power</button><button class="btn btn-info btn-xs"  onclick="increase(\''+key+'\')">Increase Power</button><div class="progress"><div class="progress-bar progress-bar-info" role="progressbar" id="'+key+'power" style="width: '+json[key].power+'%;"></div></div>';
+    document.getElementById("heatlist").innerHTML += key+'<div class="progress" onclick="cool(\''+key+'\')"><div class="progress-bar progress-bar-info" role="progressbar" id="'+key+'heat" style="width: '+json[key].heat+'%;"></div></div>';
+    document.getElementById("repairlist").innerHTML += key+'<div class="progress" onclick="fix(\''+key+'\')"><div class="progress-bar progress-bar-info" role="progressbar" id="'+key+'damage" style="width: '+json[key].damage+'%;"></div></div>';
+  }
+}
+}
+function decrease(key){
+
+}
+function increase(key){
+
+}
+function cool(key){
+
+}
+function fix(key){
+	
+}
 function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
     data[key] = json[key];
     if(key == "coolant"){
     	document.getElementById("coolant").innerHTML = json[key];
-    	    }
+    }
+    if(key == "systems"){
+    	dosystems(json[key]);
+    }
   }
 }
 }

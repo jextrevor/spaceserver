@@ -128,6 +128,40 @@ function handleaddobject(e){
         }
 
 }
+function handleaddsystem(e){
+  if(e.keyCode === 13){
+            addsystem();
+        }
+
+}
+function addsystem(){
+  if(data.hasOwnProperty('systems')){
+  newjson = data['systems'];
+}
+else{
+  newjson = {};
+}
+  newjson[document.getElementById("addsystem").value] = {'heat':parseInt(document.getElementById("systemheat").value),'damage':parseInt(document.getElementById("systemdamage").value),'power':parseInt(document.getElementById("systempower").value)};
+  emit("update",{'systems':newjson});
+}
+function dosystems(json){
+document.getElementById("systemlist").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("systemlist").innerHTML += "<span onclick='removesystem(\""+key+"\")'>"+key+":</span><input type='text' value='"+json[key].heat+"' style='width:30px' onchange='changesystem(this,\""+key+"\",\"heat\")' /><input type='text' value='"+json[key].damage+"' style='width:30px' onchange='changesystem(this,\""+key+"\",\"damage\")' /><input type='text' value='"+json[key].power+"' style='width:30px' onchange='changesystem(this,\""+key+"\",\"power\")' /><br />";
+  }
+}
+}
+function changesystem(object,system,property){
+  newjson = data['systems'];
+  newjson[system][property] = parseInt(object.value);
+emit("update",{'systems':newjson});
+}
+function removesystem(key){
+  newjson = data['systems'];
+  delete newjson[key];
+  emit("update",{'systems':newjson});
+}
 function update(json){
 for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -201,8 +235,17 @@ for (var key in json) {
     if(key == "team4"){
     	document.getElementById("team4").value = json[key];
     }
+    if(key == "coolant"){
+      document.getElementById("coolant").value = json[key];
+    }
+    if(key == "maxpower"){
+      document.getElementById("maxpower").value = json[key];
+    }
     if(key == "ships"){
       doships(json[key]);
+    }
+    if(key == "systems"){
+      dosystems(json[key]);
     }
     if(key == "maps"){
       domaps(json[key]);

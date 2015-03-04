@@ -97,13 +97,19 @@ Add Object:<br />
 <input type="text" id="scan" onchange="emit('update',{'scan':document.getElementById('scan').value})" />
 <h5>Analysis</h5>
 <input type="text" id="analysis" onchange="emit('update',{'analysis':document.getElementById('analysis').value})" />
+<h5>Coolant</h5>
+<input type="text" id="coolant" onchange="emit('update',{'coolant':parseInt(document.getElementById('coolant').value)})" />
+<h5>Max Power</h5>
+<input type="text" id="maxpower" onchange="emit('update',{'maxpower':parseInt(document.getElementById('maxpower').value)})" />
 </div>
 <div class="col-md-2">
+	<h5>Systems</h5>
 <div id="systemlist" style="overflow-y:auto;max-height:150px;"></div>
 Add System:<br />
 <input type="text" id="addsystem" /><br />
 <input type="text" id="systemheat" /><br />
-<input type="text" id="systempower" /><br />
+<input type="text" id="systemdamage" /><br />
+<input type="text" id="systempower" onkeypress="handleaddsystem(event)"/><br />
 </div>
 <div class="col-md-2">
 	<video id="theirvideo" height="100" width="200"></video><br /><video id="yourvideo" height="100" width="200"></video>
