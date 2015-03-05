@@ -101,6 +101,8 @@ Add Object:<br />
 <input type="text" id="coolant" onchange="emit('update',{'coolant':parseInt(document.getElementById('coolant').value)})" />
 <h5>Max Power</h5>
 <input type="text" id="maxpower" onchange="emit('update',{'maxpower':parseInt(document.getElementById('maxpower').value)})" />
+<h5>Fixing</h5>
+<input type="text" id="zzzzzzfixing" onchange="emit('update',{'zzzzzzfixing':parseInt(document.getElementById('zzzzzzfixing').value)})" />
 </div>
 <div class="col-md-2">
 	<h5>Systems</h5>
@@ -110,6 +112,29 @@ Add System:<br />
 <input type="text" id="systemheat" /><br />
 <input type="text" id="systemdamage" /><br />
 <input type="text" id="systempower" onkeypress="handleaddsystem(event)"/><br />
+<h5>Diagnosing</h5>
+<input type="text" id="diagnosing" onchange="emit('update',{'diagnosing':document.getElementById('diagnosing').value})" />
+<input type="text" id="diagnostic" onchange="emit('update',{'diagnostic':document.getElementById('diagnostic').value})" />
+<h5>Commands</h5>
+<input type="text" id="commanding" onchange="emit('update',{'commanding':document.getElementById('commanding').value})" />
+<input type="text" id="command" onchange="emit('update',{'command':document.getElementById('command').value})" />
+<h5>Music</h5>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':''})">Pause</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle.mp3'})">Battle (Final)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle2.mp3'})">Battle (Intense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle3.mp3'})">Battle (Tense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense.mp3'})">Intense (Slow)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense2.mp3'})">Intense (Tense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense3.mp3'})">Intense (Intense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense.mp3'})">Tense (Tense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense2.mp3'})">Tense (Intense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense3.mp3'})">Tense (Slow)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel.mp3'})">Travel (Tense)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel2.mp3'})">Travel (Slow)</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel3.mp3'})">Travel Fast</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'exposition.mp3'})">Exposition</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'victory.mp3'})">Victory</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'defeat.wav'})">Defeat</button>
 </div>
 <div class="col-md-2">
 	<video id="theirvideo" height="100" width="200"></video><br /><video id="yourvideo" height="100" width="200"></video>

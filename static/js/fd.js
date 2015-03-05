@@ -184,6 +184,18 @@ for (var key in json) {
     if(key == "scan"){
       document.getElementById("scan").value = json[key];
     }
+    if(key == "diagnosing"){
+      document.getElementById("diagnosing").value = json[key];
+    }
+    if(key == "diagnostic"){
+      document.getElementById("diagnostic").value = json[key];
+    }
+    if(key == "commanding"){
+      document.getElementById("commanding").value = json[key];
+    }
+    if(key == "command"){
+      document.getElementById("command").value = json[key];
+    }
     if(key == "analysis"){
       document.getElementById("analysis").value = json[key];
     }
@@ -192,6 +204,9 @@ for (var key in json) {
     }
     if(key == "y"){
     	document.getElementById("y").value = json[key];
+    }
+    if(key == "zzzzzzfixing"){
+      document.getElementById("zzzzzzfixing").value = json[key];
     }
     if(key == "z"){
     	document.getElementById("z").value = json[key];
