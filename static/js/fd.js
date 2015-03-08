@@ -3,7 +3,7 @@ var conn_options = {
   'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {};
-
+var peer = new Peer({key: 'x7imbejnpg2pgb9'}); 
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 socket.on("update",function(json){
 	update(json);
@@ -12,6 +12,23 @@ socket.on("update",function(json){
 eta = setInterval(function(){if(data.hasOwnProperty('eta')){if(data['eta']>0){emit('update',{'eta':data['eta']-1})}}},1000);
 function emit(key,json){
 socket.emit(key,json);
+}
+function call(id){
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+navigator.getUserMedia({video: true, audio: true}, function(stream) {
+  var call = peer.call(id, stream);
+  call.on('stream', function(remoteStream) {
+    $('#'+id).prop('src', URL.createObjectURL(remoteStream));// Show stream in some video/canvas element.
+  });
+}, function(err) {
+  console.log('Failed to get local stream' ,err);
+});
+}
+function mutecommander(){
+  $("#commander").prop('muted',true);
+}
+function unmutecommander(){
+$("#commander").prop('muted',false);
 }
 function handleaddship(e){
   if(e.keyCode === 13){

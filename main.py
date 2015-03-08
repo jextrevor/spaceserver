@@ -13,6 +13,34 @@ def emittoallstations(event,data):
 	socketio.emit(event,data, namespace="/operations")
 	socketio.emit(event,data, namespace="/mvs")
 	socketio.emit(event,data, namespace="/fd")
+@socketio.on('broadcast', namespace="/commander")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/navigator")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/tactical")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/operations")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/engineer")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/mvs")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
+@socketio.on('broadcast', namespace="/fd")
+def broadcast(json):
+	for key,value in json.items():
+		emittoallstations(key,value)
 @socketio.on('update', namespace="/commander")
 def update(json):
 	for key,value in json.items():

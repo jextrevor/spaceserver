@@ -5,6 +5,7 @@
 body {
     overflow:hidden;
     font-family:Electrolize;
+    position:relative;
 }
 canvas{
   height:500px;
