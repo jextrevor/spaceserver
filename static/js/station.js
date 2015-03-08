@@ -2,7 +2,7 @@ var shake;
 var magnitude = 0;
 var factor = 10;
 function sound(path){
-    var data = new Audio("static/media/"+path);
+    var data = new Audio("/static/media/"+path);
     data.play();
 }
 socket.on('explosion', function(json){

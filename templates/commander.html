@@ -16,9 +16,9 @@
 <body>
 <div class="container">
 	<div class="row">
-<button class="btn btn-success btn-lg col-md-4" id="greenalertbutton" onclick="emit('update',{'alert':'0'});" style="box-shadow: 0 0 30px #00FF00;">Green Alert</button>
-<button class="btn btn-warning btn-lg col-md-4" id="yellowalertbutton" onclick="emit('update',{'alert':'1'});">Yellow Alert</button>
-<button class="btn btn-danger btn-lg col-md-4" id="redalertbutton" onclick="emit('update',{'alert':'2'});">Red Alert</button></div>
+<button class="btn btn-success btn-lg col-md-4" id="greenalertbutton" onclick="emit('update',{'alert':'0'});sound('buttonshort.wav');" style="box-shadow: 0 0 30px #00FF00;">Green Alert</button>
+<button class="btn btn-warning btn-lg col-md-4" id="yellowalertbutton" onclick="emit('update',{'alert':'1'});sound('buttonshort.wav');">Yellow Alert</button>
+<button class="btn btn-danger btn-lg col-md-4" id="redalertbutton" onclick="emit('update',{'alert':'2'});sound('buttonshort.wav');">Red Alert</button></div>
 <h1>Mission Information</h1>
 <div id="missiondata"></div>
 </div>

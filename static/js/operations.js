@@ -56,7 +56,7 @@ function update(json){
     		document.getElementById("scanning").innerHTML = "";
     	}
     	else{
-    	document.getElementById("scanning").innerHTML = "Currently Scanning: "+json[key]+" <button class='btn btn-warning' onclick=\"emit('update',{'scanning':''})\">Cancel</button>";
+    	document.getElementById("scanning").innerHTML = "Currently Scanning: "+json[key]+" <button class='btn btn-warning' onclick=\"emit('update',{'scanning':''});sound('buttonshort.wav');\">Cancel</button>";
     }
     }
     if(key == "scan"){
@@ -69,7 +69,7 @@ function doships(json){
 document.getElementById("radarlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\")'>"+key+"</a>";
+    document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\");sound('processing.mp3');'>"+key+"</a>";
   }
 }
 }

@@ -13,9 +13,9 @@
 </head>
 <body>
 <ul class="nav nav-tabs nav-justified">
-<li role="presentation" class="active" onclick="showtarget();shortsound();" id="targettab"><a>Targeting</a></li>
-<li role="presentation" onclick="showweapon();shortsound();" id="weapontab"><a>Weapons</a></li>
-<li role="presentation" onclick="showsecurity();shortsound();" id="securitytab"><a>Security</a></li>
+<li role="presentation" class="active" onclick="showtarget();sound('buttonshort.wav');" id="targettab"><a>Targeting</a></li>
+<li role="presentation" onclick="showweapon();sound('buttonshort.wav');" id="weapontab"><a>Weapons</a></li>
+<li role="presentation" onclick="showsecurity();sound('buttonshort.wav');" id="securitytab"><a>Security</a></li>
 </ul>
 <div class="container" id="targetpage" style="display:initial">
 <div class="container">
@@ -25,10 +25,10 @@
 <br />
 <select id="radarlist" class="form-control">
 </select><br />
-<button onclick="target()" class="btn btn-warning">Target Ship</button><button onclick="cleartarget()" class="btn btn-danger">Clear Target</button>
+<button onclick="target();sound('processing.mp3');" class="btn btn-warning">Target Ship</button><button onclick="cleartarget();sound('processing.mp3');" class="btn btn-danger">Clear Target</button>
 <h4>Shields</h4>
 <h4>Shield Status: <span id="shields"></span></h4>
-<button onclick="shieldup()" class="btn btn-lg btn-success">Shields Up</button><button onclick="shielddown()" class="btn btn-lg btn-warning">Shields Down</button>
+<button onclick="shieldup();sound('button.wav');" class="btn btn-lg btn-success">Shields Up</button><button onclick="shielddown();sound('button.wav');" class="btn btn-lg btn-warning">Shields Down</button>
 </div>
 </div>
 <div class="container" id="weaponpage" style="display:none">
@@ -40,20 +40,20 @@
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser1" style="width: 0%;">
   </div>
 </div>
-<button onclick="charge1()" class="btn btn-success">Charge Phaser 1</button><button onclick="fire1()" class="btn btn-danger">Fire Phaser 1</button><br /><br />
+<button onclick="charge1();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 1</button><button onclick="fire1();sound('buttonshort.wav');" class="btn btn-danger">Fire Phaser 1</button><br /><br />
 <div class="progress">
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser2" style="width: 0%;">
   </div>
 </div>
-<button onclick="charge2()" class="btn btn-success">Charge Phaser 2</button><button onclick="fire2()" class="btn btn-danger">Fire Phaser 2</button><br /><br />
+<button onclick="charge2();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 2</button><button onclick="fire2();sound('buttonshort.wav');" class="btn btn-danger">Fire Phaser 2</button><br /><br />
 <div class="progress">
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser3" style="width: 0%;">
   </div>
 </div>
-<button onclick="charge3()" class="btn btn-success">Charge Phaser 3</button><button onclick="fire3()" class="btn btn-danger">Fire Phaser 3</button><br /><br />
+<button onclick="charge3();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 3</button><button onclick="fire3();sound('buttonshort.wav');" class="btn btn-danger">Fire Phaser 3</button><br /><br />
 <h4>Torpedoes</h4>
 <h4><span id="torpedoes"></span> Left</h4>
-<button onclick="torpedo()" class="btn btn-lg btn-danger">Fire Torpedo</button>
+<button onclick="torpedo();sound('buttonshort.wav');" class="btn btn-lg btn-danger">Fire Torpedo</button>
 </div>
 </div>
 <div class="container" id="securitypage" style="display:none">
@@ -62,24 +62,24 @@
 <h4>Security Teams</h4>
 <h5>Team 1</h5>
 <input type="text" class="form-control" id="team1" />
-<button class="btn btn-info" onclick="send1()">Send</button>
-<button class="btn btn-info" onclick="retreat1()">Retreat</button>
+<button class="btn btn-info" onclick="send1();sound('button.wav');">Send</button>
+<button class="btn btn-info" onclick="retreat1();sound('button.wav');">Retreat</button>
 <h5>Team 2</h5>
 <input type="text" class="form-control" id="team2" />
-<button class="btn btn-info" onclick="send2()">Send</button>
-<button class="btn btn-info" onclick="retreat2()">Retreat</button>
+<button class="btn btn-info" onclick="send2();sound('button.wav');">Send</button>
+<button class="btn btn-info" onclick="retreat2();sound('button.wav');">Retreat</button>
 <h5>Team 3</h5>
 <input type="text" class="form-control" id="team3" />
-<button class="btn btn-info" onclick="send3()">Send</button>
-<button class="btn btn-info" onclick="retreat3()">Retreat</button>
+<button class="btn btn-info" onclick="send3();sound('button.wav');">Send</button>
+<button class="btn btn-info" onclick="retreat3();sound('button.wav');">Retreat</button>
 <h5>Team 4</h5>
 <input type="text" class="form-control" id="team4" />
-<button class="btn btn-info" onclick="send4()">Send</button>
-<button class="btn btn-info" onclick="retreat4()">Retreat</button>
+<button class="btn btn-info" onclick="send4();sound('button.wav');">Send</button>
+<button class="btn btn-info" onclick="retreat4();sound('button.wav');">Retreat</button>
 <h4>Hailing</h4>
 <h4 class="text-info" id="hailed"></h4>
 <input type="text" class="form-control" id="tohail" />
-<button class="btn btn-success" onclick="hail()">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''})">Close Hailing Frequencies</button>
+<button class="btn btn-success" onclick="hail();sound('buttonshort.wav');">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''});sound('buttonshort.wav');">Close Hailing Frequencies</button>
 <h4 class="text-info">Currently Hailing: <span id="hailing"></span></h4>
 </div>
 </div>

@@ -15,7 +15,7 @@ socket.emit(key,json);
 }
 function call(id){
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-navigator.getUserMedia({video: true, audio: true}, function(stream) {
+navigator.getUserMedia({audio:true}, function(stream) {
   var call = peer.call(id, stream);
   call.on('stream', function(remoteStream) {
     $('#'+id).prop('src', URL.createObjectURL(remoteStream));// Show stream in some video/canvas element.

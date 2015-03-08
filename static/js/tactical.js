@@ -67,7 +67,7 @@ function update(json){
   		document.getElementById("hailed").innerHTML = "";
   	}
   	else{
-    	document.getElementById("hailed").innerHTML = "Currently being hailed by "+json[key]+" <button class='btn btn-success' onclick='answer()'>Answer</button><button class='btn btn-warning' onclick='decline()'>Decline</button>";
+    	document.getElementById("hailed").innerHTML = "Currently being hailed by "+json[key]+" <button class='btn btn-success' onclick='answer();sound(\"buttonshort.wav\");'>Answer</button><button class='btn btn-warning' onclick='decline();sound(\"buttonshort.wav\");'>Decline</button>";
   	}
     }
 }

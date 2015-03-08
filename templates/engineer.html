@@ -13,9 +13,9 @@
 </head>
 <body>
 	<ul class="nav nav-tabs nav-justified">
-  <li role="presentation" class="active" onclick="showengines();shortsound();" id="enginestab"><a>Power</a></li>
-  <li role="presentation" onclick="showradar();shortsound();" id="radartab"><a>Repair</a></li>
-  <li role="presentation" onclick="showsettings();shortsound();" id="settingstab"><a>Settings</a></li>
+  <li role="presentation" class="active" onclick="showengines();sound('buttonshort.wav');" id="enginestab"><a>Power</a></li>
+  <li role="presentation" onclick="showradar();sound('buttonshort.wav');" id="radartab"><a>Repair</a></li>
+  <li role="presentation" onclick="showsettings();sound('buttonshort.wav');" id="settingstab"><a>Settings</a></li>
 </ul>
 <div class="container" id="enginespage" style="display:initial">
 <div class="container">
@@ -39,14 +39,14 @@
 <div class="container">
 <h4>Diagnostics</h4>
 <input type="text" class="form-control" id="diagnose" />
-<button class="btn btn-primary btn-lg" onclick="emit('update',{'diagnosing':document.getElementById('diagnose').value})">Run Diagnostic Scan</button>
+<button class="btn btn-primary btn-lg" onclick="emit('update',{'diagnosing':document.getElementById('diagnose').value});sound('processing.mp3');">Run Diagnostic Scan</button>
 <h4 id="diagnosing" class="text-info"></h4>
 <h4>Diagnostic Results</h4>
 <p id="diagnostic" class="text-primary"></p>
 <hr />
 <h4>System Commands</h4>
 <input type="text" class="form-control" id="commanding" />
-<button class="btn btn-primary btn-lg" onclick="emit('update',{'commanding':document.getElementById('commanding').value})">Execute Command</button>
+<button class="btn btn-primary btn-lg" onclick="emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');">Execute Command</button>
 <h4>Command Results</h4>
 <p id="command" class="text-primary"></p>
 </div>
