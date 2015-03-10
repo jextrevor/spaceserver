@@ -7,10 +7,6 @@ body {
     font-family:Electrolize;
     position:relative;
 }
-canvas{
-  height:500px;
-  width:500px;
-}
 html *{
 font-family:Electrolize;
     -webkit-touch-callout: none;
@@ -21,6 +17,27 @@ font-family:Electrolize;
     user-select: none;
     cursor:url(../img/cursor.cur),default !important;
 }
+#image{
+position:absolute;
+top:0;
+left:0;
+height:100%;
+width:100%;
+}
+#logopage{
+	text-align:center;
+	perspective:2000px;
+		-webkit-perspective:2000px;
+		-moz-perspective:2000px;
+		
+	
+	}
+	#logo{
+		/*transform:rotateY(45deg) rotateX(23deg);
+		-webkit-transform:rotateY(45deg) rotateX(23deg);
+		-moz-transform:rotateY(45deg) rotateX(23deg);*/
+		
+		}
 input{
     -webkit-user-select: text;
     -khtml-user-select: text;

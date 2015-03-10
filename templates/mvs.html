@@ -12,8 +12,15 @@
 <script src="/static/js/mvs.js"></script>
 <script src="/static/js/station.js"></script>
 </head>
-<body>
-<video id="audiooutput" width="0" height="0" autoplay="">
+<body style="margin:0px;overflow:hidden;">
+<video id="audiooutput" width="0" height="0" autoplay="" style="display:none;">
 </video>
+<canvas id="warpcanvas" style="display:none;"></canvas>
+<img alt="" id="image" style="display:none;" />
+<div id="logopage" style="display:initial;">
+<center>
+<img alt="" src="/static/img/logo.png" id="logo" height="800" width="800" />
+</center>
+</div>
 </body>
 </html>
