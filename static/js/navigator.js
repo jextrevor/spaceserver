@@ -55,6 +55,7 @@ function update(json){
     	document.getElementById("cz").innerHTML = json[key];
     }
     if(key == "ships"){
+    	
     	doships(json[key]);
     }
     if(key == "eta"){

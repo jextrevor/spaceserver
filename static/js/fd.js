@@ -33,6 +33,7 @@ $("#commander").prop('muted',false);
 function handleaddship(e){
   if(e.keyCode === 13){
             addship();
+            emit('broadcast',{'sound':'info.wav'});
         }
 
 }

@@ -54,6 +54,7 @@ function decrease(keyd){
 		}
 	}
 	emit("update",{'systems':newjson});
+	emit('broadcast',{'sound':'info.wav'});
 }
 function increase(keyd){
 	newjson = data['systems'];
@@ -93,6 +94,7 @@ else{
 	increasee(keyd,9);
 }
 	emit("update",{'systems':newjson});
+	emit('broadcast',{'sound':'info.wav'});
 }
 function increasee(keyd,magnitude){
 	newjson = data['systems'];
@@ -148,9 +150,11 @@ function cool(key){
 	}
 }
 	emit('update',{'systems':newjson,'coolant':data.coolant});
+	emit('broadcast',{'sound':'info.wav'});
 }
 function fix(key){
 	emit('update',{'zzzzzzfixing':key});
+	emit('broadcast',{'sound':'processing.mp3'});
 }
 function count(obj) {
    var count=0;

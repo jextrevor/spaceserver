@@ -138,23 +138,33 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'defeat.wav'})">Defeat</button>
 <h5>Effects</h5>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
-<h5>Main View Screen</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':''})">Logo</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':1})">Full speed</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star3.jpg'})">Nebula</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
 </div>
 <div class="col-md-2">
 	<video id="commander" height="100" width="200" autoplay=""></video><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" onclick="emit('update',{'muted':false})">Unmute</button>
+	<h5>Main View Screen</h5>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':''})">Logo</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':1})">Full speed</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star3.jpg'})">Nebula</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
+<h5>Sounds</h5>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'transporter.mp3'});">Transporter</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'phaser.mp3'});">Phaser</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'torpedo.mp3'});">Torpedo</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'error.mp3'});">Error</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
 </div>
 <div class="col-md-2">
-	
+
 </div>
 </div>
 </body>

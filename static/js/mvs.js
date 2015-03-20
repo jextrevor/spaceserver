@@ -20,6 +20,10 @@ var socket = io.connect('http://'+window.location.hostname+':'+window.location.p
 socket.on("update",function(json){
 	update(json);
 });
+socket.on('sound'.function(json){
+	var data = new Audio("/static/media/"+json);
+	data.play();
+});
 //background = new Audio("/static/media/background.mp3");
 //background.addEventListener('ended', function() {
 //    restartbackground();
@@ -32,6 +36,16 @@ function emit(key,json){
 function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
+    if(key == "warp"){
+        if(data[key] == 0 && json[key] != 0){
+        var data = new Audio("/static/media/warp.mp3");
+        data.play();
+        }
+        else if(data[key] != 0 && json[key] == 0){
+        var data = new Audio("/static/media/warpout.mp3");
+        data.play();
+        }
+    }
     data[key] = json[key];
     if(key == "music"){
     	currentmusic.pause();
@@ -42,6 +56,8 @@ function update(json){
     }
     if(key == "muted"){
         $("#audiooutput").prop('muted',json[key]);
+    }
+    if(key == "alert"){
     }
 if(key == "screen"){
         if(typeof json[key] != "string"){
@@ -82,9 +98,6 @@ function showWarp(warpspeed){
 document.getElementById("logopage").style.display = "none";
 document.getElementById("image").style.display = "none";
 document.getElementById("warpcanvas").style.display = "initial";
-Z = warpspeed;
-}
-$( document ).ready(function() {
 // requestAnimFrame shim
 window.requestAnimFrame = (function()
 {
@@ -125,7 +138,7 @@ var warpZ = 12,
     units = 500,
     stars = [],
     cycle = 0,
-    Z = 0.025 + (1/25 * 2);
+    Z = warpspeed;
 
 // mouse events
 
@@ -201,4 +214,4 @@ var rf = function()
    requestAnimFrame(rf);
 };
 requestAnimFrame(rf);
-});
+}

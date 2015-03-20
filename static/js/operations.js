@@ -85,6 +85,7 @@ document.getElementById("tsbutton").disabled = true;
 function dolock(){
     if(data.objects[document.getElementById("outsides").value].lockable == true){
         lock = true;
+        emit('broadcast',{'sound':'info.wav'});
         document.getElementById("tsbutton").disabled = false;
     }
 }
