@@ -20,7 +20,7 @@ var socket = io.connect('http://'+window.location.hostname+':'+window.location.p
 socket.on("update",function(json){
 	update(json);
 });
-socket.on('sound'.function(json){
+socket.on('sound',function(json){
 	var data = new Audio("/static/media/"+json);
 	data.play();
 });
