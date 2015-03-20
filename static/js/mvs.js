@@ -21,8 +21,9 @@ socket.on("update",function(json){
 	update(json);
 });
 socket.on('sound',function(json){
-	var data = new Audio("/static/media/"+json);
-	data.play();
+	var dataa = new Audio("/static/media/"+json);
+	dataa.play();
+	alert('hi');
 });
 //background = new Audio("/static/media/background.mp3");
 //background.addEventListener('ended', function() {
@@ -38,12 +39,12 @@ function update(json){
   if (json.hasOwnProperty(key)) {
     if(key == "warp"){
         if(data[key] == 0 && json[key] != 0){
-        var data = new Audio("/static/media/warp.mp3");
-        data.play();
+        var dataa = new Audio("/static/media/warp.mp3");
+        dataa.play();
         }
         else if(data[key] != 0 && json[key] == 0){
-        var data = new Audio("/static/media/warpout.mp3");
-        data.play();
+        var dataa = new Audio("/static/media/warpout.mp3");
+        dataa.play();
         }
     }
     data[key] = json[key];
