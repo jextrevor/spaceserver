@@ -3,6 +3,7 @@ var conn_options = {
 'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {}
+var requestID = undefined;
 var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
@@ -23,7 +24,6 @@ socket.on("update",function(json){
 socket.on('sound',function(json){
 	var dataa = new Audio("/static/media/"+json);
 	dataa.play();
-	alert('hi');
 });
 //background = new Audio("/static/media/background.mp3");
 //background.addEventListener('ended', function() {
@@ -112,7 +112,22 @@ window.requestAnimFrame = (function()
                window.setTimeout(callback);
            };
 })();
-
+window.cancelAnimFrame = (function()
+{
+   return  window.cancelAnimationFrame       || 
+           window.webkitcancelAnimationFrame || 
+           window.mozcancelAnimationFrame    || 
+           window.ocancelAnimationFrame      || 
+           window.mscancelAnimationFrame     || 
+           function(callback)
+           {
+               window.setTimeout(callback);
+           };
+})();
+if(requestID != undefined){
+cancelAnimFrame(requestID);
+}
+requestID = undefined;
 // remove frame margin and scrollbars when maxing out size of canvas
 //document.body.style.margin = "0px";
 //document.body.style.overflow = "hidden";
@@ -212,7 +227,7 @@ var rf = function()
    // colour cycle sinewave rotation
    //cycle += 0.01;
    
-   requestAnimFrame(rf);
+   requestID = requestAnimFrame(rf);
 };
 requestAnimFrame(rf);
 }
