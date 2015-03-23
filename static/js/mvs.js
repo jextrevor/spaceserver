@@ -26,8 +26,7 @@ socket.on('sound',function(json){
 	dataa.play();
 });
 socket.on('voice',function(json){
-  var dataa = new Audio("http://translate.google.com/translate_tts?ie=UTF-8&q="+json+"&tl=en");
-  dataa.play();
+  speechapi.speak(json,"female");
 });
 //background = new Audio("/static/media/background.mp3");
 //background.addEventListener('ended', function() {
