@@ -26,7 +26,7 @@ socket.on('sound',function(json){
 	dataa.play();
 });
 socket.on('voice',function(json){
-  speechapi.speak(json,"female");
+  speak(json);
 });
 //background = new Audio("/static/media/background.mp3");
 //background.addEventListener('ended', function() {
