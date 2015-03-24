@@ -37,6 +37,12 @@ function handleaddship(e){
         }
 
 }
+function handlespeak(e){
+  if(e.keyCode === 13){
+            emit('broadcast',{'voice':document.getElementById("speak").value});
+        }
+
+}
 function addship(){
   if(data.hasOwnProperty('ships')){
   newjson = data['ships'];

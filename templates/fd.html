@@ -164,7 +164,8 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'hi'});">Hi</button>
+<h5>Voices</h5>
+<input type="text" id="speak" onkeypress="handlespeak(event)"/>
 </div>
 <div class="col-md-2">
 
