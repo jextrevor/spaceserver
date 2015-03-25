@@ -50,24 +50,30 @@ function update(json){
         dataa.play();
         }
     }
-    if(key == "lockdown"){
-        	if(json[key] == true){
-    	  		var nodes = document.body.childNodes;
-			for(var i=0; i<nodes.length; i++) {
-			    
-			         nodes[i].style.display = "none";
-			     
-}
-    	  	}
-    	  	else{
-    	  		var nodes = document.body.childNodes;
-						for(var i=0; i<nodes.length; i++) {
-						    
-						         nodes[i].style.display = "initial";
-						     
-}
-      	}
-    }ata[key] = json[key];
+    
+        if(key == "mvslockdown"){
+                    	if(json[key] == true){
+                	  		var nodes = document.body.childNodes;
+            			for(var i=0; i<nodes.length; i++) {
+            			    
+            			        if(nodes[i].nodeName != "#text"){
+					            			         nodes[i].style.display = "none";
+            			     }
+            			     
+            }
+                	  	}
+                	  	else{
+                	  		var nodes = document.body.childNodes;
+            						for(var i=0; i<nodes.length; i++) {
+            						    
+            						         if(nodes[i].nodeName != "#text"){
+								             			         nodes[i].style.display = "initial";
+            			     }
+            						     
+            }
+                  	}
+    }
+    data[key] = json[key];
     if(key == "music"){
     	currentmusic.pause();
     	if(json[key] != ""){

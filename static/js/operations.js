@@ -33,23 +33,28 @@ function update(json){
     if(key == "probe"){
     	document.getElementById("probe").innerHTML = json[key];
     }
-    if(key == "lockdown"){
-        	if(json[key] == true){
-    	  		var nodes = document.body.childNodes;
-			for(var i=0; i<nodes.length; i++) {
-			    
-			         nodes[i].style.display = "none";
-			     
-}
-    	  	}
-    	  	else{
-    	  		var nodes = document.body.childNodes;
-						for(var i=0; i<nodes.length; i++) {
-						    
-						         nodes[i].style.display = "initial";
-						     
-}
-      	}
+    
+        if(key == "operationslockdown"){
+                    	if(json[key] == true){
+                	  		var nodes = document.body.childNodes;
+            			for(var i=0; i<nodes.length; i++) {
+            			    
+            			         if(nodes[i].nodeName != "#text"){
+					             			         nodes[i].style.display = "none";
+            			     }
+            			     
+            }
+                	  	}
+                	  	else{
+                	  		var nodes = document.body.childNodes;
+            						for(var i=0; i<nodes.length; i++) {
+            						    
+            						         if(nodes[i].nodeName != "#text"){
+								             			         nodes[i].style.display = "initial";
+            			     }
+            						     
+            }
+                  	}
     }
     if(key == "analysis"){
     	if(json[key] == ""){

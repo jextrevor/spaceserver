@@ -30,23 +30,24 @@ function update(json){
     if(key == "missiondata"){
     	document.getElementById("missiondata").innerHTML = markdown.toHTML(json[key]);
     }
-    if(key == "lockdown"){
-            	if(json[key] == true){
-        	  		var nodes = document.body.childNodes;
-    			for(var i=0; i<nodes.length; i++) {
-    			    
-    			         nodes[i].style.display = "none";
-    			     
-    }
-        	  	}
-        	  	else{
-        	  		var nodes = document.body.childNodes;
-    						for(var i=0; i<nodes.length; i++) {
-    						    
-    						         nodes[i].style.display = "initial";
-    						     
-    }
-          	}
+    
+        if(key == "commanderlockdown"){
+                    	if(json[key] == true){
+                	  		var nodes = document.body.childNodes;
+            			for(var i=0; i<nodes.length; i++) {
+            			    if(nodes[i].nodeName != "#text"){
+				                			         nodes[i].style.display = "none";
+            			     }
+            }
+                	  	}
+                	  	else{
+                	  		var nodes = document.body.childNodes;
+            						for(var i=0; i<nodes.length; i++) {
+            						    if(nodes[i].nodeName != "#text"){
+							                			         nodes[i].style.display = "initial";
+            			     }
+            }
+                  	}
     }
     if(key == "alert"){
     	if(json[key] == "0"){

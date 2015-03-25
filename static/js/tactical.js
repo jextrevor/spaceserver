@@ -19,23 +19,24 @@ function update(json){
   if(key == "ships"){
     	doships(json[key]);
     }
-    if(key == "lockdown"){
-            	if(json[key] == true){
-        	  		var nodes = document.body.childNodes;
-    			for(var i=0; i<nodes.length; i++) {
-    			    
-    			         nodes[i].style.display = "none";
-    			     
-    }
-        	  	}
-        	  	else{
-        	  		var nodes = document.body.childNodes;
-    						for(var i=0; i<nodes.length; i++) {
-    						    
-    						         nodes[i].style.display = "initial";
-    						     
-    }
-          	}
+    
+    if(key == "tacticallockdown"){
+                	if(json[key] == true){
+            	  		var nodes = document.body.childNodes;
+        			for(var i=0; i<nodes.length; i++) {
+        			    if(nodes[i].nodeName != "#text"){
+				                			         nodes[i].style.display = "none";
+            			     }
+        }
+            	  	}
+            	  	else{
+            	  		var nodes = document.body.childNodes;
+        						for(var i=0; i<nodes.length; i++) {
+        						  if(nodes[i].nodeName != "#text"){
+							              			         nodes[i].style.display = "initial";
+            			     }
+        }
+              	}
     }
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
