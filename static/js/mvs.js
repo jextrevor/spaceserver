@@ -39,6 +39,35 @@ socket.on('voice',function(json){
 function emit(key,json){
 	socket.emit(key,json);
 }
+function setyellowalert(){
+document.getElementById("yellowalert").style.opacity = 0;
+    document.getElementById("redalert").style.opacity = 0;
+ $( "#yellowalert" ).animate({
+opacity: 0.5,
+}, 500, function() {
+$( "#yellowalert" ).animate({
+opacity: 0.0,
+}, 500, function() {
+
+});
+});
+}
+function setredalert(){
+document.getElementById("yellowalert").style.opacity = 0;
+    document.getElementById("redalert").style.opacity = 0;
+var dataa = new Audio("/static/media/alert.wav");
+	dataa.play();
+ $( "#redalert" ).animate({
+opacity: 0.5,
+}, 500, function() {
+$( "#redalert" ).animate({
+opacity: 0.0,
+}, 500, function() {
+
+});
+});
+}
+
 function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
@@ -84,12 +113,14 @@ function update(json){
         clearInterval(yellowalert);
         document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
+    yellowalert = setInterval(setyellowalert,2000);
     }
     if(json[key] == 2){
     clearInterval(redalert);
         clearInterval(yellowalert);
         document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
+    redalert = setInterval(setredalert,2000);
     }
     }
 if(key == "screen"){
