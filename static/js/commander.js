@@ -33,20 +33,10 @@ function update(json){
     
         if(key == "commanderlockdown"){
                     	if(json[key] == true){
-                	  		var nodes = document.body.childNodes;
-            			for(var i=0; i<nodes.length; i++) {
-            			    if(nodes[i].nodeName != "#text"){
-				                			         nodes[i].style.display = "none";
-            			     }
-            }
+                	  		document.getElementById("bodycontainer").style.display = "none";
                 	  	}
                 	  	else{
-                	  		var nodes = document.body.childNodes;
-            						for(var i=0; i<nodes.length; i++) {
-            						    if(nodes[i].nodeName != "#text"){
-							                			         nodes[i].style.display = "initial";
-            			     }
-            }
+                	  		document.getElementById("bodycontainer").style.display = "initial";
                   	}
     }
     if(key == "alert"){

@@ -12,6 +12,7 @@
 <script src="/static/js/station.js"></script>
 </head>
 <body>
+<div id="bodycontainer">
 <ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="active" onclick="showengines();sound('buttonshort.wav');" id="enginestab"><a>Probing</a></li>
   <li role="presentation" onclick="showradar();sound('buttonshort.wav');" id="radartab"><a>Sensors</a></li>
@@ -54,6 +55,7 @@
 <select id="outsides" class="form-control" onchange="unlock()"></select><br />
 <button class="btn btn-lg btn-primary" onclick="dolock();sound('button.wav');">Get Lock</button>
 <button class="btn btn-lg btn-success" disabled="true" id="tsbutton" onclick="receive();sound('button.wav');emit('broadcast',{'sound':'transporter.mp3'});">Beam Up</button>
+</div>
 </div>
 </div>
 </body>

@@ -12,6 +12,7 @@
 <script src="/static/js/station.js"></script>
 </head>
 <body>
+<div id="bodycontainer">
 	<ul class="nav nav-tabs nav-justified">
   <li role="presentation" class="active" onclick="showengines();sound('buttonshort.wav');" id="enginestab"><a>Power</a></li>
   <li role="presentation" onclick="showradar();sound('buttonshort.wav');" id="radartab"><a>Repair</a></li>
@@ -49,6 +50,7 @@
 <button class="btn btn-primary btn-lg" onclick="emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');">Execute Command</button>
 <h4>Command Results</h4>
 <p id="command" class="text-primary"></p>
+</div>
 </div>
 </div>
 </body>

@@ -12,6 +12,7 @@
 <script src="/static/js/station.js"></script>
 </head>
 <body>
+<div id="bodycontainer">
 <ul class="nav nav-tabs nav-justified">
 <li role="presentation" class="active" onclick="showtarget();sound('buttonshort.wav');" id="targettab"><a>Targeting</a></li>
 <li role="presentation" onclick="showweapon();sound('buttonshort.wav');" id="weapontab"><a>Weapons</a></li>
@@ -81,6 +82,7 @@
 <input type="text" class="form-control" id="tohail" />
 <button class="btn btn-success" onclick="hail();sound('buttonshort.wav');emit('broadcast',{'sound':'hailstart.mp3'});">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''});sound('buttonshort.wav');">Close Hailing Frequencies</button>
 <h4 class="text-info">Currently Hailing: <span id="hailing"></span></h4>
+</div>
 </div>
 </div>
 </body>
