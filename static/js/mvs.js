@@ -4,6 +4,8 @@ var conn_options = {
 };
 data = {}
 var requestID = undefined;
+var redalert;
+var yellowalert;
 var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
@@ -71,6 +73,24 @@ function update(json){
         $("#audiooutput").prop('muted',json[key]);
     }
     if(key == "alert"){
+    if(json[key] == 0){
+    clearInterval(redalert);
+    clearInterval(yellowalert);
+    document.getElementById("yellowalert").style.opacity = 0;
+    document.getElementById("redalert").style.opacity = 0;
+    }
+    if(json[key] == 1){
+    clearInterval(redalert);
+        clearInterval(yellowalert);
+        document.getElementById("yellowalert").style.opacity = 0;
+    document.getElementById("redalert").style.opacity = 0;
+    }
+    if(json[key] == 2){
+    clearInterval(redalert);
+        clearInterval(yellowalert);
+        document.getElementById("yellowalert").style.opacity = 0;
+    document.getElementById("redalert").style.opacity = 0;
+    }
     }
 if(key == "screen"){
         if(typeof json[key] != "string"){
