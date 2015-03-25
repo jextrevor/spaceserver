@@ -20,12 +20,22 @@ function update(json){
     	doships(json[key]);
     }
     if(key == "lockdown"){
-    	if(json[key] == true){
-	  		document.body.style.display ="none";
-	  	}
-	  	else{
-	  		document.body.style.display ="initial";
-  	}
+            	if(json[key] == true){
+        	  		var nodes = document.body.childNodes;
+    			for(var i=0; i<nodes.length; i++) {
+    			    
+    			         nodes[i].style.display = "none";
+    			     
+    }
+        	  	}
+        	  	else{
+        	  		var nodes = document.body.childNodes;
+    						for(var i=0; i<nodes.length; i++) {
+    						    
+    						         nodes[i].style.display = "initial";
+    						     
+    }
+          	}
     }
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
