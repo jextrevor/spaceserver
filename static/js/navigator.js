@@ -58,6 +58,14 @@ function update(json){
     	
     	doships(json[key]);
     }
+    if(key == "lockdown"){
+        	if(json[key] == true){
+    	  		document.body.style.display ="none";
+    	  	}
+    	  	else{
+    	  		document.body.style.display ="initial";
+      	}
+    }
     if(key == "eta"){
     	if(!isNaN(json[key])){
     		if(json[key] >= 0){

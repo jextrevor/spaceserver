@@ -30,6 +30,14 @@ function update(json){
     if(key == "missiondata"){
     	document.getElementById("missiondata").innerHTML = markdown.toHTML(json[key]);
     }
+    if(key == "lockdown"){
+        	if(json[key] == true){
+    	  		document.body.style.display ="none";
+    	  	}
+    	  	else{
+    	  		document.body.style.display ="initial";
+      	}
+    }
     if(key == "alert"){
     	if(json[key] == "0"){
 		document.getElementById("greenalertbutton").style['box-shadow'] = "0 0 30px #00FF00";

@@ -33,6 +33,14 @@ function update(json){
     if(key == "probe"){
     	document.getElementById("probe").innerHTML = json[key];
     }
+    if(key == "lockdown"){
+        	if(json[key] == true){
+    	  		document.body.style.display ="none";
+    	  	}
+    	  	else{
+    	  		document.body.style.display ="initial";
+      	}
+    }
     if(key == "analysis"){
     	if(json[key] == ""){
     		document.getElementById("analysing").innerHTML = "";

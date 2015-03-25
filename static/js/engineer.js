@@ -175,6 +175,14 @@ function update(json){
     if(key == "systems"){
     	dosystems(json[key]);
     }
+    if(key == "lockdown"){
+        	if(json[key] == true){
+    	  		document.body.style.display ="none";
+    	  	}
+    	  	else{
+    	  		document.body.style.display ="initial";
+      	}
+    }
     if(key == "zzzzzzfixing"){
     	if (typeof data.systems != "undefined") {
    		for(var keyd in data.systems){

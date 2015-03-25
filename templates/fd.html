@@ -166,6 +166,9 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
+<h5>Lockdown</h5>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'lockdown':true});">Lock</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'lockdown':false});">Unlock</button>
 </div>
 <div class="col-md-2">
 

@@ -19,6 +19,14 @@ function update(json){
   if(key == "ships"){
     	doships(json[key]);
     }
+    if(key == "lockdown"){
+    	if(json[key] == true){
+	  		document.body.style.display ="none";
+	  	}
+	  	else{
+	  		document.body.style.display ="initial";
+  	}
+    }
   if(key == "target"){
   	document.getElementById("targeted").innerHTML = json[key];
   	document.getElementById("target2").innerHTML = json[key];

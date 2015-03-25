@@ -50,6 +50,14 @@ function update(json){
         dataa.play();
         }
     }
+    if(key == "lockdown"){
+        	if(json[key] == true){
+    	  		document.body.style.display ="none";
+    	  	}
+    	  	else{
+    	  		document.body.style.display ="initial";
+      	}
+    }
     data[key] = json[key];
     if(key == "music"){
     	currentmusic.pause();
