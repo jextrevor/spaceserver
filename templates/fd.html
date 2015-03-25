@@ -167,8 +167,20 @@ Add System:<br />
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
 <h5>Lockdown</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':true});">Lock</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':true});">Lock All</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock All</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true});">Lock Commander</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false});">Unlock Commander</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'navigatorlockdown':true});">Lock Navigator</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'navigatorlockdown':false});">Unlock Navigator</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'tacticallockdown':true});">Lock Tactical</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'tacticallockdown':false});">Unlock Tactical</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'operationslockdown':true});">Lock Operations</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'operationslockdown':false});">Unlock Operations</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'engineerlockdown':true});">Lock Engineer</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'engineerlockdown':false});">Unlock Engineer</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'mvslockdown':true});">Lock MVS</button>
+<button class="btn btn-xs btn-primary" onclick="emit('update',{'mvslockdown':false});">Unlock MVS</button>
 </div>
 <div class="col-md-2">
 
