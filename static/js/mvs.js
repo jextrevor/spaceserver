@@ -56,12 +56,12 @@ socket.on('sound',function(json){
 socket.on('voice',function(json){
   speak(json);
 });
-//background = new Audio("/static/media/background.mp3");
-//background.addEventListener('ended', function() {
-//    restartbackground();
-//}, false);
-//background.play();
-//currentmusic = new Audio("/static/media/training.mp3");
+background = new Audio("/static/media/background.mp3");
+background.addEventListener('ended', function() {
+    restartbackground();
+}, false);
+background.play();
+currentmusic = new Audio("/static/media/training.mp3");
 function emit(key,json){
 	socket.emit(key,json);
 }
@@ -101,10 +101,13 @@ function update(json){
         if(data[key] == '0' && json[key] != '0'){
         var dataa = new Audio("/static/media/warp.mp3");
         dataa.play();
+        engine.play();
+        
         }
         else if(data[key] != '0' && json[key] == '0'){
         var dataa = new Audio("/static/media/warpout.mp3");
         dataa.play();
+        engine.pause();
         }
     }
     
