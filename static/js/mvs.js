@@ -43,11 +43,11 @@ function setyellowalert(){
 document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
  $( "#yellowalert" ).animate({
-opacity: 0.5,
-}, 500, function() {
+opacity: 0.15,
+}, 1000, function() {
 $( "#yellowalert" ).animate({
 opacity: 0.0,
-}, 500, function() {
+}, 1000, function() {
 
 });
 });
@@ -58,11 +58,11 @@ document.getElementById("yellowalert").style.opacity = 0;
 var dataa = new Audio("/static/media/alert.wav");
 	dataa.play();
  $( "#redalert" ).animate({
-opacity: 0.5,
-}, 500, function() {
+opacity: 0.15,
+}, 1000, function() {
 $( "#redalert" ).animate({
 opacity: 0.0,
-}, 500, function() {
+}, 1000, function() {
 
 });
 });
