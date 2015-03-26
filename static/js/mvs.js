@@ -6,7 +6,7 @@ data = {}
 var requestID = undefined;
 var redalert;
 var yellowalert;
-var loop = new SeamlessLoop();
+/*var loop = new SeamlessLoop();
 filereader = new FileReader();
 filereader.onload = function(fileLoadedEvent) 
 	{
@@ -25,7 +25,13 @@ filereader.onload = function(fileLoadedEvent)
 		
 		//at this point you have the equivalent of: new File()
 var blob = bb.getBlob('audio/mpeg');
-filereader.readAsDataURL(new File("/static/media/engine.mp3"));
+filereader.readAsDataURL(new File("/static/media/engine.mp3"));*/
+
+var engine = new Audio("/static/media/engine.mp3");
+engine.addEventListener('ended', function() {
+restartengine();
+},false);
+//engine.play();
 var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
@@ -166,6 +172,13 @@ background.addEventListener('ended', function() {
     restartbackground();
 }, false);
 background.play();
+}
+function restartengine(){
+	engine = new Audio("/static/media/engine.mp3");
+engine.addEventListener('ended', function() {
+    restartengine();
+}, false);
+engine.play();
 }
 function showLogo(){
 document.getElementById("logopage").style.display = "initial";
