@@ -13,15 +13,15 @@ filereader.onload = function(fileLoadedEvent)
 	
 			loop.addUri(fileLoadedEvent.target.result,900, "engine");
 		};
-		var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.BlobBuilder;
-		var bb = new BlobBuilder();
+		window.BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.BlobBuilder;
+		
 		
 		var xhr = new XMLHttpRequest();
 		xhr.open('GET', '/static/media/engine.mp3', true);
 		
 		xhr.responseType = 'arraybuffer';
 		
-		bb.append(this.response); // Note: not xhr.responseText
+		BlobBuilder.append(this.response); // Note: not xhr.responseText
 		
 		//at this point you have the equivalent of: new File()
 var blob = bb.getBlob('audio/mpeg');
