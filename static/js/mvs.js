@@ -13,7 +13,7 @@ filereader.onload = function(fileLoadedEvent)
 	
 			loop.addUri(fileLoadedEvent.target.result,900, "engine");
 		};
-filereader.readAsDataURL("/static/media/engine.mp3");
+filereader.readAsDataURL(new File("/static/media/engine.mp3"));
 var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
