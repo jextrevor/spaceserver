@@ -6,6 +6,8 @@ data = {}
 var requestID = undefined;
 var redalert;
 var yellowalert;
+var loop = new SeamlessLoop();
+//loop.addUri("/static/media/engine.wav", 500, "engine");
 var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
