@@ -13,7 +13,7 @@ filereader.onload = function(fileLoadedEvent)
 	
 			loop.addUri(fileLoadedEvent.target.result,900, "engine");
 		};
-		var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder;
+		var BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.BlobBuilder;
 		var bb = new BlobBuilder();
 		
 		var xhr = new XMLHttpRequest();
