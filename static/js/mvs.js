@@ -44,7 +44,7 @@ document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
  $( "#yellowalert" ).animate({
 opacity: 0.15,
-}, 1000, function() {
+}, 500, function() {
 $( "#yellowalert" ).animate({
 opacity: 0.0,
 }, 1000, function() {
@@ -59,7 +59,7 @@ var dataa = new Audio("/static/media/alert.wav");
 	dataa.play();
  $( "#redalert" ).animate({
 opacity: 0.15,
-}, 1000, function() {
+}, 500, function() {
 $( "#redalert" ).animate({
 opacity: 0.0,
 }, 1000, function() {
