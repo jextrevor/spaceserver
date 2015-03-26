@@ -72,11 +72,11 @@ function update(json){
 	for (var key in json) {
   if (json.hasOwnProperty(key)) {
     if(key == "warp"){
-        if(data[key] == 0 && json[key] != 0){
+        if(data[key] == '0' && json[key] != '0'){
         var dataa = new Audio("/static/media/warp.mp3");
         dataa.play();
         }
-        else if(data[key] != 0 && json[key] == 0){
+        else if(data[key] != '0' && json[key] == '0'){
         var dataa = new Audio("/static/media/warpout.mp3");
         dataa.play();
         }
