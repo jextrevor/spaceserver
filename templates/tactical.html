@@ -26,10 +26,10 @@
 <br />
 <select id="radarlist" class="form-control">
 </select><br />
-<button onclick="if(checkIt('target')){return false;}target();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-warning">Target Ship</button><button onclick="cleartarget();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-danger">Clear Target</button>
+<button onclick="if(checkIt('target')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}target();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-warning">Target Ship</button><button onclick="cleartarget();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-danger">Clear Target</button>
 <h4>Shields</h4>
 <h4>Shield Status: <span id="shields"></span></h4>
-<button onclick="if(checkIt('shield')){return false;}shieldup();sound('button.wav');" class="btn btn-lg btn-success">Shields Up</button><button onclick="if(checkIt('shield')){return false;}shielddown();sound('button.wav');" class="btn btn-lg btn-warning">Shields Down</button>
+<button onclick="if(checkIt('shield')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}shieldup();sound('button.wav');" class="btn btn-lg btn-success">Shields Up</button><button onclick="if(checkIt('shield')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}shielddown();sound('button.wav');" class="btn btn-lg btn-warning">Shields Down</button>
 </div>
 </div>
 <div class="container" id="weaponpage" style="display:none">
@@ -41,20 +41,20 @@
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser1" style="width: 0%;">
   </div>
 </div>
-<button onclick="if(checkIt('phaser')){return false;}charge1();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 1</button><button onclick="if(checkIt('phaser')){return false;}fire1();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 1</button><br /><br />
+<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}charge1();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 1</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}fire1();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 1</button><br /><br />
 <div class="progress">
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser2" style="width: 0%;">
   </div>
 </div>
-<button onclick="if(checkIt('phaser')){return false;}charge2();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 2</button><button onclick="if(checkIt('phaser')){return false;}fire2();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 2</button><br /><br />
+<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}charge2();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 2</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}fire2();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 2</button><br /><br />
 <div class="progress">
   <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser3" style="width: 0%;">
   </div>
 </div>
-<button onclick="if(checkIt('phaser')){return false;}charge3();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 3</button><button onclick="if(checkIt('phaser')){return false;}fire3();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 3</button><br /><br />
+<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}charge3();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 3</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}fire3();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 3</button><br /><br />
 <h4>Torpedoes</h4>
 <h4><span id="torpedoes"></span> Left</h4>
-<button onclick="if(checkIt('torpedo')){return false;}torpedo();sound('buttonshort.wav');emit('broadcast',{'sound':'torpedo.mp3'});" class="btn btn-lg btn-danger">Fire Torpedo</button>
+<button onclick="if(checkIt('torpedo')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}torpedo();sound('buttonshort.wav');emit('broadcast',{'sound':'torpedo.mp3'});" class="btn btn-lg btn-danger">Fire Torpedo</button>
 </div>
 </div>
 <div class="container" id="securitypage" style="display:none">
@@ -80,7 +80,7 @@
 <h4>Hailing</h4>
 <h4 class="text-info" id="hailed"></h4>
 <input type="text" class="form-control" id="tohail" />
-<button class="btn btn-success" onclick="if(checkIt('hail')){return false;}hail();sound('buttonshort.wav');emit('broadcast',{'sound':'hailstart.mp3'});">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''});sound('buttonshort.wav');">Close Hailing Frequencies</button>
+<button class="btn btn-success" onclick="if(checkIt('hail')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}hail();sound('buttonshort.wav');emit('broadcast',{'sound':'hailstart.mp3'});">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''});sound('buttonshort.wav');">Close Hailing Frequencies</button>
 <h4 class="text-info">Currently Hailing: <span id="hailing"></span></h4>
 </div>
 </div>
