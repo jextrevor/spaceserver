@@ -101,6 +101,10 @@ function update(json){
         if(data[key] == '0' && json[key] != '0'){
         var dataa = new Audio("/static/media/warp.mp3");
         dataa.play();
+        var engine = new Audio("/static/media/engine.mp3");
+	engine.addEventListener('ended', function() {
+	restartengine();
+},false);
         engine.play();
         
         }
