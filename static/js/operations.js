@@ -119,6 +119,7 @@ else{
 }  
 }
 function probe(key){
+	if(checkIt('probe')){return false;}
 	emit('update',{'probing':key});
 }
 function showengines(){

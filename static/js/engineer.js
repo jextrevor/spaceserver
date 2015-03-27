@@ -34,6 +34,7 @@ for(var key in json){
     }
 }
 function decrease(keyd){
+	if(checkIt('power')){return false;}
 	newjson = data['systems'];
 	newjson[keyd].power -= 10;
 	if(newjson[keyd].power < 0){
@@ -57,6 +58,7 @@ function decrease(keyd){
 	emit('broadcast',{'sound':'info.wav'});
 }
 function increase(keyd){
+	if(checkIt('power')){return false;}
 	newjson = data['systems'];
 	oldpower = newjson[keyd].power;
 	newjson[keyd].power += 10;
@@ -138,6 +140,7 @@ else{
 	emit("update",{'systems':newjson});
 }
 function cool(key){
+	if(checkIt('heat')){return false;}
 	newjson = data['systems'];
 	if(coolant > 10){
 	if(newjson[key].heat >= 10){

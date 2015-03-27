@@ -40,14 +40,14 @@
 <div class="container">
 <h4>Diagnostics</h4>
 <input type="text" class="form-control" id="diagnose" />
-<button class="btn btn-primary btn-lg" onclick="emit('update',{'diagnosing':document.getElementById('diagnose').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Run Diagnostic Scan</button>
+<button class="btn btn-primary btn-lg" onclick="if(checkIt('diagnostic')){return false;}emit('update',{'diagnosing':document.getElementById('diagnose').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Run Diagnostic Scan</button>
 <h4 id="diagnosing" class="text-info"></h4>
 <h4>Diagnostic Results</h4>
 <p id="diagnostic" class="text-primary"></p>
 <hr />
 <h4>System Commands</h4>
 <input type="text" class="form-control" id="commanding" />
-<button class="btn btn-primary btn-lg" onclick="emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');">Execute Command</button>
+<button class="btn btn-primary btn-lg" onclick="if(checkIt('command')){return false;}emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');">Execute Command</button>
 <h4>Command Results</h4>
 <p id="command" class="text-primary"></p>
 </div>

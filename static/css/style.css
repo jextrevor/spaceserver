@@ -24,6 +24,15 @@ left:0;
 height:100%;
 width:100%;
 }
+    input[type="checkbox"]{
+    -webkit-appearance: checkbox;
+    }
+
+    input[type="radio"]{
+
+    -webkit-appearance: radio;
+
+    }
 #logopage{
 	text-align:center;
 	perspective:2000px;

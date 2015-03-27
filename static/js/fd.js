@@ -16,8 +16,8 @@ socket.emit(key,json);
 function call(id){
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 navigator.getUserMedia({audio:true}, function(stream) {
-  var call = peer.call(id, stream);
-  call.on('stream', function(remoteStream) {
+  var calle = peer.call(id, stream);
+  calle.on('stream', function(remoteStream) {
     $('#'+id).prop('src', URL.createObjectURL(remoteStream));// Show stream in some video/canvas element.
   });
 }, function(err) {
@@ -243,6 +243,60 @@ for (var key in json) {
     }
     if(key == "shields"){
       document.getElementById("shields").checked = json[key];
+    }
+    if(key == "warpbroken"){
+          document.getElementById("warpbroken").checked = json[key];
+    }
+    if(key == "impulsebroken"){
+              document.getElementById("impulsebroken").checked = json[key];
+    }
+    if(key == "thrusterbroken"){
+              document.getElementById("thrusterbroken").checked = json[key];
+    }
+    if(key == "coursebroken"){
+              document.getElementById("coursebroken").checked = json[key];
+    }
+    if(key == "mapbroken"){
+              document.getElementById("mapbroken").checked = json[key];
+    }
+    if(key == "targetbroken"){
+              document.getElementById("targetbroken").checked = json[key];
+    }
+    if(key == "shieldbroken"){
+              document.getElementById("shieldbroken").checked = json[key];
+    }
+    if(key == "phaserbroken"){
+              document.getElementById("phaserbroken").checked = json[key];
+    }
+    if(key == "torpedobroken"){
+              document.getElementById("torpedobroken").checked = json[key];
+    }
+    if(key == "hailbroken"){
+              document.getElementById("hailbroken").checked = json[key];
+    }
+    if(key == "probebroken"){
+              document.getElementById("probebroken").checked = json[key];
+    }
+    if(key == "scanbroken"){
+              document.getElementById("scanbroken").checked = json[key];
+    }
+    if(key == "analysisbroken"){
+              document.getElementById("analysisbroken").checked = json[key];
+    }
+    if(key == "transporterbroken"){
+              document.getElementById("transporterbroken").checked = json[key];
+    }
+    if(key == "powerbroken"){
+              document.getElementById("powerbroken").checked = json[key];
+    }
+    if(key == "heatbroken"){
+              document.getElementById("heatbroken").checked = json[key];
+    }
+    if(key == "diagnosticbroken"){
+              document.getElementById("diagnosticbroken").checked = json[key];
+    }
+    if(key == "commandbroken"){
+              document.getElementById("commandbroken").checked = json[key];
     }
     if(key == "eta"){
     	document.getElementById("etatext").innerHTML = json[key];

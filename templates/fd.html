@@ -183,7 +183,43 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'mvslockdown':false});">Unlock MVS</button>
 </div>
 <div class="col-md-2">
-
+<h5>System Statuses</h5>
+Warp
+<input type="checkbox" id="warpbroken" onchange="emit('update',{'warpbroken':document.getElementById('warpbroken').checked})" />
+Impulse
+<input type="checkbox" id="impulsebroken" onchange="emit('update',{'impulsebroken':document.getElementById('impulsebroken').checked})" />
+Thrusters
+<input type="checkbox" id="thrusterbroken" onchange="emit('update',{'thrusterbroken':document.getElementById('thrusterbroken').checked})" />
+Course
+<input type="checkbox" id="coursebroken" onchange="emit('update',{'coursebroken':document.getElementById('coursebroken').checked})" />
+Maps
+<input type="checkbox" id="mapbroken" onchange="emit('update',{'mapbroken':document.getElementById('mapbroken').checked})" />
+Targeting
+<input type="checkbox" id="targetbroken" onchange="emit('update',{'targetbroken':document.getElementById('targetbroken').checked})" />
+Shields
+<input type="checkbox" id="shieldbroken" onchange="emit('update',{'shieldbroken':document.getElementById('shieldbroken').checked})" />
+Phasers
+<input type="checkbox" id="phaserbroken" onchange="emit('update',{'phaserbroken':document.getElementById('phaserbroken').checked})" />
+Torpedoes
+<input type="checkbox" id="torpedobroken" onchange="emit('update',{'torpedobroken':document.getElementById('torpedobroken').checked})" />
+Hailing
+<input type="checkbox" id="hailbroken" onchange="emit('update',{'hailbroken':document.getElementById('hailbroken').checked})" />
+Probing
+<input type="checkbox" id="probebroken" onchange="emit('update',{'probebroken':document.getElementById('probebroken').checked})" />
+Scanning
+<input type="checkbox" id="scanbroken" onchange="emit('update',{'scanbroken':document.getElementById('scanbroken').checked})" />
+Analysis
+<input type="checkbox" id="analysisbroken" onchange="emit('update',{'analysisbroken':document.getElementById('analysisbroken').checked})" />
+Transporter
+<input type="checkbox" id="transporterbroken" onchange="emit('update',{'transporterbroken':document.getElementById('transporterbroken').checked})" />
+Power
+<input type="checkbox" id="powerbroken" onchange="emit('update',{'powerbroken':document.getElementById('powerbroken').checked})" />
+Cooling
+<input type="checkbox" id="heatbroken" onchange="emit('update',{'heatbroken':document.getElementById('heatbroken').checked})" />
+Diagnostics
+<input type="checkbox" id="diagnosticbroken" onchange="emit('update',{'diagnosticbroken':document.getElementById('diagnosticbroken').checked})" />
+Commands
+<input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
 </div>
 </div>
 </body>

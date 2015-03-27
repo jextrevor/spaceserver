@@ -34,3 +34,10 @@ function randomIntFromInterval(min,max)
 {
     return Math.floor(Math.random()*((max-min)+1)+min);
 }
+function checkIt(value){
+    if(data.hasOwnProperty(value+"broken")){
+    if(data[value+"broken"] == false){
+    return true;
+    }
+    }
+}
