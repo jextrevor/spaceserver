@@ -32,13 +32,13 @@
 <div class="container">
 <h4>Sensor Scans</h4>
 <input type="text" class="form-control" id="scanfor" />
-<button class="btn btn-primary btn-lg" onclick="if(checkIt('scan')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}emit('update',{'scanning':document.getElementById('scanfor').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Initiate Scan</button>
+<button class="btn btn-primary btn-lg" onclick="if(checkIt('scan')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'scanning':document.getElementById('scanfor').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Initiate Scan</button>
 <h4 id="scanning" class="text-info"></h4>
 <h4>Scan Results</h4>
 <p id="scan" class="text-primary"></p>
 <hr />
 <h4>Sensor Analysis</h4>
-<button class="btn btn-info btn-lg" onclick="if(checkIt('analysis')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}emit('update',{'analysis':'Probing'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Analyse Probing Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':'Sensors'});;sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Analyse Sensors Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':''});;sound('buttonshort.wav');">Cancel Analysis</button>
+<button class="btn btn-info btn-lg" onclick="if(checkIt('analysis')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'analysis':'Probing'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Analyse Probing Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':'Sensors'});;sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Analyse Sensors Data</button><button class="btn btn-info btn-lg" onclick="emit('update',{'analysis':''});;sound('buttonshort.wav');">Cancel Analysis</button>
 <h4 id="analysing" class="text-info"></h4>
 <h4>Analysis Results</h4>
 <p id="analysis" class="text-primary"></p>
@@ -50,11 +50,11 @@
 <h4>Available to Send:</h4>
 <select id="transports" class="form-control"></select><br />
 <input type="text" placeholder="Destination" id="destination" class="form-control" /><br />
-<button class="btn btn-lg btn-success" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}beam();sound('button.wav');emit('broadcast',{'sound':'transporter.mp3'});">Beam Down</button>
+<button class="btn btn-lg btn-success" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'error.mp3'});return false;}beam();sound('button.wav');emit('broadcast',{'sound':'transporter.mp3'});">Beam Down</button>
 <h4>Available to Receive:</h4>
 <select id="outsides" class="form-control" onchange="unlock()"></select><br />
-<button class="btn btn-lg btn-primary" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}dolock();sound('button.wav');">Get Lock</button>
-<button class="btn btn-lg btn-success" disabled="true" id="tsbutton" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}receive();sound('button.wav');emit('broadcast',{'sound':'transporter.mp3'});">Beam Up</button>
+<button class="btn btn-lg btn-primary" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'error.mp3'});return false;}dolock();sound('button.wav');">Get Lock</button>
+<button class="btn btn-lg btn-success" disabled="true" id="tsbutton" onclick="if(checkIt('transporter')){emit('broadcast',{'sound':'error.mp3'});return false;}receive();sound('button.wav');emit('broadcast',{'sound':'transporter.mp3'});">Beam Up</button>
 </div>
 </div>
 </div>

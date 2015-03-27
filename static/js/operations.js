@@ -119,7 +119,7 @@ else{
 }  
 }
 function probe(key){
-	if(checkIt('probe')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}
+	if(checkIt('probe')){emit('broadcast',{'sound':'error.mp3'});return false;}
 	emit('update',{'probing':key});
 }
 function showengines(){

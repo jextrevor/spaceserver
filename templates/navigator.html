@@ -22,43 +22,43 @@
 <div class="container">
 <div class="col-xs-4">
 <h4>Warp Engines</h4>
-<button class="btn btn-default btn-lg" style="width:100%; box-shadow: 0 0 30px #CCCCCC;" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp(0);sound('button.wav');" id="warp0button">Full Stop</button>
-<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('1');sound('button.wav');" id="warp1button">Warp 1</button>
-<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('2');sound('button.wav');" id="warp2button">Warp 2</button>
-<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('3');sound('button.wav');" id="warp3button">Warp 3</button>
-<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('4');sound('button.wav');" id="warp4button">Warp 4</button>
-<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('5');sound('button.wav');" id="warp5button">Warp 5</button>
-<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('6');sound('button.wav');" id="warp6button">Warp 6</button>
-<button class="btn btn-warning btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('7');sound('button.wav');" id="warp7button">Warp 7</button>
-<button class="btn btn-warning btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('8');sound('button.wav');" id="warp8button">Warp 8</button>
-<button class="btn btn-danger btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('9');sound('button.wav');" id="warp9button">Warp 9</button>
-<button class="btn btn-danger btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setwarp('9.9');sound('button.wav');" id="warp99button">Warp 9.9</button>
+<button class="btn btn-default btn-lg" style="width:100%; box-shadow: 0 0 30px #CCCCCC;" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp(0);sound('button.wav');" id="warp0button">Full Stop</button>
+<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('1');sound('button.wav');" id="warp1button">Warp 1</button>
+<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('2');sound('button.wav');" id="warp2button">Warp 2</button>
+<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('3');sound('button.wav');" id="warp3button">Warp 3</button>
+<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('4');sound('button.wav');" id="warp4button">Warp 4</button>
+<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('5');sound('button.wav');" id="warp5button">Warp 5</button>
+<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('6');sound('button.wav');" id="warp6button">Warp 6</button>
+<button class="btn btn-warning btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('7');sound('button.wav');" id="warp7button">Warp 7</button>
+<button class="btn btn-warning btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('8');sound('button.wav');" id="warp8button">Warp 8</button>
+<button class="btn btn-danger btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('9');sound('button.wav');" id="warp9button">Warp 9</button>
+<button class="btn btn-danger btn-lg" style="width:100%" onclick="if(checkIt('warp')){emit('broadcast',{'sound':'error.mp3'});return false;}setwarp('9.9');sound('button.wav');" id="warp99button">Warp 9.9</button>
 </div>
 <div class="col-xs-8">
 <h4>Thrusters</h4>
 <div class="row">
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('up');" onmouseup="releasethruster('up');" onmouseout="releasethruster('up');">Pitch Up</button></div>
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('forward');" onmouseup="releasethruster('forward');" onmouseout="releasethruster('forward');">Go Forward</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('up');" onmouseup="releasethruster('up');" onmouseout="releasethruster('up');">Pitch Up</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('forward');" onmouseup="releasethruster('forward');" onmouseout="releasethruster('forward');">Go Forward</button></div>
 <div class="col-xs-4"></div>
 </div>
 <br />
 <div class="row">
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('left');" onmouseup="releasethruster('left');" onmouseout="releasethruster('left');">Turn Left</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('left');" onmouseup="releasethruster('left');" onmouseout="releasethruster('left');">Turn Left</button></div>
 <div class="col-xs-4"></div>
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('right');" onmouseup="releasethruster('right');" onmouseout="releasethruster('right');">Turn Right</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('right');" onmouseup="releasethruster('right');" onmouseout="releasethruster('right');">Turn Right</button></div>
 </div>
 <br />
 <div class="row">
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('down');" onmouseup="releasethruster('down');" onmouseout="releasethruster('down');">Pitch Down</button></div>
-<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setthruster('backward');" onmouseup="releasethruster('backward');" onmouseout="releasethruster('backward');">Go Backward</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('down');" onmouseup="releasethruster('down');" onmouseout="releasethruster('down');">Pitch Down</button></div>
+<div class="col-xs-4"><button class="btn btn-info btn-lg" style="width:100%" onmousedown="if(checkIt('thruster')){emit('broadcast',{'sound':'error.mp3'});return false;}setthruster('backward');" onmouseup="releasethruster('backward');" onmouseout="releasethruster('backward');">Go Backward</button></div>
 <div class="col-xs-4"></div>
 </div>
 <br />
 <hr />
 <h4>Impulse Engines</h4>
-<button class="btn btn-default btn-lg" style="width:100%; box-shadow: 0 0 30px #CCCCCC;" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setimpulse('0');sound('button.wav');" id="impulse0button">Full Stop</button>
-<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setimpulse('0.5');sound('button.wav');" id="impulsehalfbutton">Half Impulse</button>
-<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setimpulse('1');sound('button.wav');" id="impulsefullbutton">Full Impulse</button>
+<button class="btn btn-default btn-lg" style="width:100%; box-shadow: 0 0 30px #CCCCCC;" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'error.mp3'});return false;}setimpulse('0');sound('button.wav');" id="impulse0button">Full Stop</button>
+<button class="btn btn-info btn-lg" style="width:100%" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'error.mp3'});return false;}setimpulse('0.5');sound('button.wav');" id="impulsehalfbutton">Half Impulse</button>
+<button class="btn btn-success btn-lg" style="width:100%" onclick="if(checkIt('impulse')){emit('broadcast',{'sound':'error.mp3'});return false;}setimpulse('1');sound('button.wav');" id="impulsefullbutton">Full Impulse</button>
 </div>
 </div>
 </div>
@@ -79,7 +79,7 @@
 <input type="text" name="z" id="z" class="form-control" />
 </div>
 <br />
-<button class="btn btn-success" onclick="if(checkIt('course')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}setcourse();sound('buttonshort.wav');emit('broadcast',{'sound':'processing.mp3'});">Set Course</button><br />
+<button class="btn btn-success" onclick="if(checkIt('course')){emit('broadcast',{'sound':'error.mp3'});return false;}setcourse();sound('buttonshort.wav');emit('broadcast',{'sound':'processing.mp3'});">Set Course</button><br />
 <hr />
 <h4>Estimated Time of Arrival</h4>
 <div id="eta"></div>
@@ -87,7 +87,7 @@
 <div class="input-group">
 <input type="text" class="form-control" id="mapsearch">
 <span class="input-group-btn">
-<button class="btn btn-default" type="button" onclick="if(checkIt('map')){emit('broadcast',{'sound':'notresponding.mp3'});return false;}search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+<button class="btn btn-default" type="button" onclick="if(checkIt('map')){emit('broadcast',{'sound':'error.mp3'});return false;}search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </span>
 </div>
 <br />
