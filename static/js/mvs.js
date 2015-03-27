@@ -6,26 +6,7 @@ data = {}
 var requestID = undefined;
 var redalert;
 var yellowalert;
-/*var loop = new SeamlessLoop();
-filereader = new FileReader();
-filereader.onload = function(fileLoadedEvent) 
-	{
-	
-			loop.addUri(fileLoadedEvent.target.result,900, "engine");
-		};
-		window.BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder || window.BlobBuilder;
-		
-		
-		var xhr = new XMLHttpRequest();
-		xhr.open('GET', '/static/media/engine.mp3', true);
-		
-		xhr.responseType = 'arraybuffer';
-		
-		BlobBuilder.append(this.response); // Note: not xhr.responseText
-		
-		//at this point you have the equivalent of: new File()
-var blob = bb.getBlob('audio/mpeg');
-filereader.readAsDataURL(new File("/static/media/engine.mp3"));*/
+
 
 var engine = new Audio("/static/media/engine.mp3");
 engine.addEventListener('ended', function() {
@@ -54,7 +35,8 @@ socket.on('sound',function(json){
 	dataa.play();
 });
 socket.on('voice',function(json){
-  speak(json);
+  var dataa = new Audio("http://speechutil.com/convert/ogg?text=%27"+encodeURIComponent(json)+"%27");
+  dataa.play();
 });
 background = new Audio("/static/media/background.mp3");
 background.addEventListener('ended', function() {
