@@ -37,6 +37,12 @@ function handleaddship(e){
         }
 
 }
+function releasethruster(thruster){
+	thruster = thruster+"thruster";
+	json = {}
+	json[thruster] = false;
+	emit("update",json);
+}
 function handlespeak(e){
   if(e.keyCode === 13){
             emit('broadcast',{'voice':document.getElementById("speak").value});

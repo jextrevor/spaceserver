@@ -30,18 +30,18 @@ Warp:<input type="text" id="warp" class="formcontrol" onchange="emit('update',{'
 Impulse:<input type="text" id="impulse" class="formcontrol" onchange="emit('update',{'impulse':document.getElementById('impulse').value})" /><br />
 <h5>Thrusters</h5>
 <div class="row">
-<div id="upthruster" class="col-xs-4">Up</div>
-<div id="forwardthruster" class="col-xs-4">Forward</div>
+<div id="upthruster" class="col-xs-4" onclick="releasethruster('up');">Up</div>
+<div id="forwardthruster" class="col-xs-4" onclick="releasethruster('forward');">Forward</div>
 <div class="col-xs-4"></div>
 </div>
 <div class="row">
-<div id="leftthruster" class="col-xs-4">Left</div>
+<div id="leftthruster" class="col-xs-4" onclick="releasethruster('left');">Left</div>
 <div class="col-xs-4"></div>
-<div id="rightthruster" class="col-xs-4">Right</div>
+<div id="rightthruster" class="col-xs-4" onclick="releasethruster('right');">Right</div>
 </div>
 <div class="row">
-<div id="downthruster" class="col-xs-4">Down</div>
-<div id="backwardthruster" class="col-xs-4">Backward</div>
+<div id="downthruster" class="col-xs-4" onclick="releasethruster('down');">Down</div>
+<div id="backwardthruster" class="col-xs-4" onclick="releasethruster('backward');">Backward</div>
 <div class="col-xs-4"></div>
 </div>
 <h5>ETA</h5>
