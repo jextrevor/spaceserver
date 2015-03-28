@@ -87,25 +87,11 @@
 <div class="input-group">
 <input type="text" class="form-control" id="mapsearch">
 <span class="input-group-btn">
-<button class="btn btn-default" type="button" onclick="if(checkIt('map')){emit('broadcast',{'sound':'error.mp3'});return false;}search()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+<button class="btn btn-default" type="button" onclick="if(checkIt('map')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'mapping':document.getElementById('mapsearch').value});"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
 </span>
 </div>
 <br />
-<div class="row">
-<div class="col-xs-4">
-<div class="panel panel-primary nopadding">
-<div class="panel-heading"><h3 class="panel-title">Search Results</h3></div>
-<div class="list-group scrollbar maxheight" id="results">
-</div>
-</div>
-</div>
-<div class="col-xs-8">
-<div class="panel panel-primary nopadding">
-<div class="panel-heading"><h3 class="panel-title">Place Info</h3></div>
-<div class="panel-body maxheight" id="placeinfo">
-</div>
-</div>
-</div>
+<div id="mapresults">
 </div>
 </div>
 </div>

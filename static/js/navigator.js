@@ -54,6 +54,9 @@ function update(json){
     if(key == "z"){
     	document.getElementById("cz").innerHTML = json[key];
     }
+    if(key == "map"){
+        	document.getElementById("mapresults").innerHTML = json[key];
+    }
     if(key == "ships"){
     	
     	doships(json[key]);

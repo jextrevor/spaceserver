@@ -48,13 +48,15 @@ Impulse:<input type="text" id="impulse" class="formcontrol" onchange="emit('upda
 <div id="etatext"></div>
 <input type="text" id="eta" class="formcontrol" onchange="emit('update',{'eta':parseInt(document.getElementById('eta').value)})" />
 <h5>Maps</h5>
-<div id="maplist" style="overflow-y:auto;max-height:150px;"></div>
+<!--<div id="maplist" style="overflow-y:auto;max-height:150px;"></div>
 Add Place:<br />
 <input type="text" id="addmap" class="formcontrol" /><br />
 <input type="text" id="mapx" class="formcontrol" style="width:50px" />
 <input type="text" id="mapy" class="formcontrol" style="width:50px" />
 <input type="text" id="mapz" class="formcontrol" style="width:50px" /><br />
-<input type="text" id="mapinfo" class="formcontrol" onkeypress="handleaddmap(event)" />
+<input type="text" id="mapinfo" class="formcontrol" onkeypress="handleaddmap(event)" />-->
+<input type="text" id="mapping" class="formcontrol" onchange="emit('update',{'mapping':document.getElementById('mapping').value})" /><br />
+<input type="text" id="map" class="formcontrol" onchange="emit('update',{'map':document.getElementById('map').value})" /><br />
 </div>
 <div class="col-md-2">
 <h5>Ships on Radar</h5>
@@ -225,6 +227,7 @@ Diagnostics
 <input type="checkbox" id="diagnosticbroken" onchange="emit('update',{'diagnosticbroken':document.getElementById('diagnosticbroken').checked})" />
 Commands
 <input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
+<h5>Automatic Stuff</h5>
 </div>
 </div>
 </body>

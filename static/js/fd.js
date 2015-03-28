@@ -334,6 +334,12 @@ for (var key in json) {
     if(key == "team4"){
     	document.getElementById("team4").value = json[key];
     }
+    if(key == "mapping"){
+        	document.getElementById("mapping").value = json[key];
+    }
+    if(key == "map"){
+        	document.getElementById("map").value = json[key];
+    }
     if(key == "coolant"){
       document.getElementById("coolant").value = json[key];
     }
