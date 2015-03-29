@@ -228,9 +228,9 @@ Diagnostics
 Commands
 <input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
 <h5>Automatic Stuff</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('voice','Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.');">I'm your Computer</button>
-<button class="btn btn-xs btn-primary" onclick="emit('voice','Online');">Online</button>
-<button class="btn btn-xs btn-primary" onclick="emit('voice','Processing. Please wait.');">Processing</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
 </div>
 </div>
 </body>
