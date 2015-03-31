@@ -74,7 +74,7 @@ Add Ship:<br />
 <h5>Targeting</h5>
 <input type="text" id="target" onchange="emit('update',{'target':document.getElementById('target').value})" />
 <h5>Shields</h5>
-<input type="checkbox" id="shields" onchange="emit('update',{'shields':document.getElementById('shields').checked})" />
+<input type="checkbox" id="shields" accesskey="'" onchange="emit('update',{'shields':document.getElementById('shields').checked})" />
 <h5>Torpedoes</h5>
 <input type="text" id="torpedoes" onchange="emit('update',{'torpedoes':parseInt(document.getElementById('torpedoes').value)})" />
 <h5>Security Alerts</h5>
@@ -127,55 +127,55 @@ Add System:<br />
 <input type="text" id="commanding" onchange="emit('update',{'commanding':document.getElementById('commanding').value})" />
 <input type="text" id="command" onchange="emit('update',{'command':document.getElementById('command').value})" />
 <h5>Music</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':''})">Pause</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle.mp3'})">Battle (Final)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle2.mp3'})">Battle (Intense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'battle3.mp3'})">Battle (Tense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense.mp3'})">Intense (Slow)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense2.mp3'})">Intense (Tense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'intense3.mp3'})">Intense (Intense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense.mp3'})">Tense (Tense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense2.mp3'})">Tense (Intense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'tense3.mp3'})">Tense (Slow)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel.mp3'})">Travel (Tense)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel2.mp3'})">Travel (Slow)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'travel3.mp3'})">Travel Fast</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'exposition.mp3'})">Exposition</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'victory.mp3'})">Victory</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'defeat.wav'})">Defeat</button>
+<button class="btn btn-xs btn-primary" accesskey="p" onclick="emit('update',{'music':''})">Pause</button>
+<button class="btn btn-xs btn-primary" accesskey="1" onclick="emit('update',{'music':'battle.mp3'})">Battle (Final)</button>
+<button class="btn btn-xs btn-primary" accesskey="2" onclick="emit('update',{'music':'battle2.mp3'})">Battle (Intense)</button>
+<button class="btn btn-xs btn-primary" accesskey="3" onclick="emit('update',{'music':'battle3.mp3'})">Battle (Tense)</button>
+<button class="btn btn-xs btn-primary" accesskey="4" onclick="emit('update',{'music':'intense.mp3'})">Intense (Slow)</button>
+<button class="btn btn-xs btn-primary" accesskey="5" onclick="emit('update',{'music':'intense2.mp3'})">Intense (Tense)</button>
+<button class="btn btn-xs btn-primary" accesskey="6" onclick="emit('update',{'music':'intense3.mp3'})">Intense (Intense)</button>
+<button class="btn btn-xs btn-primary" accesskey="7" onclick="emit('update',{'music':'tense.mp3'})">Tense (Tense)</button>
+<button class="btn btn-xs btn-primary" accesskey="8" onclick="emit('update',{'music':'tense2.mp3'})">Tense (Intense)</button>
+<button class="btn btn-xs btn-primary" accesskey="9" onclick="emit('update',{'music':'tense3.mp3'})">Tense (Slow)</button>
+<button class="btn btn-xs btn-primary" accesskey="0" onclick="emit('update',{'music':'travel.mp3'})">Travel (Tense)</button>
+<button class="btn btn-xs btn-primary" accesskey="-" onclick="emit('update',{'music':'travel2.mp3'})">Travel (Slow)</button>
+<button class="btn btn-xs btn-primary" accesskey="=" onclick="emit('update',{'music':'travel3.mp3'})">Travel Fast</button>
+<button class="btn btn-xs btn-primary" accesskey="`" onclick="emit('update',{'music':'exposition.mp3'})">Exposition</button>
+<button class="btn btn-xs btn-primary" accesskey="a" onclick="emit('update',{'music':'victory.mp3'})">Victory</button>
+<button class="btn btn-xs btn-primary" accesskey="s" onclick="emit('update',{'music':'defeat.wav'})">Defeat</button>
 <h5>Effects</h5>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
 </div>
 <div class="col-md-2">
-	<video id="commander" height="100" width="200" autoplay=""></video><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" onclick="emit('update',{'muted':false})">Unmute</button>
+	<video id="commander" height="100" width="200" autoplay=""></video><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" accesskey="/" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="u" onclick="emit('update',{'muted':false})">Unmute</button>
 	<h5>Main View Screen</h5>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':''})">Logo</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':1})">Full speed</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'star3.jpeg'})">Nebula</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
+	<button class="btn btn-xs btn-primary" accesskey="	" onclick="emit('update',{'screen':''})">Logo</button>
+	<button class="btn btn-xs btn-primary" accesskey="q" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
+	<button class="btn btn-xs btn-primary" accesskey="w" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
+	<button class="btn btn-xs btn-primary" accesskey="e" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
+	<button class="btn btn-xs btn-primary" accesskey="r" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
+	<button class="btn btn-xs btn-primary" accesskey="t" onclick="emit('update',{'screen':1})">Full speed</button>
+	<button class="btn btn-xs btn-primary" accesskey="y" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
+	<button class="btn btn-xs btn-primary" accesskey="u" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
+	<button class="btn btn-xs btn-primary" accesskey="i" onclick="emit('update',{'screen':'star3.jpeg'})">Nebula</button>
+<button class="btn btn-xs btn-primary" accesskey="o" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
 <h5>Sounds</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'transporter.mp3'});">Transporter</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'phaser.mp3'});">Phaser</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'torpedo.mp3'});">Torpedo</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'error.mp3'});">Error</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
+<button class="btn btn-xs btn-primary" accesskey="d" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
+<button class="btn btn-xs btn-primary" accesskey="f" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
+<button class="btn btn-xs btn-primary" accesskey="g" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
+<button class="btn btn-xs btn-primary" accesskey="h" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
+<button class="btn btn-xs btn-primary" accesskey="j" onclick="emit('broadcast',{'sound':'transporter.mp3'});">Transporter</button>
+<button class="btn btn-xs btn-primary" accesskey="k" onclick="emit('broadcast',{'sound':'phaser.mp3'});">Phaser</button>
+<button class="btn btn-xs btn-primary" accesskey="l" onclick="emit('broadcast',{'sound':'torpedo.mp3'});">Torpedo</button>
+<button class="btn btn-xs btn-primary" accesskey=";" onclick="emit('broadcast',{'sound':'error.mp3'});">Error</button>
+<button class="btn btn-xs btn-primary" accesskey="z" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
+<button class="btn btn-xs btn-primary" accesskey="x" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
+<button class="btn btn-xs btn-primary" accesskey="c" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
 <h5>Lockdown</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':true});">Lock All</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock All</button>
+<button class="btn btn-xs btn-primary" accesskey="v" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':true});">Lock All</button>
+<button class="btn btn-xs btn-primary" accesskey="b" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock All</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true});">Lock Commander</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false});">Unlock Commander</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'navigatorlockdown':true});">Lock Navigator</button>
@@ -228,10 +228,10 @@ Diagnostics
 Commands
 <input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
 <h5>Automatic Stuff</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
+<button class="btn btn-xs btn-primary" accesskey="m" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
+<button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'voice':'Online'});">Online</button>
+<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
+<button class="btn btn-xs btn-primary" accesskey="n" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
 </div>
 </div>
 </body>
