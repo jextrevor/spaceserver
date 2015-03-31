@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for
 from flask.ext.socketio import SocketIO, emit, join_room, leave_room
 import urllib
+import crypt
 import os
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -138,7 +139,8 @@ def mvs():
 @app.route("/fd/", methods=['POST'])
 def fd():
 	personId = request.form['pass']
-	if personId != "123456789":
+	personId = crypt.crypt(personId, "xx")
+	if personId != "xx2y9jSUQRHVc":
 	    return "<h1> You are not authorized to access the Flight Director station. Go away!</h1>"
 	templateData = {
 		
