@@ -98,6 +98,38 @@ function update(json){
 }
         }
     }
+    if(key == "impulse"){
+        if(data[key] == '0' && json[key] != '0'){
+        engine = new Audio("/static/media/engine.mp3");
+	engine.addEventListener('ended', function() {
+	restartengine();
+},false);
+        engine.play();
+        
+        }
+        else if(data[key] != '0' && json[key] == '0'){
+        
+        if (typeof engine != "undefined") {
+   engine.pause();
+}
+        }
+    }
+    if(key == "impulse"){
+        if(data[key] == '0' && json[key] != '0'){
+        engine = new Audio("/static/media/engine.mp3");
+	engine.addEventListener('ended', function() {
+	restartengine();
+},false);
+        engine.play();
+        
+        }
+        else if(data[key] != '0' && json[key] == '0'){
+        
+        if (typeof engine != "undefined") {
+   engine.pause();
+}
+        }
+    }
     
         if(key == "mvslockdown"){
                     	if(json[key] == true){
