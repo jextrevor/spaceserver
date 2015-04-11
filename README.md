@@ -3,6 +3,8 @@ My Space Simulation Server, created in HTML5, CSS3, Javascript, and Python: usin
 
 Works good in Firefox and Chrome.
 
-**Please do not modify this server without prior consent**.
+**Please do not modify this server without prior consent.**
+
+**Please do not take credit for or earn money off of this server.**
 
 You can find the official server at [http://spaceserver.herokuapp.com](http://spaceserver.herokuapp.com).
