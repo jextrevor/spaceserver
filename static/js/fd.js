@@ -3,6 +3,8 @@ var conn_options = {
   'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {};
+selected = 0;
+deleter = 0;
 var peer = new Peer({key: 'x7imbejnpg2pgb9'}); 
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 socket.on("update",function(json){
@@ -29,6 +31,62 @@ function mutecommander(){
 }
 function unmutecommander(){
 $("#commander").prop('muted',false);
+}
+function register(){
+  if(selected == 0){
+    if(data.hasOwnProperty('radars')){
+  newjson = data['radars'];
+}
+else{
+  newjson = {};
+}
+var x = evt.pageX - $('#radarcanvas').offset().left;
+var y = evt.pageY - $('#radarcanvas').offset().top;
+  newjson[document.getElementById("radarname").value] = {'x':x,'y':y};
+  emit("update",{'ships':newjson});
+  }
+  else if(deleter = 1){
+if(data.hasOwnProperty('radars')){
+  newjson = data['radars'];
+}
+else{
+  newjson = {};
+}
+
+  delete newjson[selected];
+  emit("update",{'ships':newjson});
+  }
+  else{
+if(data.hasOwnProperty('radars')){
+  newjson = data['radars'];
+}
+else{
+  newjson = {};
+}
+var x = evt.pageX - $('#radarcanvas').offset().left;
+var y = evt.pageY - $('#radarcanvas').offset().top;
+  newjson[selected] = {'x':x,'y':y};
+  emit("update",{'ships':newjson});
+  }
+}
+function selectit(key){
+  selected = key;
+}
+function startadd(){
+  selected = 0;
+}
+function startdel(){
+  deleter = 1;
+  register();
+  deleter = 0;
+}
+function doradars(json){
+document.getElementById("radarcanvas").innerHTML = "";
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("radarlist").innerHTML += "<circle onclick='selectit(\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
+  }
+}
 }
 function handleaddship(e){
   if(e.keyCode === 13){
@@ -348,6 +406,9 @@ for (var key in json) {
     }
     if(key == "ships"){
       doships(json[key]);
+    }
+    if(key == "radars"){
+      doradars(json[key]);
     }
     if(key == "systems"){
       dosystems(json[key]);
