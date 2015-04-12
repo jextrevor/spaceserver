@@ -32,7 +32,8 @@ function mutecommander(){
 function unmutecommander(){
 $("#commander").prop('muted',false);
 }
-function register(evt){
+function registerr(event){
+  console.log("hi");
   if(selected == 0){
     if(data.hasOwnProperty('radars')){
   newjson = data['radars'];
@@ -40,10 +41,10 @@ function register(evt){
 else{
   newjson = {};
 }
-var x = evt.pageX - $('#radarcanvas').offset().left;
-var y = evt.pageY - $('#radarcanvas').offset().top;
+var x = event.pageX - $('#radarcanvas').offset().left;
+var y = event.pageY - $('#radarcanvas').offset().top;
   newjson[document.getElementById("radarname").value] = {'x':x,'y':y};
-  emit("update",{'ships':newjson});
+  emit("update",{'radars':newjson});
   }
   else if(deleter = 1){
 if(data.hasOwnProperty('radars')){
@@ -54,7 +55,7 @@ else{
 }
 
   delete newjson[selected];
-  emit("update",{'ships':newjson});
+  emit("update",{'radars':newjson});
   }
   else{
 if(data.hasOwnProperty('radars')){
@@ -63,28 +64,39 @@ if(data.hasOwnProperty('radars')){
 else{
   newjson = {};
 }
-var x = evt.pageX - $('#radarcanvas').offset().left;
-var y = evt.pageY - $('#radarcanvas').offset().top;
+var x = event.pageX - $('#radarcanvas').offset().left;
+var y = event.pageY - $('#radarcanvas').offset().top;
   newjson[selected] = {'x':x,'y':y};
-  emit("update",{'ships':newjson});
+  emit("update",{'radars':newjson});
   }
 }
-function selectit(key){
+$(document).ready(function(){
+  $("#radarcanvas").click(function(evt){console.log("hi");registerr(evt)});
+})
+
+
+function selectit(e,key){
+  e.stopPropagation();
   selected = key;
 }
+
 function startadd(){
   selected = 0;
 }
 function startdel(){
+  
   deleter = 1;
-  register();
+  registerr(undefined);
   deleter = 0;
+  selected = 1;
 }
+
 function doradars(json){
 document.getElementById("radarcanvas").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("radarlist").innerHTML += "<circle onclick='selectit(\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
+    document.getElementById("radarcanvas").innerHTML += "<circle onclick='selectit(event,\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
+  
   }
 }
 }
