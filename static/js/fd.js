@@ -32,7 +32,7 @@ function mutecommander(){
 function unmutecommander(){
 $("#commander").prop('muted',false);
 }
-function register(){
+function register(evt){
   if(selected == 0){
     if(data.hasOwnProperty('radars')){
   newjson = data['radars'];

@@ -236,7 +236,7 @@ Commands
 <button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
 <button class="btn btn-xs btn-primary" accesskey="n" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
 <h5>Radar</h5>
-<svg id="radarcanvas" width="100" height="100" onclick="register()"></svg>
+<svg id="radarcanvas" width="100" height="100" onclick="register(event)"></svg>
 <button class="btn btn-xs btn-primary" accesskey="\" onclick="startadd()">Add</button>
 <button class="btn btn-xs btn-primary" onclick="startdel()">Delete</button><br />
 <input type="text" id="radarname" />
