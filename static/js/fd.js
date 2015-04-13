@@ -95,8 +95,10 @@ function doradars(json){
 document.getElementById("radarcanvas").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("radarcanvas").innerHTML += "<circle onclick='selectit(event,\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
-  
+    document.getElementById("radarcanvas").innerHTML += "<circle id='"+key+"' onclick='selectit(event,\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
+    $( "#"+key ).click(function(event) {
+  selectit(event,key);
+});
   }
 }
 }
