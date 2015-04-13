@@ -46,7 +46,7 @@ var y = event.pageY - $('#radarcanvas').offset().top;
   newjson[document.getElementById("radarname").value] = {'x':x,'y':y};
   emit("update",{'radars':newjson});
   }
-  else if(deleter = 1){
+  else if(deleter == 1){
 if(data.hasOwnProperty('radars')){
   newjson = data['radars'];
 }
