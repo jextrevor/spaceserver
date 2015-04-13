@@ -43,7 +43,8 @@ else{
 }
 var x = event.pageX - $('#radarcanvas').offset().left;
 var y = event.pageY - $('#radarcanvas').offset().top;
-  newjson[document.getElementById("radarname").value] = {'x':x,'y':y};
+  if(document.getElementById("radarname").value != "" && document.getElementById("radarname").value.indexOf(' ') == 0 ){
+  newjson[document.getElementById("radarname").value] = {'x':x,'y':y};}
   emit("update",{'radars':newjson});
   }
   else if(deleter == 1){
