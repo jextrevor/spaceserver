@@ -144,6 +144,15 @@ function fire1(){
 		data.ships[data.target].shields = 0;
 	}
 	}
+	if(data.ships[data.target].hull < 0){
+		data.ships[data.target].hull = 0;
+	}
+	if(data.ships[data.target].engines < 0){
+		data.ships[data.target].engines = 0;
+	}
+	if(data.ships[data.target].systems < 0){
+		data.ships[data.target].systems = 0;
+	}
 	emit('update',{'ships':data.ships});
 	$("#phaser1").animate({
     width: "0%"
@@ -178,6 +187,15 @@ function fire2(){
 	if(data.ships[data.target].shields < 0){
 		data.ships[data.target].shields = 0;
 	}
+	}
+	if(data.ships[data.target].hull < 0){
+		data.ships[data.target].hull = 0;
+	}
+	if(data.ships[data.target].engines < 0){
+		data.ships[data.target].engines = 0;
+	}
+	if(data.ships[data.target].systems < 0){
+		data.ships[data.target].systems = 0;
 	}
 	emit('update',{'ships':data.ships});
 	$("#phaser2").animate({
@@ -214,6 +232,15 @@ function fire3(){
 		data.ships[data.target].shields = 0;
 	}
 	}
+	if(data.ships[data.target].hull < 0){
+		data.ships[data.target].hull = 0;
+	}
+	if(data.ships[data.target].engines < 0){
+		data.ships[data.target].engines = 0;
+	}
+	if(data.ships[data.target].systems < 0){
+		data.ships[data.target].systems = 0;
+	}
 	emit('update',{'ships':data.ships});
 	$("#phaser3").animate({
     width: "0%"
@@ -245,6 +272,15 @@ function torpedo(){
 	if(data.ships[data.target].shields < 0){
 		data.ships[data.target].shields = 0;
 	}
+	}
+	if(data.ships[data.target].hull < 0){
+		data.ships[data.target].hull = 0;
+	}
+	if(data.ships[data.target].engines < 0){
+		data.ships[data.target].engines = 0;
+	}
+	if(data.ships[data.target].systems < 0){
+		data.ships[data.target].systems = 0;
 	}
 	emit('update',{'torpedoes':newdata,'ships':data.ships});
 }
