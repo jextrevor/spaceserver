@@ -11,6 +11,17 @@ socket.on("update",function(json){
 function emit(key,json){
 	socket.emit(key,json);
 }
+function doradars(json){
+document.getElementById("radarcanvas").innerHTML = '<rect width="500" height="500" style="fill:transparent;stroke-width:1;stroke:rgb(0,255,0);fill-opacity:0" /><line x1="250" y1="0" x2="250" y2="500" style="stroke:rgb(0,255,0);stroke-width:1" /><line x1="0" y1="250" x2="500" y2="250" style="stroke:rgb(0,255,0);stroke-width:1" /><circle cx="250" cy="250" r="250" stroke="green" stroke-width="1" fill="transparent" /><circle cx="250" cy="250" r="150" stroke="green" stroke-width="1" fill="transparent" /><circle cx="250" cy="250" r="50" stroke="green" stroke-width="1" fill="transparent" />';
+for(var key in json){
+  if (json.hasOwnProperty(key)) {
+    document.getElementById("radarcanvas").innerHTML += "<circle id='"+key+"' onclick='selectit(event,\""+key+"\")' cx='"+(json[key].x*5)+"' cy='"+(json[key].y*5)+"' r='5' stroke='green' fill='green' />"
+    $( "#"+key ).click(function(event) {
+  selectit(event,key);
+});
+  }
+}
+}
 function search(){
 document.getElementById("placeinfo").innerHTML = "";
 document.getElementById("results").innerHTML = "";
@@ -60,6 +71,10 @@ function update(json){
     if(key == "ships"){
     	
     	doships(json[key]);
+    }
+    if(key == "radars"){
+    	
+    	doradars(json[key]);
     }
     
         if(key == "navigatorlockdown"){
