@@ -311,6 +311,9 @@ for (var key in json) {
     if(key == "zzzzzzfixing"){
       document.getElementById("zzzzzzfixing").value = json[key];
     }
+    if(key == "focus"){
+      document.getElementById("focus").value = json[key];
+    }
     if(key == "z"){
     	document.getElementById("z").value = json[key];
     }
