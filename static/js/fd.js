@@ -93,7 +93,7 @@ function startdel(){
 }
 
 function doradars(json){
-document.getElementById("radarcanvas").innerHTML = '<rect width="100" height="100" style="fill:transparent;stroke-width:1;stroke:rgb(0,255,0);fill-opacity:0" /><line x1="50" y1="0" x2="50" y2="100" style="stroke:rgb(0,255,0);stroke-width:1" /><line x1="0" y1="50" x2="100" y2="50" style="stroke:rgb(0,255,0);stroke-width:1" />';
+document.getElementById("radarcanvas").innerHTML = '<rect width="100" height="100" style="fill:transparent;stroke-width:1;stroke:rgb(0,255,0);fill-opacity:0" /><circle cx="50" cy="50" r="50" stroke="green" stroke-width="1" fill="red" /><circle cx="50" cy="50" r="30" stroke="green" stroke-width="1" fill="yellow" /><circle cx="50" cy="50" r="10" stroke="green" stroke-width="1" fill="blue" /><line x1="50" y1="0" x2="50" y2="100" style="stroke:rgb(0,255,0);stroke-width:1" /><line x1="0" y1="50" x2="100" y2="50" style="stroke:rgb(0,255,0);stroke-width:1" />';
 for(var key in json){
   if (json.hasOwnProperty(key)) {
     document.getElementById("radarcanvas").innerHTML += "<circle id='"+key+"' onclick='selectit(event,\""+key+"\")' cx='"+json[key].x+"' cy='"+json[key].y+"' r='5' stroke='green' fill='green' />"
