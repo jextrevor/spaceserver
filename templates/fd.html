@@ -247,6 +247,8 @@ Commands
 <button class="btn btn-xs btn-primary" accesskey="\" onclick="startadd()">Add</button>
 <button class="btn btn-xs btn-primary" onclick="startdel()">Delete</button><br />
 <input type="text" id="radarname" />
+<h5>Targeting Focus</h5>
+<input type="text" id="focus" onchange="emit('update',{'probing':document.getElementById('probing').value})"/>
 </div>
 </div>
 </body>
