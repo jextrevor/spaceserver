@@ -150,7 +150,7 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
 </div>
 <div class="col-md-2">
-	<video id="commander" height="100" width="200" autoplay=""></video><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" accesskey="/" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="u" onclick="emit('update',{'muted':false})">Unmute</button>
+	<video id="commander" height="100" width="200" autoplay=""></video><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="/" onclick="emit('update',{'muted':false})">Unmute</button>
 	<h5>Main View Screen</h5>
 	<button class="btn btn-xs btn-primary" accesskey="	" onclick="emit('update',{'screen':''})">Logo</button>
 	<button class="btn btn-xs btn-primary" accesskey="q" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
@@ -165,8 +165,8 @@ Add System:<br />
 <h5>Sounds</h5>
 <button class="btn btn-xs btn-primary" accesskey="d" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
 <button class="btn btn-xs btn-primary" accesskey="f" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
-<button class="btn btn-xs btn-primary" accesskey="g" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
-<button class="btn btn-xs btn-primary" accesskey="h" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
 <button class="btn btn-xs btn-primary" accesskey="j" onclick="emit('broadcast',{'sound':'transporter.mp3'});">Transporter</button>
 <button class="btn btn-xs btn-primary" accesskey="k" onclick="emit('broadcast',{'sound':'phaser.mp3'});">Phaser</button>
 <button class="btn btn-xs btn-primary" accesskey="l" onclick="emit('broadcast',{'sound':'torpedo.mp3'});">Torpedo</button>
@@ -195,7 +195,7 @@ Add System:<br />
 <div class="col-md-2">
 <h5>System Statuses</h5>
 Warp
-<input type="checkbox" id="warpbroken" onchange="emit('update',{'warpbroken':document.getElementById('warpbroken').checked})" />
+<input type="checkbox" id="warpbroken" accesskey="g" onchange="emit('update',{'warpbroken':document.getElementById('warpbroken').checked})" />
 Impulse
 <input type="checkbox" id="impulsebroken" onchange="emit('update',{'impulsebroken':document.getElementById('impulsebroken').checked})" />
 Thrusters
@@ -205,7 +205,7 @@ Course
 Maps
 <input type="checkbox" id="mapbroken" onchange="emit('update',{'mapbroken':document.getElementById('mapbroken').checked})" />
 Targeting
-<input type="checkbox" id="targetbroken" onchange="emit('update',{'targetbroken':document.getElementById('targetbroken').checked})" />
+<input type="checkbox" id="targetbroken" accesskey="n" onchange="emit('update',{'targetbroken':document.getElementById('targetbroken').checked})" />
 Shields
 <input type="checkbox" id="shieldbroken" onchange="emit('update',{'shieldbroken':document.getElementById('shieldbroken').checked})" />
 Phasers
@@ -221,7 +221,7 @@ Scanning
 Analysis
 <input type="checkbox" id="analysisbroken" onchange="emit('update',{'analysisbroken':document.getElementById('analysisbroken').checked})" />
 Transporter
-<input type="checkbox" id="transporterbroken" onchange="emit('update',{'transporterbroken':document.getElementById('transporterbroken').checked})" />
+<input type="checkbox" id="transporterbroken" accesskey="h" onchange="emit('update',{'transporterbroken':document.getElementById('transporterbroken').checked})" />
 Power
 <input type="checkbox" id="powerbroken" onchange="emit('update',{'powerbroken':document.getElementById('powerbroken').checked})" />
 Cooling
@@ -234,7 +234,7 @@ Commands
 <button class="btn btn-xs btn-primary" accesskey="m" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
 <button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'voice':'Online'});">Online</button>
 <button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
-<button class="btn btn-xs btn-primary" accesskey="n" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
 <button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explosion (no sound)</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'missiondata':'#ECHOES OF STALIN\n\n##-TOP SECRET-\n\nCommander of the USS Callisto - we have received troubling news. The following Planets of the Federation are the cause of our worries:\n\n* Paeron in Sector AYK-520\n* Rowe in Sector FJH-536\n\nThe governments of these planets claim to follow the Federation and its Values - however there have been reports of totalitarianism by the leaders, the effects of which include confusing laws and harsh requirements of the people. The exact reason why the governments are doing this is unknown, however, one thing\'s for certain: it must be investigated further.\n\nFrom our studies so far, this behavior seems to resemble most closely that of Joseph Stalin, a historical Earth leader who was harsh on his people in order to modernize his country. Indeed, the suspected planets seem to have low rates of trade and population, but their Stalin-like behavior barely seems to help trade, and seems to be adversely affecting their economy.\n\nYour Mission is to investigate and locate the root of this problem, and if required, to take necessary action to remove it.\n\nTo get to the planets specified, you must travel to coordinates 227, 0, 200; and 345, 124, 206, respectively. Investigating the problem may prove to be challenging since these planets have developed advanced radar systems. These systems are capable of accurately pinpointing ships as far as 1 AU away. Through our hacking efforts we have managed to reduce the range of these radar systems to 500 miles without detection by the said governments; however this is still not close enough for your transporter systems. We recommend that you increase power to your transporter systems or try destroying the radar to solve the problem.\n\nWe think that you may be able to hack into communication systems by either using your ships engineer command system or by taking over a government spaceship through your security teams. There may be other ways, however. In all your efforts, make sure that you are not caught by the planet\'s governments or any outsiders. \n\nOnce you have hacked into communications, search and see if you can locate why the governments are being harsh on their citizens. Once you have found out why, contact headquarters and stand by for further orders.\n\n###Good luck on your mission!'})">Mission Data (Echoes of Stalin)</button>
 <h5>Radar</h5>
