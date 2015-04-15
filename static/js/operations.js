@@ -78,7 +78,7 @@ function doships(json){
 document.getElementById("radarlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\");sound('processing.mp3');'>"+key+"</a>";
+    document.getElementById("radarlist").innerHTML += "<a class='list-group-item' onclick='probe(\""+key+"\");sound(\"processing.mp3\");'>"+key+"</a>";
   }
 }
 }
