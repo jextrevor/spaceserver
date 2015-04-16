@@ -6,6 +6,7 @@ body {
     overflow:hidden;
     font-family:Electrolize;
     position:relative;
+    background:black;
 }
 html *{
 font-family:Electrolize;
