@@ -1,6 +1,5 @@
 var conn_options = {
 'sync disconnect on unload':true,
-'transports':['flashsocket','htmlfile','xhr-polling','jsonp-polling','websocket']
 };
 data = {}
 var peer = new Peer('commander', {key: 'x7imbejnpg2pgb9'}); 
