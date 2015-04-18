@@ -9,7 +9,7 @@ socket.on('explosion', function(json){
     magnitude += json['magnitude'];
     factor = json['factor'];
     clearInterval(shake);
-    shake = setInterval(function(){doshake()},10);
+    shake = setInterval(function(){doshake()},1);
 });
 function doshake(){
     document.body.style["-webkit-filter"] = "blur("+magnitude/10+"px)";
