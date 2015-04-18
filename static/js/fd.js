@@ -31,6 +31,9 @@ function mutecommander(){
 function unmutecommander(){
 $("#commander").prop('muted',false);
 }
+function reset(){
+	emit("reset",{});
+}
 function registerr(event){
   console.log("hi");
   if(selected == 0){
