@@ -79,8 +79,9 @@ def update(json):
 	emittoallstations("update",json)
 @socketio.on('reset', namespace="/fd")
 def reset(json):
-	global dictionary
-	dictionary = {}
+	for key,value in dictionary.items():
+		dictionary[key] = ""
+	emittoallstations("update",dictionary)
 @socketio.on('connect', namespace="/commander")
 def stationconnect():
     emit("update",dictionary)
