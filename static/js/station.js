@@ -11,6 +11,9 @@ socket.on('explosion', function(json){
     clearInterval(shake);
     shake = setInterval(function(){doshake()},1);
 });
+socket.on('reload', function(json){
+window.location.href = json;
+});
 function doshake(){
     document.body.style["-webkit-filter"] = "blur("+magnitude/10+"px)";
     document.body.style["filter"] = "blur("+magnitude/10+"px)";
