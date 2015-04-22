@@ -1,5 +1,6 @@
 var conn_options = {
 'sync disconnect on unload':true,
+'transports': ['xhr-polling','htmlfile','jsonp-polling','websocket','flashsocket']
 };
 data = {}
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/tactical',conn_options);
