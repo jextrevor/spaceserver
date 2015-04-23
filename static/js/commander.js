@@ -7,7 +7,7 @@ var peer = new Peer('commander', {key: 'x7imbejnpg2pgb9'});
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
 alert("Someone is already on the Commander Station - they will be the one that will have video call functionality.");
-peer.close();
+peer.disconnect();
 }
 });
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
