@@ -1,6 +1,5 @@
 var conn_options = {
-  'sync disconnect on unload':true,
-  'transports': ['xhr-polling','htmlfile','jsonp-polling','websocket','flashsocket']
+  'sync disconnect on unload':true
 };
 data = {};
 selected = 0;
