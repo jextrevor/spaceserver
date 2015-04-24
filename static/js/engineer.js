@@ -18,7 +18,7 @@ document.getElementById("powerlist").innerHTML = "";
 document.getElementById("heatlist").innerHTML = "";
 for(var key in json){
   if (json.hasOwnProperty(key)) {
-    document.getElementById("powerlist").innerHTML += key+' <button class="btn btn-info btn-xs" onclick="decrease(\''+key+'\');sound(\'buttonshort.wav\');" >Decrease Power</button><button class="btn btn-info btn-xs"  onclick="increase(\''+key+'\');sound(\'buttonshort.wav\');">Increase Power</button><div class="progress"><div class="progress-bar progress-bar-success" role="progressbar" id="'+key+'power" style="width: '+json[key].power+'%;"></div></div>';
+    document.getElementById("powerlist").innerHTML += key+' <button class="btn btn-warning btn-xs" onclick="decrease(\''+key+'\');sound(\'buttonshort.wav\');" >Decrease Power</button><button class="btn btn-warning btn-xs"  onclick="increase(\''+key+'\');sound(\'buttonshort.wav\');">Increase Power</button><div class="progress"><div class="progress-bar progress-bar-warning" role="progressbar" id="'+key+'power" style="width: '+json[key].power+'%;"></div></div>';
     document.getElementById("heatlist").innerHTML += key+'<div class="progress" onclick="cool(\''+key+'\');sound(\'buttonshort.wav\');"><div class="progress-bar progress-bar-danger" role="progressbar" id="'+key+'heat" style="width: '+json[key].heat+'%;"></div></div>';
     document.getElementById("repairlist").innerHTML += key+'<div class="progress" onclick="fix(\''+key+'\');sound(\'button.wav\');"><div class="progress-bar progress-bar-info" role="progressbar" id="'+key+'damage" style="width: '+json[key].damage+'%;"></div></div>';
   }
