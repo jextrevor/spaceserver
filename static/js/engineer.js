@@ -142,7 +142,7 @@ else{
 function cool(key){
 	if(checkIt('heat')){emit('broadcast',{'sound':'error.mp3'});return false;}
 	newjson = data['systems'];
-	if(coolant > 10){
+	if(data.coolant > 10){
 	if(newjson[key].heat >= 10){
 		newjson[key].heat -= 10;
 		data.coolant -= 10;
