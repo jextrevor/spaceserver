@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request,redirect,url_for
+from flask import Flask,render_template,request,redirect,url_for,send_file
 from flask.ext.socketio import SocketIO, emit, join_room, leave_room
 import urllib
 import crypt
@@ -110,7 +110,7 @@ def home():
     return render_template('main.html', **templateData)
 @app.route("/google5ece7d78ac791aa2.html")
 def verify():
-	return app.send_file("google5ece7d78ac791aa2.html")
+	return send_file("google5ece7d78ac791aa2.html")
 @app.route("/commander/")
 def commander():
 	templateData = {
