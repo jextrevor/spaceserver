@@ -38,7 +38,7 @@ socket.on("update",function(json){
 });
 socket.on('sound',function(json){
 	var dataa = new Audio("/static/media/"+json);
-	var dataa.volume = 0.5;
+	dataa.volume = 0.5;
 	dataa.play();
 });
 socket.on('voice',function(json){
