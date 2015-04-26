@@ -26,6 +26,7 @@ peer.on('call', function(call) {
     call.on('stream', function(remoteStream) {
         console.log('yay');
       $('#audiooutput').prop('src', URL.createObjectURL(remoteStream));
+      document.getElementById("audiooutput").volume = 2;
     });
   }, function(err) {
     console.log('Failed to get local stream' ,err);
