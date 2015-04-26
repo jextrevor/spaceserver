@@ -26,7 +26,7 @@ peer.on('call', function(call) {
     call.on('stream', function(remoteStream) {
         console.log('yay');
       $('#audiooutput').prop('src', URL.createObjectURL(remoteStream));
-      document.getElementById("audiooutput").volume = 2;
+      document.getElementById("audiooutput").volume = 1;
     });
   }, function(err) {
     console.log('Failed to get local stream' ,err);
@@ -38,6 +38,7 @@ socket.on("update",function(json){
 });
 socket.on('sound',function(json){
 	var dataa = new Audio("/static/media/"+json);
+	var dataa.volume = 0.5;
 	dataa.play();
 });
 socket.on('voice',function(json){
@@ -48,6 +49,7 @@ background = new Audio("/static/media/background.mp3");
 background.addEventListener('ended', function() {
     restartbackground();
 }, false);
+background.volume = 0.5;
 background.play();
 currentmusic = new Audio("/static/media/training.mp3");
 function emit(key,json){
@@ -70,6 +72,7 @@ function setredalert(){
 document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
 var dataa = new Audio("/static/media/alert.wav");
+dataa.volume = 0.5;
 	dataa.play();
  $( "#redalert" ).animate({
 opacity: 0.15,
@@ -88,8 +91,10 @@ function update(json){
     if(key == "warp"){
         if(data[key] == '0' && json[key] != '0'){
         var dataa = new Audio("/static/media/warp.mp3");
+        dataa.volume = 0.5
         dataa.play();
         engine = new Audio("/static/media/engine.mp3");
+        engine.volume = 0.5
 	engine.addEventListener('ended', function() {
 	restartengine();
 },false);
@@ -98,6 +103,7 @@ function update(json){
         }
         else if(data[key] != '0' && json[key] == '0'){
         var dataa = new Audio("/static/media/warpout.mp3");
+        dataa.volume = 0.5
         dataa.play();
         if (typeof engine != "undefined") {
    engine.pause();
@@ -107,6 +113,7 @@ function update(json){
     if(key == "impulse"){
         if(data[key] == '0' && json[key] != '0'){
         engine = new Audio("/static/media/engine.mp3");
+        engine.volume = 0.5;
 	engine.addEventListener('ended', function() {
 	restartengine();
 },false);
@@ -123,6 +130,7 @@ function update(json){
     if(key == "impulse"){
         if(data[key] == '0' && json[key] != '0'){
         engine = new Audio("/static/media/engine.mp3");
+        engine.volume = 0.5
 	engine.addEventListener('ended', function() {
 	restartengine();
 },false);
@@ -150,6 +158,7 @@ function update(json){
     	currentmusic.pause();
     	if(json[key] != ""){
     		currentmusic = new Audio("/static/media/"+json[key]);
+    		currentmusic.volume = 0.5
     		currentmusic.play();
     	}
     }
@@ -197,6 +206,7 @@ if(key == "screen"){
 }
 function restartbackground(){
 	background = new Audio("/static/media/background.mp3");
+	background.volume = 0.5
 background.addEventListener('ended', function() {
     restartbackground();
 }, false);
@@ -204,6 +214,7 @@ background.play();
 }
 function restartengine(){
 	engine = new Audio("/static/media/engine.mp3");
+	engine.volume = 0.5
 engine.addEventListener('ended', function() {
     restartengine();
 }, false);
