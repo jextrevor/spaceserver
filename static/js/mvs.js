@@ -12,7 +12,7 @@ engine.addEventListener('ended', function() {
 restartengine();
 },false);
 //engine.play();
-var peer = new Peer('mvs', {key: 'x7imbejnpg2pgb9'}); 
+var peer = new Peer('mvs', {'host':'spaceserverpeer.herokuapp.com','secure':true}); 
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
 alert("Someone is already on the Main View Screen - they will be the one that will have video call functionality.");
@@ -32,7 +32,7 @@ peer.on('call', function(call) {
     console.log('Failed to get local stream' ,err);
   });
 });
-var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/mvs',conn_options);
+var socket = io.connect('https://'+window.location.hostname+':'+window.location.port+'/mvs',conn_options);
 socket.on("update",function(json){
 	update(json);
 });

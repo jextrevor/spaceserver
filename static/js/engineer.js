@@ -3,7 +3,7 @@ var conn_options = {
 };
 data = {}
 var events;
-var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/engineer',conn_options);
+var socket = io.connect('https://'+window.location.hostname+':'+window.location.port+'/engineer',conn_options);
 socket.on("update",function(json){
 	update(json);
 

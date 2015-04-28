@@ -2,7 +2,7 @@ var conn_options = {
 'sync disconnect on unload':true
 };
 data = {};
-var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/navigator',conn_options);
+var socket = io.connect('https://'+window.location.hostname+':'+window.location.port+'/navigator',conn_options);
 socket.on("update",function(json){
 	update(json);
 

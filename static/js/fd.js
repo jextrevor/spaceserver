@@ -4,8 +4,8 @@ var conn_options = {
 data = {};
 selected = 0;
 deleter = 0;
-var peer = new Peer({key: 'x7imbejnpg2pgb9'}); 
-var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
+var peer = new Peer({'host':'spaceserverpeer.herokuapp.com','secure':true}); 
+var socket = io.connect('https://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
 function checkload(){
 if(socket.socket.connected == true){
 clearInterval(loadingcheck);
