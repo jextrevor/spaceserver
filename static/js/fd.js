@@ -6,6 +6,16 @@ selected = 0;
 deleter = 0;
 var peer = new Peer({key: 'x7imbejnpg2pgb9'}); 
 var socket = io.connect('http://'+window.location.hostname+':'+window.location.port+'/fd',conn_options);
+function checkload(){
+if(socket.socket.connected == true){
+clearInterval(loadingcheck);
+}
+if(socket.socket.connecting == false){
+alert("Your Browser does not seem to be connecting - try a different browser. If this persists your computer may be incompatible :(");
+clearInterval(loadingcheck);
+}
+}
+loadingcheck = setInterval(function(){checkload()},1000);
 socket.on("update",function(json){
 	update(json);
 

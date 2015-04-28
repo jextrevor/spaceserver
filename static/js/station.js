@@ -44,3 +44,13 @@ function checkIt(value){
     }
     }
 }
+function checkload(){
+if(socket.socket.connected == true){
+clearInterval(loadingcheck);
+}
+if(socket.socket.connecting == false){
+alert("Your Browser does not seem to be connecting - try a different browser. If this persists your computer may be incompatible :(");
+clearInterval(loadingcheck);
+}
+}
+loadingcheck = setInterval(function(){checkload()},1000);
