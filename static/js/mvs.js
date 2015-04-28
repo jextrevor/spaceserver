@@ -55,7 +55,7 @@ currentmusic = new Audio("/static/media/training.mp3");
 currentmusic.volume = 0.5;
 currentmusic.addEventListener('ended', function() {
     picknewmusic();
-}
+},false);
 function picknewmusic(){
 	if(data.music.indexOf("training") > -1){
 		if(data.music.indexOf("2") > -1){
@@ -63,7 +63,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 			    picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else if(data.music.indexOf("3") > -1){
@@ -71,7 +71,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else{
@@ -79,7 +79,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 	}
@@ -89,7 +89,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 					    picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 				}
 				else if(data.music.indexOf("3") > -1){
@@ -97,7 +97,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 						picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 				}
 				else{
@@ -105,7 +105,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 						picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 		}
 	}
@@ -115,7 +115,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 					    picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 				}
 				else if(data.music.indexOf("3") > -1){
@@ -123,7 +123,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 						picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 				}
 				else{
@@ -131,7 +131,7 @@ function picknewmusic(){
 					currentmusic.volume = 0.5;
 					currentmusic.addEventListener('ended', function() {
 						picknewmusic();
-					}
+					},false);
 					currentmusic.play();
 		}
 	}
@@ -141,7 +141,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 			    picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else if(data.music.indexOf("3") > -1){
@@ -149,7 +149,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else{
@@ -157,7 +157,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}	
 	}
@@ -167,7 +167,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 			    picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else if(data.music.indexOf("3") > -1){
@@ -175,7 +175,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}
 		else{
@@ -183,7 +183,7 @@ function picknewmusic(){
 			currentmusic.volume = 0.5;
 			currentmusic.addEventListener('ended', function() {
 				picknewmusic();
-			}
+			},false);
 			currentmusic.play();
 		}	
 	}
@@ -303,7 +303,7 @@ function update(json){
     		currentmusic.volume = 0.5
     		currentmusic.addEventListener('ended', function() {
 						picknewmusic();
-			}
+			},false);
     		currentmusic.play();
     	}
     }
