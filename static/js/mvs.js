@@ -12,7 +12,7 @@ engine.addEventListener('ended', function() {
 restartengine();
 },false);
 //engine.play();
-var peer = new Peer('mvs', {'host':'spaceserverpeer.herokuapp.com','secure':true}); 
+var peer = new Peer('mvs', {'host':'spaceserverpeer.herokuapp.com'}); 
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
 alert("Someone is already on the Main View Screen - they will be the one that will have video call functionality.");
