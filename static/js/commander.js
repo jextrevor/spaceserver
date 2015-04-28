@@ -2,7 +2,7 @@ var conn_options = {
 'sync disconnect on unload':true
 };
 data = {}
-var peer = new Peer('commander', {'host':'spaceserverpeer.herokuapp.com'}); 
+var peer = new Peer('commander', {host: 'spaceserverpeer.herokuapp.com', port: 80}); 
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
 alert("Someone is already on the Commander Station - they will be the one that will have video call functionality.");
