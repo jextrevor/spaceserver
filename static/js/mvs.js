@@ -90,11 +90,14 @@ function update(json){
   if (json.hasOwnProperty(key)) {
     if(key == "warp"){
         if(data[key] == '0' && json[key] != '0'){
+        if(data["screen"] == ""){
+        showWarp(parseInt(json[key])/10);
+        }
         var dataa = new Audio("/static/media/warp.mp3");
-        dataa.volume = 0.5
+        dataa.volume = 0.5;
         dataa.play();
         engine = new Audio("/static/media/engine.mp3");
-        engine.volume = 0.5
+        engine.volume = 0.5;
 	engine.addEventListener('ended', function() {
 	restartengine();
 },false);
@@ -102,6 +105,9 @@ function update(json){
         
         }
         else if(data[key] != '0' && json[key] == '0'){
+        if(typeof data["screen"] == 'number'){
+	        showLogo();
+        }
         var dataa = new Audio("/static/media/warpout.mp3");
         dataa.volume = 0.5
         dataa.play();
