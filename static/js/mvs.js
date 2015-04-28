@@ -52,6 +52,142 @@ background.addEventListener('ended', function() {
 background.volume = 0.5;
 background.play();
 currentmusic = new Audio("/static/media/training.mp3");
+currentmusic.volume = 0.5;
+currentmusic.addEventListener('ended', function() {
+    picknewmusic();
+}
+function picknewmusic(){
+	if(data.music.indexOf("training") > -1){
+		if(data.music.indexOf("2") > -1){
+			currentmusic = new Audio("/static/media/training3.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+			    picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else if(data.music.indexOf("3") > -1){
+			currentmusic = new Audio("/static/media/training.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else{
+			currentmusic = new Audio("/static/media/training2.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}
+	}
+	else if(data.music.indexOf("travel") > -1){
+		if(data.music.indexOf("2") > -1){
+					currentmusic = new Audio("/static/media/travel3.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+					    picknewmusic();
+					}
+					currentmusic.play();
+				}
+				else if(data.music.indexOf("3") > -1){
+					currentmusic = new Audio("/static/media/travel.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+						picknewmusic();
+					}
+					currentmusic.play();
+				}
+				else{
+					currentmusic = new Audio("/static/media/travel2.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+						picknewmusic();
+					}
+					currentmusic.play();
+		}
+	}
+	else if(data.music.indexOf("intense") > -1){
+		if(data.music.indexOf("2") > -1){
+					currentmusic = new Audio("/static/media/intense3.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+					    picknewmusic();
+					}
+					currentmusic.play();
+				}
+				else if(data.music.indexOf("3") > -1){
+					currentmusic = new Audio("/static/media/intense.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+						picknewmusic();
+					}
+					currentmusic.play();
+				}
+				else{
+					currentmusic = new Audio("/static/media/intense2.mp3");
+					currentmusic.volume = 0.5;
+					currentmusic.addEventListener('ended', function() {
+						picknewmusic();
+					}
+					currentmusic.play();
+		}
+	}
+	else if(data.music.indexOf("tense") > -1){
+		if(data.music.indexOf("2") > -1){
+			currentmusic = new Audio("/static/media/tense3.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+			    picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else if(data.music.indexOf("3") > -1){
+			currentmusic = new Audio("/static/media/tense.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else{
+			currentmusic = new Audio("/static/media/tense2.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}	
+	}
+	else if(data.music.indexOf("battle") > -1){
+		if(data.music.indexOf("2") > -1){
+			currentmusic = new Audio("/static/media/battle3.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+			    picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else if(data.music.indexOf("3") > -1){
+			currentmusic = new Audio("/static/media/battle.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}
+		else{
+			currentmusic = new Audio("/static/media/battle2.mp3");
+			currentmusic.volume = 0.5;
+			currentmusic.addEventListener('ended', function() {
+				picknewmusic();
+			}
+			currentmusic.play();
+		}	
+	}
+}
 function emit(key,json){
 	socket.emit(key,json);
 }
@@ -165,6 +301,9 @@ function update(json){
     	if(json[key] != ""){
     		currentmusic = new Audio("/static/media/"+json[key]);
     		currentmusic.volume = 0.5
+    		currentmusic.addEventListener('ended', function() {
+						picknewmusic();
+			}
     		currentmusic.play();
     	}
     }
