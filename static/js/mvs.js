@@ -45,6 +45,9 @@ socket.on('voice',function(json){
   var dataa = new Audio("http://speechutil.com/convert/ogg?text=%27"+encodeURIComponent(json)+"%27");
   dataa.play();
 });
+socket.on('volume',function(json){
+  document.getElementById("audiooutput").volume = json;
+});
 background = new Audio("/static/media/background.mp3");
 background.addEventListener('ended', function() {
     restartbackground();
