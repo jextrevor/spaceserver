@@ -62,132 +62,72 @@ currentmusic.addEventListener('ended', function() {
 function picknewmusic(){
 	if(data.music.indexOf("training") > -1){
 		if(data.music.indexOf("2") > -1){
-			currentmusic = new Audio("/static/media/training3.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-			    picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'training3.mp3'});
+			
 		}
 		else if(data.music.indexOf("3") > -1){
-			currentmusic = new Audio("/static/media/training.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'training.mp3'});
+			
 		}
 		else{
-			currentmusic = new Audio("/static/media/training2.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'training2.mp3'});
+			
 		}
 	}
 	else if(data.music.indexOf("travel") > -1){
 		if(data.music.indexOf("2") > -1){
-					currentmusic = new Audio("/static/media/travel3.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-					    picknewmusic();
-					},false);
-					currentmusic.play();
+			emit('update',{'music':'travel3.mp3'});
+					
 				}
 				else if(data.music.indexOf("3") > -1){
-					currentmusic = new Audio("/static/media/travel.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-						picknewmusic();
-					},false);
-					currentmusic.play();
+					emit('update',{'music':'travel.mp3'});
+					
 				}
 				else{
-					currentmusic = new Audio("/static/media/travel2.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-						picknewmusic();
-					},false);
-					currentmusic.play();
+					emit('update',{'music':'travel2.mp3'});
+					
 		}
 	}
 	else if(data.music.indexOf("intense") > -1){
 		if(data.music.indexOf("2") > -1){
-					currentmusic = new Audio("/static/media/intense3.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-					    picknewmusic();
-					},false);
-					currentmusic.play();
+			emit('update',{'music':'intense3.mp3'});
+					
 				}
 				else if(data.music.indexOf("3") > -1){
-					currentmusic = new Audio("/static/media/intense.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-						picknewmusic();
-					},false);
-					currentmusic.play();
+					emit('update',{'music':'intense.mp3'});
+					
 				}
 				else{
-					currentmusic = new Audio("/static/media/intense2.mp3");
-					currentmusic.volume = 0.5;
-					currentmusic.addEventListener('ended', function() {
-						picknewmusic();
-					},false);
-					currentmusic.play();
+					emit('update',{'music':'intense2.mp3'});
+					
 		}
 	}
 	else if(data.music.indexOf("tense") > -1){
 		if(data.music.indexOf("2") > -1){
-			currentmusic = new Audio("/static/media/tense3.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-			    picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'tense3.mp3'});
+			
 		}
 		else if(data.music.indexOf("3") > -1){
-			currentmusic = new Audio("/static/media/tense.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'tense.mp3'});
+			
 		}
 		else{
-			currentmusic = new Audio("/static/media/tense2.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'tense2.mp3'});
+			
 		}	
 	}
 	else if(data.music.indexOf("battle") > -1){
 		if(data.music.indexOf("2") > -1){
-			currentmusic = new Audio("/static/media/battle3.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-			    picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'battle3.mp3'});
+		
 		}
 		else if(data.music.indexOf("3") > -1){
-			currentmusic = new Audio("/static/media/battle.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'battle.mp3'});
+			
 		}
 		else{
-			currentmusic = new Audio("/static/media/battle2.mp3");
-			currentmusic.volume = 0.5;
-			currentmusic.addEventListener('ended', function() {
-				picknewmusic();
-			},false);
-			currentmusic.play();
+			emit('update',{'music':'battle2.mp3'});
+			
 		}	
 	}
 }
