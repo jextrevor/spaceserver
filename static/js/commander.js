@@ -11,7 +11,7 @@ peer.disconnect();
 });
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 peer.on('call', function(call) {
-  navigator.getUserMedia({video: true, audio: true}, function(stream) {
+  navigator.getUserMedia({video: false, audio: true}, function(stream) {
     call.answer(stream); // Answer the call with an A/V stream.
     call.on('stream', function(remoteStream) {
       // Show stream in some video/canvas element.

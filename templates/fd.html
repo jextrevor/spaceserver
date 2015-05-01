@@ -153,6 +153,7 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'training3.mp3'})">Training (Quiet)</button>
 <button class="btn btn-xs btn-primary" accesskey="a" onclick="emit('update',{'music':'victory.mp3','screen':'victory.png'})">Victory</button>
 <button class="btn btn-xs btn-primary" accesskey="s" onclick="emit('update',{'music':'defeat.wav','screen':'defeat.png'})">Defeat</button>
+<button class="btn btn-xs btn-primary" accesskey="[" onclick="emit('update',{'music':'cliffhanger.wav','screen':'cliffhanger.png'})">Defeat</button>
 <h5>Effects</h5>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
 </div>
@@ -181,6 +182,7 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" accesskey="z" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
 <button class="btn btn-xs btn-primary" accesskey="x" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
 <button class="btn btn-xs btn-primary" accesskey="c" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'hail.mp3'});">Call</button>
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
 <h5>Lockdown</h5>
