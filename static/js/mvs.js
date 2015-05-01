@@ -265,14 +265,14 @@ function update(json){
         clearInterval(yellowalert);
         document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
-    yellowalert = setInterval(setyellowalert,2000);
+    yellowalert = setInterval(setyellowalert,3000);
     }
     if(json[key] == 2){
     clearInterval(redalert);
         clearInterval(yellowalert);
         document.getElementById("yellowalert").style.opacity = 0;
     document.getElementById("redalert").style.opacity = 0;
-    redalert = setInterval(setredalert,2000);
+    redalert = setInterval(setredalert,3000);
     }
     }
 if(key == "screen"){
