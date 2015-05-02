@@ -165,12 +165,14 @@ Add System:<br />
 	<button class="btn btn-xs btn-primary" accesskey="q" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
 	<button class="btn btn-xs btn-primary" accesskey="w" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
 	<button class="btn btn-xs btn-primary" accesskey="e" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
-	<button class="btn btn-xs btn-primary" accesskey="r" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
-	<button class="btn btn-xs btn-primary" accesskey="t" onclick="emit('update',{'screen':1})">Full speed</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
+	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':1})">Full speed</button>
 	<button class="btn btn-xs btn-primary" accesskey="y" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
 	<button class="btn btn-xs btn-primary" accesskey="u" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
 	<button class="btn btn-xs btn-primary" accesskey="i" onclick="emit('update',{'screen':'star3.jpeg'})">Nebula</button>
 <button class="btn btn-xs btn-primary" accesskey="o" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
+<button class="btn btn-xs btn-primary" accesskey="r" onclick="emit('update',{'screen':'star4.jpg'})">Explo 2</button>
+<button class="btn btn-xs btn-primary" accesskey="t" onclick="emit('update',{'screen':'star5.jpg'})">Explo 3</button>
 <h5>Sounds</h5>
 <button class="btn btn-xs btn-primary" accesskey="d" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
 <button class="btn btn-xs btn-primary" accesskey="f" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
@@ -183,11 +185,12 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" accesskey="z" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
 <button class="btn btn-xs btn-primary" accesskey="x" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
 <button class="btn btn-xs btn-primary" accesskey="c" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
+<button class="btn btn-xs btn-primary" accesskey="]" onclick="emit('broadcast',{'sound':'explosion2.mp3'});">Explosion Small</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'hail.mp3'});">Call</button>
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
 <h5>Lockdown</h5>
-<button class="btn btn-xs btn-primary" accesskey="v" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':true});">Lock All</button>
+<button class="btn btn-xs btn-primary" accesskey="v" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':false});">Lock All Except MVS</button>
 <button class="btn btn-xs btn-primary" accesskey="b" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock All</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true});">Lock Commander</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false});">Unlock Commander</button>
@@ -241,12 +244,14 @@ Diagnostics
 Commands
 <input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
 <h5>Automatic Stuff</h5>
-<button class="btn btn-xs btn-primary" accesskey="m" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
-<button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'voice':'Online'});">Online</button>
-<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
 <button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explosion (no sound)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})">Stop All Explosions</button>
+<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':1000,'factor':20}})">Unstableness</button>
+<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':50}})">Explosion (no sound)(small)</button>
+<button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})">Stop All Explosions</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':''})">Reload Everyone</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':'/'})">Kick Out Everyone</button>
 <button class="btn btn-xs btn-primary" onclick="emit('update',{'maxpower':300,'coolant':100,'systems':{'Main Computer':{'heat':0,'damage':100,'power':50},'Sensors':{'heat':0,'damage':100,'power':50},'Warp':{'heat':0,'damage':100,'power':50},'Shields':{'heat':0,'damage':100,'power':50},'Weapons':{'heat':0,'damage':100,'power':50},'Targeting':{'heat':0,'damage':100,'power':50},'Transporter':{'heat':0,'damage':100,'power':50}}})">Default Systems</button>
