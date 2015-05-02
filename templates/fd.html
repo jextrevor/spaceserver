@@ -158,6 +158,7 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
 </div>
 <div class="col-md-2">
+    <video id="commander" width="1" height="1"></video>
 	<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':0.5})">0.5</button><button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':0.6})">0.6</button><button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':0.7})">0.7</button><button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':0.8})">0.8</button><button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':0.9})">0.9</button><button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'volume':1.0})">1.0</button><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="/" onclick="emit('update',{'muted':false})">Unmute</button>
 	<h5>Main View Screen</h5>
 	<button class="btn btn-xs btn-primary" accesskey="	" onclick="emit('update',{'screen':''})">Logo</button>
