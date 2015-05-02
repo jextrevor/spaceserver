@@ -59,11 +59,11 @@ currentmusic.addEventListener('ended', function() {
 },false);
 function picknewmusic(){
 	if(data.music.indexOf("training") > -1){
-		if(data.music.indexOf("2") > -1){
+		if(data.music.indexOf("2.") > -1){
 			emit('update',{'music':'training3.mp3'});
 			
 		}
-		else if(data.music.indexOf("3") > -1){
+		else if(data.music.indexOf("3.") > -1){
 			emit('update',{'music':'training.mp3'});
 			
 		}
@@ -73,39 +73,39 @@ function picknewmusic(){
 		}
 	}
 	else if(data.music.indexOf("travel") > -1){
-		if(data.music.indexOf("2") > -1){
+		if(data.music.indexOf("2.") > -1){
 			emit('update',{'music':'travel3.mp3'});
 					
 				}
-				else if(data.music.indexOf("3") > -1){
+				else if(data.music.indexOf("3.") > -1){
 					emit('update',{'music':'travel.mp3'});
 					
 				}
 				else{
 					emit('update',{'music':'travel2.mp3'});
-					
+                }
 		}
-	}
+	
 	else if(data.music.indexOf("intense") > -1){
-		if(data.music.indexOf("2") > -1){
+		if(data.music.indexOf("2.") > -1){
 			emit('update',{'music':'intense3.mp3'});
 					
 				}
-				else if(data.music.indexOf("3") > -1){
+				else if(data.music.indexOf("3.") > -1){
 					emit('update',{'music':'intense.mp3'});
 					
 				}
 				else{
 					emit('update',{'music':'intense2.mp3'});
-					
+                }
 		}
-	}
+	
 	else if(data.music.indexOf("tense") > -1){
-		if(data.music.indexOf("2") > -1){
+		if(data.music.indexOf("2.") > -1){
 			emit('update',{'music':'tense3.mp3'});
 			
 		}
-		else if(data.music.indexOf("3") > -1){
+		else if(data.music.indexOf("3.") > -1){
 			emit('update',{'music':'tense.mp3'});
 			
 		}
@@ -115,11 +115,11 @@ function picknewmusic(){
 		}	
 	}
 	else if(data.music.indexOf("battle") > -1){
-		if(data.music.indexOf("2") > -1){
+		if(data.music.indexOf("2.") > -1){
 			emit('update',{'music':'battle3.mp3'});
 		
 		}
-		else if(data.music.indexOf("3") > -1){
+		else if(data.music.indexOf("3.") > -1){
 			emit('update',{'music':'battle.mp3'});
 			
 		}
