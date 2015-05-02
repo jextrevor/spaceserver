@@ -391,6 +391,18 @@ for (var key in json) {
     if(key == "securityalert"){
       document.getElementById("securityalert").value = json[key];
     }
+    if(key == "peervolume"){
+      document.getElementById("peervolume").value = json[key];
+    }
+    if(key == "musicvolume"){
+      document.getElementById("musicvolume").value = json[key];
+    }
+    if(key == "soundvolume"){
+      document.getElementById("soundvolume").value = json[key];
+    }
+    if(key == "voicevolume"){
+      document.getElementById("voicevolume").value = json[key];
+    }
     if(key == "hailing"){
     	document.getElementById("hailing").value = json[key];
     }
