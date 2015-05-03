@@ -186,6 +186,7 @@ Add System:<br />
 <button class="btn btn-xs btn-primary" accesskey="x" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
 <button class="btn btn-xs btn-primary" accesskey="c" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
 <button class="btn btn-xs btn-primary" accesskey="]" onclick="emit('broadcast',{'sound':'explosion2.mp3'});">Explosion Small</button>
+<button class="btn btn-xs btn-primary" accesskey="}" onclick="emit('broadcast',{'sound':'explosion3.wav'});">Explosion Very Large</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'hail.mp3'});">Call</button>
 <h5>Voices</h5>
 <input type="text" id="speak" onkeypress="handlespeak(event)"/>
@@ -248,9 +249,10 @@ Commands
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
-<button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explosion (no sound)</button>
+<button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':100,'factor':100}})">Explosion (no sound)</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':20,'factor':1000}})">Unstableness</button>
-<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':25,'factor':100}})">Explosion (no sound)(small)</button>
+<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explosion (no sound)(small)</button>
+<button class="btn btn-xs btn-primary" accesskey=">" onclick="emit('broadcast',{'explosion':{'magnitude':200,'factor':100}})">Explosion (no sound)(large)</button>
 <button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})">Stop All Explosions</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':''})">Reload Everyone</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':'/'})">Kick Out Everyone</button>
