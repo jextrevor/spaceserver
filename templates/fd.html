@@ -159,6 +159,7 @@ Add System:<br />
 </div>
 <div class="col-md-2">
     <video id="commander" height="1" width="1" autoplay=""></video>
+    Factor:<input id="factor" onchange="emit('update',{'factor':parseFloat(this.value)})" /><br />
 	Peer:<input id="peervolume" onchange="emit('update',{'peervolume':parseFloat(this.value)})" /><br />Music:<input id="musicvolume" onchange="emit('update',{'musicvolume':parseFloat(this.value)})" /><br />Sounds:<input id="soundvolume" onchange="emit('update',{'soundvolume':parseFloat(this.value)})" /><br />Voice:<input id="voicevolume" onchange="emit('update',{'voicevolume':parseFloat(this.value)})" /><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="/" onclick="emit('update',{'muted':false})">Unmute</button>
 	<h5>Main View Screen</h5>
 	<button class="btn btn-xs btn-primary" accesskey="	" onclick="emit('update',{'screen':''})">Logo</button>
@@ -249,10 +250,10 @@ Commands
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
-<button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':100,'factor':100}})">Explosion (no sound)</button>
+<button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':100,'factor':data.factor}})">Explosion (no sound)</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':20,'factor':1000}})">Unstableness</button>
-<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explosion (no sound)(small)</button>
-<button class="btn btn-xs btn-primary" accesskey=">" onclick="emit('broadcast',{'explosion':{'magnitude':200,'factor':100}})">Explosion (no sound)(large)</button>
+<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':data.factor}})">Explosion (no sound)(small)</button>
+<button class="btn btn-xs btn-primary" accesskey=">" onclick="emit('broadcast',{'explosion':{'magnitude':200,'factor':data.factor}})">Explosion (no sound)(large)</button>
 <button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})">Stop All Explosions</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':''})">Reload Everyone</button>
 <button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':'/'})">Kick Out Everyone</button>

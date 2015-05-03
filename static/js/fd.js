@@ -403,6 +403,9 @@ for (var key in json) {
     if(key == "voicevolume"){
       document.getElementById("voicevolume").value = json[key];
     }
+    if(key == "factor"){
+      document.getElementById("factor").value = json[key];
+    }
     if(key == "hailing"){
     	document.getElementById("hailing").value = json[key];
     }
