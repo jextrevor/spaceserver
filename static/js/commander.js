@@ -2,7 +2,7 @@ var conn_options = {
 'sync disconnect on unload':true
 };
 data = {}
-var peer = new Peer('commander', {key: 'x7imbejnpg2pgb9'}); 
+/*var peer = new Peer('commander', {key: 'x7imbejnpg2pgb9'}); 
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
 alert("Someone is already on the Commander Station - they will be the one that will have video call functionality.");
@@ -19,8 +19,8 @@ peer.on('call', function(call) {
   }, function(err) {
     console.log('Failed to get local stream' ,err);
   });
-});
-var socket = io.connect('https://'+window.location.hostname+':'+window.location.port+'/commander',conn_options);
+});*/
+var socket = io.connect(window.location.href,conn_options);
 socket.on("update",function(json){
 	update(json);
 
