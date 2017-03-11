@@ -1,10 +1,14 @@
 from flask import Flask,render_template,request,redirect,url_for,send_file
-from flask.ext.socketio import SocketIO, emit, join_room, leave_room
+from flask_socketio import SocketIO, emit, join_room, leave_room
 import urllib
 import crypt
+import eventlet
+from gevent import monkey
 import os
+monkey.patch_all()
+eventlet.monkey_patch()
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode='eventlet')
 dictionary = {}
 def emittoallstations(event,data):
 	socketio.emit(event,data, namespace="/commander")

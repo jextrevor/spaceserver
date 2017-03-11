@@ -3,7 +3,7 @@ var conn_options = {
 };
 data = {}
 lock = false;
-var socket = io.connect(window.location.href,conn_options);
+var socket = io.connect(window.location.protocol+'//'+document.domain+':'+location.port+'/operations',{});
 socket.on("update",function(json){
 	update(json);
 

@@ -5,7 +5,7 @@ data = {};
 selected = 0;
 deleter = 0;
 var peer = new Peer({key: 'x7imbejnpg2pgb9'}); 
-var socket = io.connect(window.location.href,conn_options);
+var socket = io.connect(window.location.protocol+'//'+document.domain+':'+location.port+'/fd',{});
 socket.on("update",function(json){
 	update(json);
 
