@@ -8,30 +8,30 @@ function sound(path){
 socket.on('explosion', function(json){
     magnitude += json['magnitude'];
     factor = json['factor'];
-    clearInterval(shake);
-    shake = setInterval(function(){doshake()},1);
 });
 socket.on('reload', function(json){
 window.location.href = json;
 });
 function doshake(){
-    document.body.style["-webkit-filter"] = "blur("+magnitude/10+"px)";
-    document.body.style["filter"] = "blur("+magnitude/10+"px)";
-    document.body.style.top = randomIntFromInterval(magnitude * -1, magnitude)+'px';
-    document.body.style.left = randomIntFromInterval(magnitude * -1, magnitude)+'px';
-    document.body.style['-webkit-transform'] = "rotate("+randomIntFromInterval(magnitude * -1, magnitude)/50+'deg)';
-    document.body.style['-moz-transform'] = "rotate("+randomIntFromInterval(magnitude * -1, magnitude)/50+'deg)';
+    //document.body.style["-webkit-filter"] = "blur("+magnitude/10+"px)";
+    //document.body.style["filter"] = "blur("+magnitude/10+"px)";
+    //document.body.style.top = randomIntFromInterval(magnitude * -1, magnitude)+'px';
+    //document.body.style.left = randomIntFromInterval(magnitude * -1, magnitude)+'px';
+    document.body.style['-webkit-transform'] = "rotate("+randomIntFromInterval(magnitude * -1, magnitude)/50+'deg) translateX('+randomIntFromInterval(magnitude * -1, magnitude)+'px) translateY('+randomIntFromInterval(magnitude * -1, magnitude)+'px)';
+    document.body.style['-moz-transform'] = "rotate("+randomIntFromInterval(magnitude * -1, magnitude)/50+'deg) translateX('+randomIntFromInterval(magnitude * -1, magnitude)+'px) translateY('+randomIntFromInterval(magnitude * -1, magnitude)+'px)';
+    //document.body.style['-webkit-transform'] = 'translateX('+randomIntFromInterval(magnitude * -1, magnitude)+'px) translateY('+randomIntFromInterval(magnitude * -1, magnitude)+'px)';
+    //document.body.style['-moz-transform'] = 'translateX('+randomIntFromInterval(magnitude * -1, magnitude)+'px) translateY('+randomIntFromInterval(magnitude * -1, magnitude)+'px)';
     magnitude -= (magnitude+1)/factor;
     if(magnitude <= 0){
     magnitude = 0;
-    clearInterval(shake);
-    document.body.style.top = '0px';
-    document.body.style.left = '0px';
-    document.body.style["-webkit-filter"] = "blur(0px)";
-    document.body.style["filter"] = "blur(0px)";
-    document.body.style['-webkit-transform'] = "rotate(0deg)";
-    document.body.style['-moz-transform'] = "rotate(0deg)";
+    //document.body.style.top = '0px';
+    //document.body.style.left = '0px';
+    //document.body.style["-webkit-filter"] = "none";
+    //document.body.style["filter"] = "none";
+    document.body.style['-webkit-transform'] = "none";
+    document.body.style['-moz-transform'] = "none";
     }
+    requestAnimationFrame(doshake);
 }
 function randomIntFromInterval(min,max)
 {
@@ -44,3 +44,4 @@ function checkIt(value){
     }
     }
 }
+setTimeout(doshake,3000);

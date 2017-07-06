@@ -2,13 +2,9 @@ from flask import Flask,render_template,request,redirect,url_for,send_file
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import urllib
 import crypt
-import eventlet
-from gevent import monkey
 import os
-monkey.patch_all()
-eventlet.monkey_patch()
 app = Flask(__name__)
-socketio = SocketIO(app, async_mode='eventlet')
+socketio = SocketIO(app)
 dictionary = {}
 def emittoallstations(event,data):
 	socketio.emit(event,data, namespace="/commander")
@@ -152,7 +148,7 @@ def mvs():
 def fd():
 	personId = request.form['pass']
 	personId = crypt.crypt(personId, "xx")
-	if personId != "xx2y9jSUQRHVc":
+	if personId != "xxnLYnJM/DPCQ":
 	    return "<h1> You are not authorized to access the Flight Director station. Go away!</h1>"
 	templateData = {
 		

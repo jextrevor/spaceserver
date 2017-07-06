@@ -7,6 +7,7 @@ body {
     font-family:Electrolize;
     position:relative;
     background:black;
+    will-change: transform filter;
 }
 body::-webkit-scrollbar-track
 {
