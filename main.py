@@ -148,8 +148,8 @@ def mvs():
 def fd():
 	personId = request.form['pass']
 	personId = crypt.crypt(personId, "xx")
-	if personId != "xx2y9jSUQRHVc":
-	    return "<h1> You are not authorized to access the Flight Director station. Go away!</h1>"
+	if personId != "xxs.hRieCCdqA":
+	    return "<h1>Access denied. Please contact the admin for the password.</h1>"
 	templateData = {
 		
 	}
