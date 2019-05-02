@@ -173,7 +173,7 @@ def no_cache(response):
     response.headers['Pragma'] = 'no-cache'
     return response
 if __name__ == '__main__':
-    print "Server running"
+    print("Server running")
     if 'PORT' in os.environ:
     	socketio.run(app, "0.0.0.0",int(os.environ['PORT']))
     else:
