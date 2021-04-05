@@ -166,12 +166,6 @@ def internalerror(error):
         'error':error
         }
     return render_template("error.html",**templateData)
-@app.after_request
-def no_cache(response):
-    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
-    response.headers['Cache-Control'] = 'no-cache, no-store'
-    response.headers['Pragma'] = 'no-cache'
-    return response
 if __name__ == '__main__':
     print("Server running")
     if 'PORT' in os.environ:
