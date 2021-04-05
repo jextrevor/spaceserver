@@ -108,9 +108,9 @@ def home():
     templateData = {
         }
     return render_template('main.html', **templateData)
-@app.route("/google5ece7d78ac791aa2.html")
+@app.route("/robots.txt")
 def verify():
-	return send_file("google5ece7d78ac791aa2.html")
+	return send_file("robots.txt")
 @app.route("/commander/")
 def commander():
 	templateData = {
