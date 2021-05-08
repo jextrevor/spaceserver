@@ -1,7 +1,7 @@
 bidict==0.21.2
 click==6.7
 enum-compat==0.0.3
-eventlet==0.20.1
+eventlet==0.31.0
 Flask==1.0
 Flask-SocketIO==5.0.1
 gevent==1.5.0
