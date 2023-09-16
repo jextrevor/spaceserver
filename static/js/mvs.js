@@ -15,35 +15,35 @@ engine.addEventListener(
   false
 );
 //engine.play();
-var peer = new Peer("mvs", { key: "x7imbejnpg2pgb9" });
-peer.on("error", function (err) {
-  if (err.type == "unavailable-id") {
-    alert(
-      "Someone is already on the Main View Screen - they will be the one that will have video call functionality."
-    );
-    peer.disconnect();
-  }
-});
-navigator.getUserMedia =
-  navigator.getUserMedia ||
-  navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia;
-peer.on("call", function (call) {
-  navigator.getUserMedia(
-    { audio: true },
-    function (stream) {
-      call.answer(stream); // Answer the call with an A/V stream.
-      call.on("stream", function (remoteStream) {
-        console.log("yay");
-        $("#audiooutput").prop("src", URL.createObjectURL(remoteStream));
-        document.getElementById("audiooutput").volume = data.peervolume || 1;
-      });
-    },
-    function (err) {
-      console.log("Failed to get local stream", err);
-    }
-  );
-});
+// var peer = new Peer("mvs", { key: "x7imbejnpg2pgb9" });
+// peer.on("error", function (err) {
+//   if (err.type == "unavailable-id") {
+//     alert(
+//       "Someone is already on the Main View Screen - they will be the one that will have video call functionality."
+//     );
+//     peer.disconnect();
+//   }
+// });
+// navigator.getUserMedia =
+//   navigator.getUserMedia ||
+//   navigator.webkitGetUserMedia ||
+//   navigator.mozGetUserMedia;
+// peer.on("call", function (call) {
+//   navigator.getUserMedia(
+//     { audio: true },
+//     function (stream) {
+//       call.answer(stream); // Answer the call with an A/V stream.
+//       call.on("stream", function (remoteStream) {
+//         console.log("yay");
+//         $("#audiooutput").prop("src", URL.createObjectURL(remoteStream));
+//         document.getElementById("audiooutput").volume = data.peervolume || 1;
+//       });
+//     },
+//     function (err) {
+//       console.log("Failed to get local stream", err);
+//     }
+//   );
+// });
 var socket = io.connect(
   window.location.protocol +
     "//" +
