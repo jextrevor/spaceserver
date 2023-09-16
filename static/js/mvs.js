@@ -62,13 +62,13 @@ socket.on("sound", function (json) {
   dataa.play();
 });
 socket.on("voice", function (json) {
-  var dataa = new Audio(
-    "http://speechutil.com/convert/ogg?text=%27" +
-      encodeURIComponent(json) +
-      "%27"
-  );
-  dataa.volume = data.voicevolume || 1;
-  dataa.play();
+  // var dataa = new Audio(
+  //   "https://speechutil.com/convert/ogg?text=%27" +
+  //     encodeURIComponent(json) +
+  //     "%27"
+  // );
+  // dataa.volume = data.voicevolume || 1;
+  // dataa.play();
 });
 background = new Audio("/static/media/background.mp3");
 background.addEventListener(
