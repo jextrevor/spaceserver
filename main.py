@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,send_file
 from flask_socketio import SocketIO, emit
 import os
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins=[os.environ["BASE_URL"]])
 dictionary = {}
 def emittoallstations(event,data):
 	socketio.emit(event,data, namespace="/commander")

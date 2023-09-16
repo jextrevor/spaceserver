@@ -6,3 +6,4 @@ services:
       - 10005:3000
     environment:
       PASSWORD: ${PASSWORD}
+      BASE_URL: https://spaceserver.trevorjex.com
