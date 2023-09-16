@@ -1,0 +1,8 @@
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 10005:3000
+    environment:
+      PASSWORD: ${PASSWORD}

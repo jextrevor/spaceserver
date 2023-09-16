@@ -1,41 +1,83 @@
 <html>
-<head>
-<title>Space Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/socket.io.js"></script>
-<script src="/static/js/peer.js"></script>
-<script src="/static/js/speakClient.js"></script>
-<script src="/static/js/loop.js"></script>
-<script src="/static/js/mvs.js"></script>
-<script src="/static/js/station.js"></script>
-<style>
-html{
-  cursor:none !important;
-}
-html *{
-    cursor:none !important;
-}
-</style>
-</head>
-<body style="margin:0px;overflow:hidden;">
-<div id="bodycontainer">
-<video id="audiooutput" width="0" height="0" autoplay="" style="display:none;">
-</video>
-<div id="audio" style="display:none"></div>
-<canvas id="warpcanvas" style="display:none;"></canvas>
-<img alt="" id="image" style="display:none;" />
-<div id="logopage" style="display:initial;">
-<center>
-<img alt="" src="/static/img/logo.png" id="logo" height="800" width="800" />
-</center>
-</div>
-</div>
-<div id="redalert" style="position:fixed;top:0;left:0;width:100%;height:100%;background-color:red;display:initial;opacity:0;"></div>
-<div id="yellowalert" style="position:fixed;top:0;left:0;width:100%;height:100%;background-color:yellow;display:initial;opacity:0;"></div>
-</body>
+  <head>
+    <title>Space Center</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/favicon.ico"
+    />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/peer.js"></script>
+    <script src="/static/js/speakClient.js"></script>
+    <script src="/static/js/loop.js"></script>
+    <script src="/static/js/mvs.js"></script>
+    <script src="/static/js/station.js"></script>
+    <style>
+      html {
+        cursor: none !important;
+      }
+      html * {
+        cursor: none !important;
+      }
+    </style>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <div id="bodycontainer">
+      <video
+        id="audiooutput"
+        width="0"
+        height="0"
+        autoplay=""
+        style="display: none"
+      ></video>
+      <div id="audio" style="display: none"></div>
+      <canvas id="warpcanvas" style="display: none"></canvas>
+      <img alt="" id="image" style="display: none" />
+      <div id="logopage" style="display: initial">
+        <center>
+          <img
+            alt=""
+            src="/static/img/logo.png"
+            id="logo"
+            height="800"
+            width="800"
+          />
+        </center>
+      </div>
+    </div>
+    <div
+      id="redalert"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: red;
+        display: initial;
+        opacity: 0;
+      "
+    ></div>
+    <div
+      id="yellowalert"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: yellow;
+        display: initial;
+        opacity: 0;
+      "
+    ></div>
+  </body>
 </html>

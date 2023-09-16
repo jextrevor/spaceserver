@@ -1,281 +1,1067 @@
 <html>
-<head>
-<title>Space Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/socket.io.js"></script>
-<script src="/static/js/peer.js"></script>
-<script src="/static/js/fd.js"></script>
-<style>
-body{
-overflow:scroll;
-}
-html *{
-    -webkit-user-select: text;
-    -khtml-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-}
-</style>
-</head>
-<body>
-<div class="row">
-<div class="col-md-2">
-<h5>Mission Data</h5>
-<textarea id="missiondata" rows="4" cols="20" onchange="emit('update',{'missiondata':document.getElementById('missiondata').value});"></textarea><br />
-<h5>Course</h5>
-X:<input type="text" id="x" class="formcontrol" onchange="emit('update',{'x':document.getElementById('x').value})" /><br />
-Y:<input type="text" id="y" class="formcontrol" onchange="emit('update',{'y':document.getElementById('y').value})" /><br />
-Z:<input type="text" id="z" class="formcontrol" onchange="emit('update',{'z':document.getElementById('z').value})" /><br />
-<h5>Engines</h5>
-Warp:<input type="text" id="warp" class="formcontrol" onchange="emit('update',{'warp':document.getElementById('warp').value})" /><br />
-Impulse:<input type="text" id="impulse" class="formcontrol" onchange="emit('update',{'impulse':document.getElementById('impulse').value})" /><br />
-<h5>Thrusters</h5>
-<div class="row">
-<div id="upthruster" class="col-xs-4" onclick="releasethruster('up');">Up</div>
-<div id="forwardthruster" class="col-xs-4" onclick="releasethruster('forward');">Forward</div>
-<div class="col-xs-4"></div>
-</div>
-<div class="row">
-<div id="leftthruster" class="col-xs-4" onclick="releasethruster('left');">Left</div>
-<div class="col-xs-4"></div>
-<div id="rightthruster" class="col-xs-4" onclick="releasethruster('right');">Right</div>
-</div>
-<div class="row">
-<div id="downthruster" class="col-xs-4" onclick="releasethruster('down');">Down</div>
-<div id="backwardthruster" class="col-xs-4" onclick="releasethruster('backward');">Backward</div>
-<div class="col-xs-4"></div>
-</div>
-<h5>ETA</h5>
-<div id="etatext"></div>
-<input type="text" id="eta" class="formcontrol" onchange="emit('update',{'eta':parseInt(document.getElementById('eta').value)})" />
-<h5>Maps</h5>
-<!--<div id="maplist" style="overflow-y:auto;max-height:150px;"></div>
+  <head>
+    <title>Space Center</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/favicon.ico"
+    />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/peer.js"></script>
+    <script src="/static/js/fd.js"></script>
+    <style>
+      body {
+        overflow: scroll;
+      }
+      html * {
+        -webkit-user-select: text;
+        -khtml-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-2">
+        <h5>Mission Data</h5>
+        <textarea
+          id="missiondata"
+          rows="4"
+          cols="20"
+          onchange="emit('update',{'missiondata':document.getElementById('missiondata').value});"
+        ></textarea
+        ><br />
+        <h5>Course</h5>
+        X:<input
+          type="text"
+          id="x"
+          class="formcontrol"
+          onchange="emit('update',{'x':document.getElementById('x').value})"
+        /><br />
+        Y:<input
+          type="text"
+          id="y"
+          class="formcontrol"
+          onchange="emit('update',{'y':document.getElementById('y').value})"
+        /><br />
+        Z:<input
+          type="text"
+          id="z"
+          class="formcontrol"
+          onchange="emit('update',{'z':document.getElementById('z').value})"
+        /><br />
+        <h5>Engines</h5>
+        Warp:<input
+          type="text"
+          id="warp"
+          class="formcontrol"
+          onchange="emit('update',{'warp':document.getElementById('warp').value})"
+        /><br />
+        Impulse:<input
+          type="text"
+          id="impulse"
+          class="formcontrol"
+          onchange="emit('update',{'impulse':document.getElementById('impulse').value})"
+        /><br />
+        <h5>Thrusters</h5>
+        <div class="row">
+          <div
+            id="upthruster"
+            class="col-xs-4"
+            onclick="releasethruster('up');"
+          >
+            Up
+          </div>
+          <div
+            id="forwardthruster"
+            class="col-xs-4"
+            onclick="releasethruster('forward');"
+          >
+            Forward
+          </div>
+          <div class="col-xs-4"></div>
+        </div>
+        <div class="row">
+          <div
+            id="leftthruster"
+            class="col-xs-4"
+            onclick="releasethruster('left');"
+          >
+            Left
+          </div>
+          <div class="col-xs-4"></div>
+          <div
+            id="rightthruster"
+            class="col-xs-4"
+            onclick="releasethruster('right');"
+          >
+            Right
+          </div>
+        </div>
+        <div class="row">
+          <div
+            id="downthruster"
+            class="col-xs-4"
+            onclick="releasethruster('down');"
+          >
+            Down
+          </div>
+          <div
+            id="backwardthruster"
+            class="col-xs-4"
+            onclick="releasethruster('backward');"
+          >
+            Backward
+          </div>
+          <div class="col-xs-4"></div>
+        </div>
+        <h5>ETA</h5>
+        <div id="etatext"></div>
+        <input
+          type="text"
+          id="eta"
+          class="formcontrol"
+          onchange="emit('update',{'eta':parseInt(document.getElementById('eta').value)})"
+        />
+        <h5>Maps</h5>
+        <!--<div id="maplist" style="overflow-y:auto;max-height:150px;"></div>
 Add Place:<br />
 <input type="text" id="addmap" class="formcontrol" /><br />
 <input type="text" id="mapx" class="formcontrol" style="width:50px" />
 <input type="text" id="mapy" class="formcontrol" style="width:50px" />
 <input type="text" id="mapz" class="formcontrol" style="width:50px" /><br />
 <input type="text" id="mapinfo" class="formcontrol" onkeypress="handleaddmap(event)" />-->
-<input type="text" id="mapping" class="formcontrol" onchange="emit('update',{'mapping':document.getElementById('mapping').value})" /><br />
-<input type="text" id="map" class="formcontrol" onchange="emit('update',{'map':document.getElementById('map').value})" /><br />
-</div>
-<div class="col-md-2">
-<h5>Ships on Radar</h5>
-<div id="radarlist" style="overflow-y:auto;max-height:150px;"></div>
-Add Ship:<br />
-<input type="text" id="addship" class="formcontrol" /><br />
-<input type="text" id="shipx" class="formcontrol" style="width:50px" />
-<input type="text" id="shipy" class="formcontrol" style="width:50px" />
-<input type="text" id="shipz" class="formcontrol" style="width:50px" /><br />
-<input type="text" id="shipshields" style="width:40px" />
-<input type="text" id="shiphull" style="width:40px" />
-<input type="text" id="shipengines" style="width:40px" />
-<input type="text" id="shipsystems" style="width:40px" /><br />
-<input type="text" id="shipinfo" class="formcontrol" onkeypress="handleaddship(event)" />
-<h5>Targeting</h5>
-<input type="text" id="target" onchange="emit('update',{'target':document.getElementById('target').value})" />
-<h5>Shields</h5>
-<input type="checkbox" id="shields" accesskey="'" onchange="emit('update',{'shields':document.getElementById('shields').checked})" />
-<h5>Torpedoes</h5>
-<input type="text" id="torpedoes" onchange="emit('update',{'torpedoes':parseInt(document.getElementById('torpedoes').value)})" />
-<h5>Security Alerts</h5>
-<input type="text" id="securityalert" onchange="emit('update',{'securityalert':document.getElementById('securityalert').value})" />
-<h5>Hailing</h5>
-<input type="text" id="hailed" onchange="emit('update',{'hailed':document.getElementById('hailed').value})" />
-<input type="text" id="hailing" onchange="emit('update',{'hailing':document.getElementById('hailing').value})" />
-<h5>Security Teams</h5>
-<input type="text" id="team1" onchange="emit('update',{'team1':document.getElementById('team1').value})" /><br />
-<input type="text" id="team2" onchange="emit('update',{'team2':document.getElementById('team2').value})" /><br />
-<input type="text" id="team3" onchange="emit('update',{'team3':document.getElementById('team3').value})" /><br />
-<input type="text" id="team4" onchange="emit('update',{'team4':document.getElementById('team4').value})" /><br />
-</div>
-<div class="col-md-2">
-<h5>Objects</h5>
-<div id="objectlist" style="overflow-y:auto;max-height:150px;"></div>
-Add Object:<br />
-<input type="text" id="addobject" class="formcontrol" /><br />
-<input type="checkbox" id="objectlock" class="formcontrol" />
-<input type="text" id="objectplace" class="formcontrol" onkeypress="handleaddobject(event)"/><br />
-<h5>Alert Status</h5>
-<input type="text" id="alert" onchange="emit('update',{'alert':document.getElementById('alert').value})" />
-<h5>Probing</h5>
-<input type="text" id="probing" onchange="emit('update',{'probing':document.getElementById('probing').value})" />
-<input type="text" id="probe" onchange="emit('update',{'probe':document.getElementById('probe').value})" />
-<h5>Scanning</h5>
-<input type="text" id="scanning" onchange="emit('update',{'scanning':document.getElementById('scanning').value})" />
-<input type="text" id="scan" onchange="emit('update',{'scan':document.getElementById('scan').value})" />
-<h5>Analysis</h5>
-<input type="text" id="analysis" onchange="emit('update',{'analysis':document.getElementById('analysis').value})" />
-<h5>Coolant</h5>
-<input type="text" id="coolant" onchange="emit('update',{'coolant':parseInt(document.getElementById('coolant').value)})" />
-<h5>Max Power</h5>
-<input type="text" id="maxpower" onchange="emit('update',{'maxpower':parseInt(document.getElementById('maxpower').value)})" />
-<h5>Fixing</h5>
-<input type="text" id="zzzzzzfixing" onchange="emit('update',{'zzzzzzfixing':parseInt(document.getElementById('zzzzzzfixing').value)})" />
-</div>
-<div class="col-md-2">
-	<h5>Systems</h5>
-<div id="systemlist" style="overflow-y:auto;max-height:150px;"></div>
-Add System:<br />
-<input type="text" id="addsystem" /><br />
-<input type="text" id="systemheat" /><br />
-<input type="text" id="systemdamage" /><br />
-<input type="text" id="systempower" onkeypress="handleaddsystem(event)"/><br />
-<h5>Diagnosing</h5>
-<input type="text" id="diagnosing" onchange="emit('update',{'diagnosing':document.getElementById('diagnosing').value})" />
-<input type="text" id="diagnostic" onchange="emit('update',{'diagnostic':document.getElementById('diagnostic').value})" />
-<h5>Commands</h5>
-<input type="text" id="commanding" onchange="emit('update',{'commanding':document.getElementById('commanding').value})" />
-<input type="text" id="command" onchange="emit('update',{'command':document.getElementById('command').value})" />
-<h5>Music</h5>
-<button class="btn btn-xs btn-primary" accesskey="p" onclick="emit('update',{'music':''})">Pause</button>
-<button class="btn btn-xs btn-primary" accesskey="1" onclick="emit('update',{'music':'battle.mp3'})">Battle (Final)</button>
-<button class="btn btn-xs btn-primary" accesskey="2" onclick="emit('update',{'music':'battle2.mp3'})">Battle (Intense)</button>
-<button class="btn btn-xs btn-primary" accesskey="3" onclick="emit('update',{'music':'battle3.mp3'})">Battle (Tense)</button>
-<button class="btn btn-xs btn-primary" accesskey="4" onclick="emit('update',{'music':'intense.mp3'})">Intense (Slow)</button>
-<button class="btn btn-xs btn-primary" accesskey="5" onclick="emit('update',{'music':'intense2.mp3'})">Intense (Tense)</button>
-<button class="btn btn-xs btn-primary" accesskey="6" onclick="emit('update',{'music':'intense3.mp3'})">Intense (Intense)</button>
-<button class="btn btn-xs btn-primary" accesskey="7" onclick="emit('update',{'music':'tense.mp3'})">Tense (Tense)</button>
-<button class="btn btn-xs btn-primary" accesskey="8" onclick="emit('update',{'music':'tense2.mp3'})">Tense (Intense)</button>
-<button class="btn btn-xs btn-primary" accesskey="9" onclick="emit('update',{'music':'tense3.mp3'})">Tense (Slow)</button>
-<button class="btn btn-xs btn-primary" accesskey="0" onclick="emit('update',{'music':'travel.mp3'})">Travel (Tense)</button>
-<button class="btn btn-xs btn-primary" accesskey="-" onclick="emit('update',{'music':'travel2.mp3'})">Travel (Slow)</button>
-<button class="btn btn-xs btn-primary" accesskey="=" onclick="emit('update',{'music':'travel3.mp3'})">Travel Fast</button>
-<button class="btn btn-xs btn-primary" accesskey="`" onclick="emit('update',{'music':'exposition.mp3'})">Exposition</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'training.mp3'})">Training (Preliminary)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'training2.mp3'})">Training (Middle)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'music':'training3.mp3'})">Training (Quiet)</button>
-<button class="btn btn-xs btn-primary" accesskey="a" onclick="emit('update',{'music':'victory.mp3','screen':'victory.png'})">Victory</button>
-<button class="btn btn-xs btn-primary" accesskey="s" onclick="emit('update',{'music':'defeat.wav','screen':'defeat.png'})">Defeat</button>
-<button class="btn btn-xs btn-primary" accesskey="[" onclick="emit('update',{'music':'cliffhanger.wav','screen':'cliffhanger.png'})">Cliffhanger</button>
-<h5>Effects</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})">Explo M50,F100</button>
-</div>
-<div class="col-md-2">
-    <video id="commander" height="1" width="1" autoplay=""></video>
-    Factor:<input id="factor" onchange="emit('update',{'factor':parseFloat(this.value)})" /><br />
-	Peer:<input id="peervolume" onchange="emit('update',{'peervolume':parseFloat(this.value)})" /><br />Music:<input id="musicvolume" onchange="emit('update',{'musicvolume':parseFloat(this.value)})" /><br />Sounds:<input id="soundvolume" onchange="emit('update',{'soundvolume':parseFloat(this.value)})" /><br />Voice:<input id="voicevolume" onchange="emit('update',{'voicevolume':parseFloat(this.value)})" /><br />Commander:<button class="btn btn-xs btn-success" onclick="call('commander')">Call</button><button class="btn btn-xs btn-info" onclick="mutecommander()">Mute</button><button class="btn btn-xs btn-info" onclick="unmutecommander()">Unmute</button><br />Main Screen:<button class="btn btn-xs btn-success" onclick="call('mvs')">Call</button><button class="btn btn-xs btn-info" accesskey="m" onclick="emit('update',{'muted':true})">Mute</button><button class="btn btn-xs btn-info" accesskey="/" onclick="emit('update',{'muted':false})">Unmute</button>
-	<h5>Main View Screen</h5>
-	<button class="btn btn-xs btn-primary" accesskey="	" onclick="emit('update',{'screen':''})">Logo</button>
-	<button class="btn btn-xs btn-primary" accesskey="q" onclick="emit('update',{'screen':0.1})">Slow Warp</button>
-	<button class="btn btn-xs btn-primary" accesskey="w" onclick="emit('update',{'screen':0.3})">Normal Warp</button>
-	<button class="btn btn-xs btn-primary" accesskey="e" onclick="emit('update',{'screen':0.5})">Medium Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':0.9})">Fast Warp</button>
-	<button class="btn btn-xs btn-primary" onclick="emit('update',{'screen':1})">Full speed</button>
-	<button class="btn btn-xs btn-primary" accesskey="y" onclick="emit('update',{'screen':'ship2.jpg'})">Ship</button>
-	<button class="btn btn-xs btn-primary" accesskey="u" onclick="emit('update',{'screen':'star2.jpg'})">Explo</button>
-	<button class="btn btn-xs btn-primary" accesskey="i" onclick="emit('update',{'screen':'star3.jpeg'})">Nebula</button>
-<button class="btn btn-xs btn-primary" accesskey="o" onclick="emit('update',{'screen':'text2.jpg'})">UFP</button>
-<button class="btn btn-xs btn-primary" accesskey="r" onclick="emit('update',{'screen':'star4.jpg'})">Vortex</button>
-<button class="btn btn-xs btn-primary" accesskey="t" onclick="emit('update',{'screen':'star5.jpg'})">Planet</button>
-<h5>Sounds</h5>
-<button class="btn btn-xs btn-primary" accesskey="d" onclick="emit('broadcast',{'sound':'info.wav'});">Info</button>
-<button class="btn btn-xs btn-primary" accesskey="f" onclick="emit('broadcast',{'sound':'processing.mp3'});">Processing</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warp.mp3'});">Warp</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'warpout.mp3'});">Warpout</button>
-<button class="btn btn-xs btn-primary" accesskey="j" onclick="emit('broadcast',{'sound':'transporter.mp3'});">Transporter</button>
-<button class="btn btn-xs btn-primary" accesskey="k" onclick="emit('broadcast',{'sound':'phaser.mp3'});">Phaser</button>
-<button class="btn btn-xs btn-primary" accesskey="l" onclick="emit('broadcast',{'sound':'torpedo.mp3'});">Torpedo</button>
-<button class="btn btn-xs btn-primary" accesskey=";" onclick="emit('broadcast',{'sound':'error.mp3'});">Error</button>
-<button class="btn btn-xs btn-primary" accesskey="z" onclick="emit('broadcast',{'sound':'explosion.mp3'});">Explosion</button>
-<button class="btn btn-xs btn-primary" accesskey="x" onclick="emit('broadcast',{'sound':'danger.mp3'});">Danger</button>
-<button class="btn btn-xs btn-primary" accesskey="c" onclick="emit('broadcast',{'sound':'intruder.mp3'});">Intruder</button>
-<button class="btn btn-xs btn-primary" accesskey="]" onclick="emit('broadcast',{'sound':'explosion2.mp3'});">Explosion Small</button>
-<button class="btn btn-xs btn-primary" accesskey="}" onclick="emit('broadcast',{'sound':'explosion3.wav'});">Explosion Very Large</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'hail.mp3'});">Call</button>
-<h5>Voices</h5>
-<input type="text" id="speak" onkeypress="handlespeak(event)"/>
-<h5>Lockdown</h5>
-<button class="btn btn-xs btn-primary" accesskey="v" onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':false});">Lock All Except MVS</button>
-<button class="btn btn-xs btn-primary" accesskey="b" onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});">Unlock All</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':true});">Lock Commander</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'commanderlockdown':false});">Unlock Commander</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'navigatorlockdown':true});">Lock Navigator</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'navigatorlockdown':false});">Unlock Navigator</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'tacticallockdown':true});">Lock Tactical</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'tacticallockdown':false});">Unlock Tactical</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'operationslockdown':true});">Lock Operations</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'operationslockdown':false});">Unlock Operations</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'engineerlockdown':true});">Lock Engineer</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'engineerlockdown':false});">Unlock Engineer</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'mvslockdown':true});">Lock MVS</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'mvslockdown':false});">Unlock MVS</button>
-</div>
-<div class="col-md-2">
-<h5>System Statuses</h5>
-Warp
-<input type="checkbox" id="warpbroken" accesskey="g" onchange="emit('update',{'warpbroken':document.getElementById('warpbroken').checked})" />
-Impulse
-<input type="checkbox" id="impulsebroken" onchange="emit('update',{'impulsebroken':document.getElementById('impulsebroken').checked})" />
-Thrusters
-<input type="checkbox" id="thrusterbroken" onchange="emit('update',{'thrusterbroken':document.getElementById('thrusterbroken').checked})" />
-Course
-<input type="checkbox" id="coursebroken" onchange="emit('update',{'coursebroken':document.getElementById('coursebroken').checked})" />
-Maps
-<input type="checkbox" id="mapbroken" onchange="emit('update',{'mapbroken':document.getElementById('mapbroken').checked})" />
-Targeting
-<input type="checkbox" id="targetbroken" accesskey="n" onchange="emit('update',{'targetbroken':document.getElementById('targetbroken').checked})" />
-Shields
-<input type="checkbox" id="shieldbroken" onchange="emit('update',{'shieldbroken':document.getElementById('shieldbroken').checked})" />
-Phasers
-<input type="checkbox" id="phaserbroken" onchange="emit('update',{'phaserbroken':document.getElementById('phaserbroken').checked})" />
-Torpedoes
-<input type="checkbox" id="torpedobroken" onchange="emit('update',{'torpedobroken':document.getElementById('torpedobroken').checked})" />
-Hailing
-<input type="checkbox" id="hailbroken" onchange="emit('update',{'hailbroken':document.getElementById('hailbroken').checked})" />
-Probing
-<input type="checkbox" id="probebroken" onchange="emit('update',{'probebroken':document.getElementById('probebroken').checked})" />
-Scanning
-<input type="checkbox" id="scanbroken" onchange="emit('update',{'scanbroken':document.getElementById('scanbroken').checked})" />
-Analysis
-<input type="checkbox" id="analysisbroken" onchange="emit('update',{'analysisbroken':document.getElementById('analysisbroken').checked})" />
-Transporter
-<input type="checkbox" id="transporterbroken" accesskey="h" onchange="emit('update',{'transporterbroken':document.getElementById('transporterbroken').checked})" />
-Power
-<input type="checkbox" id="powerbroken" onchange="emit('update',{'powerbroken':document.getElementById('powerbroken').checked})" />
-Cooling
-<input type="checkbox" id="heatbroken" onchange="emit('update',{'heatbroken':document.getElementById('heatbroken').checked})" />
-Diagnostics
-<input type="checkbox" id="diagnosticbroken" onchange="emit('update',{'diagnosticbroken':document.getElementById('diagnosticbroken').checked})" />
-Commands
-<input type="checkbox" id="commandbroken" onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})" />
-<h5>Automatic Stuff</h5>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});">I'm your Computer</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Online'});">Online</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'voice':'Processing. Please wait.'});">Processing</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});">Explosion</button>
-<button class="btn btn-xs btn-primary" accesskey="\" onclick="emit('broadcast',{'explosion':{'magnitude':100,'factor':data.factor}})">Explosion (no sound)</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'explosion':{'magnitude':20,'factor':1000}})">Unstableness</button>
-<button class="btn btn-xs btn-primary" accesskey="." onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':data.factor}})">Explosion (no sound)(small)</button>
-<button class="btn btn-xs btn-primary" accesskey=">" onclick="emit('broadcast',{'explosion':{'magnitude':200,'factor':data.factor}})">Explosion (no sound)(large)</button>
-<button class="btn btn-xs btn-primary" accesskey="," onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})">Stop All Explosions</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':''})">Reload Everyone</button>
-<button class="btn btn-xs btn-primary" onclick="emit('broadcast',{'reload':'/'})">Kick Out Everyone</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'maxpower':300,'coolant':100,'systems':{'Main Computer':{'heat':0,'damage':100,'power':50},'Sensors':{'heat':0,'damage':100,'power':50},'Warp':{'heat':0,'damage':100,'power':50},'Shields':{'heat':0,'damage':100,'power':50},'Weapons':{'heat':0,'damage':100,'power':50},'Targeting':{'heat':0,'damage':100,'power':50},'Transporter':{'heat':0,'damage':100,'power':50}}})">Default Systems</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'missiondata':'Commander - a Federation ship by the name of the UFS Atlas seems to have disappeared in the sector A13 sometime today. The Atlas is one of the Federation\'s most important ships, and this makes your mission very time sensitive. We last heard from them about 3 hours ago, when their engines failed for an unknown reason. Scanners from that time show inconclusive results. It is a very absurd situation, and we don\'t know what\'s going on.\n\nWe\'ve called on you because you are an experienced commander and we trust you to complete this mission. Scanners show some subspace anomalies in the area, so be careful. Your mission is to find the UFS Atlas and rescue it. Make sure to keep contact with us. We\'re planning to establish an uplink so that we may monitor your scanners and systems.\n\nFirst you need to travel to the coordinates 365, 2376, 24. We\'ve chosen this point because it is a safe distance away from the subspace anomalies in the area. Once you are to these coordinates, establish an uplink to Federation headquarters. Move in carefully and rescue the Atlas.\n\nGood luck on your mission!'">Mission Data: Time Loop</button>
-<button class="btn btn-xs btn-primary" onclick="emit('update',{'missiondata':'##_-TOP SECRET-_\n\nCommander of the USS Callisto - we have received troubling news. The following Planets of the Federation are the cause of our worries:\n\n* Paeron in Sector AYK-520\n* Rowe in Sector FJH-536\n\nThe governments of these planets claim to follow the Federation and its Values - however there have been reports of totalitarianism by the leaders, the effects of which include confusing laws and harsh requirements of the people. The exact reason why the governments are doing this is unknown, however, one thing\'s for certain: it must be investigated further.\n\nFrom our studies so far, this behavior seems to resemble most closely that of Joseph Stalin, a historical Earth leader who was harsh on his people in order to modernize his country. Indeed, the suspected planets seem to have low rates of trade and population, but their Stalin-like behavior barely seems to help trade, and seems to be adversely affecting their economy.\n\nYour Mission is to investigate and locate the root of this problem, and if required, to take necessary action to remove it.\n\nTo get to the planets specified, you must travel to coordinates 227, 0, 200; and 345, 124, 206, respectively. Investigating the problem may prove to be challenging since these planets have developed advanced radar systems. These systems are capable of accurately pinpointing ships as far as 1 AU away. Through our hacking efforts we have managed to reduce the range of these radar systems to 500 miles without detection by the said governments; however this is still not close enough for your transporter systems. We recommend that you increase power to your transporter systems or try destroying the radar to solve the problem.\n\nWe think that you may be able to hack into communication systems by either using your ships engineer command system or by taking over a government spaceship through your security teams. There may be other ways, however. In all your efforts, make sure that you are not caught by the planet\'s governments or any outsiders. \n\nOnce you have hacked into communications, search and see if you can locate why the governments are being harsh on their citizens. Once you have found out why, contact headquarters and stand by for further orders.\n\n###Good luck on your mission!'})">Mission Data (Echoes of Stalin)</button>
-<button class="btn btn-xs btn-primary" onclick="reset()">Reset All</button>
-<h5>Radar</h5>
-<svg id="radarcanvas" width="100" height="100">
-<rect width="100" height="100" style="fill:transparent;stroke-width:1;stroke:rgb(0,255,0);fill-opacity:0" />
-<circle cx="50" cy="50" r="50" stroke="green" stroke-width="1" fill="red" />
-<circle cx="50" cy="50" r="30" stroke="green" stroke-width="1" fill="yellow" />
-<circle cx="50" cy="50" r="10" stroke="green" stroke-width="1" fill="blue" />
-<line x1="50" y1="0" x2="50" y2="100" style="stroke:rgb(0,255,0);stroke-width:1" />
-<line x1="0" y1="50" x2="100" y2="50" style="stroke:rgb(0,255,0);stroke-width:1" />
-</svg>
-<button class="btn btn-xs btn-primary" onclick="startadd()">Add</button>
-<button class="btn btn-xs btn-primary" onclick="startdel()">Delete</button><br />
-<input type="text" id="radarname" />
-<h5>Targeting Focus</h5>
-<input type="text" id="focus" onchange="emit('update',{'probing':document.getElementById('probing').value})"/>
-</div>
-</div>
-</body>
+        <input
+          type="text"
+          id="mapping"
+          class="formcontrol"
+          onchange="emit('update',{'mapping':document.getElementById('mapping').value})"
+        /><br />
+        <input
+          type="text"
+          id="map"
+          class="formcontrol"
+          onchange="emit('update',{'map':document.getElementById('map').value})"
+        /><br />
+      </div>
+      <div class="col-md-2">
+        <h5>Ships on Radar</h5>
+        <div id="radarlist" style="overflow-y: auto; max-height: 150px"></div>
+        Add Ship:<br />
+        <input type="text" id="addship" class="formcontrol" /><br />
+        <input type="text" id="shipx" class="formcontrol" style="width: 50px" />
+        <input type="text" id="shipy" class="formcontrol" style="width: 50px" />
+        <input
+          type="text"
+          id="shipz"
+          class="formcontrol"
+          style="width: 50px"
+        /><br />
+        <input type="text" id="shipshields" style="width: 40px" />
+        <input type="text" id="shiphull" style="width: 40px" />
+        <input type="text" id="shipengines" style="width: 40px" />
+        <input type="text" id="shipsystems" style="width: 40px" /><br />
+        <input
+          type="text"
+          id="shipinfo"
+          class="formcontrol"
+          onkeypress="handleaddship(event)"
+        />
+        <h5>Targeting</h5>
+        <input
+          type="text"
+          id="target"
+          onchange="emit('update',{'target':document.getElementById('target').value})"
+        />
+        <h5>Shields</h5>
+        <input
+          type="checkbox"
+          id="shields"
+          accesskey="'"
+          onchange="emit('update',{'shields':document.getElementById('shields').checked})"
+        />
+        <h5>Torpedoes</h5>
+        <input
+          type="text"
+          id="torpedoes"
+          onchange="emit('update',{'torpedoes':parseInt(document.getElementById('torpedoes').value)})"
+        />
+        <h5>Security Alerts</h5>
+        <input
+          type="text"
+          id="securityalert"
+          onchange="emit('update',{'securityalert':document.getElementById('securityalert').value})"
+        />
+        <h5>Hailing</h5>
+        <input
+          type="text"
+          id="hailed"
+          onchange="emit('update',{'hailed':document.getElementById('hailed').value})"
+        />
+        <input
+          type="text"
+          id="hailing"
+          onchange="emit('update',{'hailing':document.getElementById('hailing').value})"
+        />
+        <h5>Security Teams</h5>
+        <input
+          type="text"
+          id="team1"
+          onchange="emit('update',{'team1':document.getElementById('team1').value})"
+        /><br />
+        <input
+          type="text"
+          id="team2"
+          onchange="emit('update',{'team2':document.getElementById('team2').value})"
+        /><br />
+        <input
+          type="text"
+          id="team3"
+          onchange="emit('update',{'team3':document.getElementById('team3').value})"
+        /><br />
+        <input
+          type="text"
+          id="team4"
+          onchange="emit('update',{'team4':document.getElementById('team4').value})"
+        /><br />
+      </div>
+      <div class="col-md-2">
+        <h5>Objects</h5>
+        <div id="objectlist" style="overflow-y: auto; max-height: 150px"></div>
+        Add Object:<br />
+        <input type="text" id="addobject" class="formcontrol" /><br />
+        <input type="checkbox" id="objectlock" class="formcontrol" />
+        <input
+          type="text"
+          id="objectplace"
+          class="formcontrol"
+          onkeypress="handleaddobject(event)"
+        /><br />
+        <h5>Alert Status</h5>
+        <input
+          type="text"
+          id="alert"
+          onchange="emit('update',{'alert':document.getElementById('alert').value})"
+        />
+        <h5>Probing</h5>
+        <input
+          type="text"
+          id="probing"
+          onchange="emit('update',{'probing':document.getElementById('probing').value})"
+        />
+        <input
+          type="text"
+          id="probe"
+          onchange="emit('update',{'probe':document.getElementById('probe').value})"
+        />
+        <h5>Scanning</h5>
+        <input
+          type="text"
+          id="scanning"
+          onchange="emit('update',{'scanning':document.getElementById('scanning').value})"
+        />
+        <input
+          type="text"
+          id="scan"
+          onchange="emit('update',{'scan':document.getElementById('scan').value})"
+        />
+        <h5>Analysis</h5>
+        <input
+          type="text"
+          id="analysis"
+          onchange="emit('update',{'analysis':document.getElementById('analysis').value})"
+        />
+        <h5>Coolant</h5>
+        <input
+          type="text"
+          id="coolant"
+          onchange="emit('update',{'coolant':parseInt(document.getElementById('coolant').value)})"
+        />
+        <h5>Max Power</h5>
+        <input
+          type="text"
+          id="maxpower"
+          onchange="emit('update',{'maxpower':parseInt(document.getElementById('maxpower').value)})"
+        />
+        <h5>Fixing</h5>
+        <input
+          type="text"
+          id="zzzzzzfixing"
+          onchange="emit('update',{'zzzzzzfixing':parseInt(document.getElementById('zzzzzzfixing').value)})"
+        />
+      </div>
+      <div class="col-md-2">
+        <h5>Systems</h5>
+        <div id="systemlist" style="overflow-y: auto; max-height: 150px"></div>
+        Add System:<br />
+        <input type="text" id="addsystem" /><br />
+        <input type="text" id="systemheat" /><br />
+        <input type="text" id="systemdamage" /><br />
+        <input
+          type="text"
+          id="systempower"
+          onkeypress="handleaddsystem(event)"
+        /><br />
+        <h5>Diagnosing</h5>
+        <input
+          type="text"
+          id="diagnosing"
+          onchange="emit('update',{'diagnosing':document.getElementById('diagnosing').value})"
+        />
+        <input
+          type="text"
+          id="diagnostic"
+          onchange="emit('update',{'diagnostic':document.getElementById('diagnostic').value})"
+        />
+        <h5>Commands</h5>
+        <input
+          type="text"
+          id="commanding"
+          onchange="emit('update',{'commanding':document.getElementById('commanding').value})"
+        />
+        <input
+          type="text"
+          id="command"
+          onchange="emit('update',{'command':document.getElementById('command').value})"
+        />
+        <h5>Music</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="p"
+          onclick="emit('update',{'music':''})"
+        >
+          Pause
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="1"
+          onclick="emit('update',{'music':'battle.mp3'})"
+        >
+          Battle (Final)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="2"
+          onclick="emit('update',{'music':'battle2.mp3'})"
+        >
+          Battle (Intense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="3"
+          onclick="emit('update',{'music':'battle3.mp3'})"
+        >
+          Battle (Tense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="4"
+          onclick="emit('update',{'music':'intense.mp3'})"
+        >
+          Intense (Slow)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="5"
+          onclick="emit('update',{'music':'intense2.mp3'})"
+        >
+          Intense (Tense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="6"
+          onclick="emit('update',{'music':'intense3.mp3'})"
+        >
+          Intense (Intense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="7"
+          onclick="emit('update',{'music':'tense.mp3'})"
+        >
+          Tense (Tense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="8"
+          onclick="emit('update',{'music':'tense2.mp3'})"
+        >
+          Tense (Intense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="9"
+          onclick="emit('update',{'music':'tense3.mp3'})"
+        >
+          Tense (Slow)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="0"
+          onclick="emit('update',{'music':'travel.mp3'})"
+        >
+          Travel (Tense)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="-"
+          onclick="emit('update',{'music':'travel2.mp3'})"
+        >
+          Travel (Slow)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="="
+          onclick="emit('update',{'music':'travel3.mp3'})"
+        >
+          Travel Fast
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="`"
+          onclick="emit('update',{'music':'exposition.mp3'})"
+        >
+          Exposition
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'music':'training.mp3'})"
+        >
+          Training (Preliminary)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'music':'training2.mp3'})"
+        >
+          Training (Middle)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'music':'training3.mp3'})"
+        >
+          Training (Quiet)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="a"
+          onclick="emit('update',{'music':'victory.mp3','screen':'victory.png'})"
+        >
+          Victory
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="s"
+          onclick="emit('update',{'music':'defeat.wav','screen':'defeat.png'})"
+        >
+          Defeat
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="["
+          onclick="emit('update',{'music':'cliffhanger.wav','screen':'cliffhanger.png'})"
+        >
+          Cliffhanger
+        </button>
+        <h5>Effects</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':100}})"
+        >
+          Explo M50,F100
+        </button>
+      </div>
+      <div class="col-md-2">
+        <video id="commander" height="1" width="1" autoplay=""></video>
+        Factor:<input
+          id="factor"
+          onchange="emit('update',{'factor':parseFloat(this.value)})"
+        /><br />
+        Peer:<input
+          id="peervolume"
+          onchange="emit('update',{'peervolume':parseFloat(this.value)})"
+        /><br />Music:<input
+          id="musicvolume"
+          onchange="emit('update',{'musicvolume':parseFloat(this.value)})"
+        /><br />Sounds:<input
+          id="soundvolume"
+          onchange="emit('update',{'soundvolume':parseFloat(this.value)})"
+        /><br />Voice:<input
+          id="voicevolume"
+          onchange="emit('update',{'voicevolume':parseFloat(this.value)})"
+        /><br />Commander:<button
+          class="btn btn-xs btn-success"
+          onclick="call('commander')"
+        >
+          Call</button
+        ><button class="btn btn-xs btn-info" onclick="mutecommander()">
+          Mute</button
+        ><button class="btn btn-xs btn-info" onclick="unmutecommander()">
+          Unmute</button
+        ><br />Main Screen:<button
+          class="btn btn-xs btn-success"
+          onclick="call('mvs')"
+        >
+          Call</button
+        ><button
+          class="btn btn-xs btn-info"
+          accesskey="m"
+          onclick="emit('update',{'muted':true})"
+        >
+          Mute</button
+        ><button
+          class="btn btn-xs btn-info"
+          accesskey="/"
+          onclick="emit('update',{'muted':false})"
+        >
+          Unmute
+        </button>
+        <h5>Main View Screen</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="	"
+          onclick="emit('update',{'screen':''})"
+        >
+          Logo
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="q"
+          onclick="emit('update',{'screen':0.1})"
+        >
+          Slow Warp
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="w"
+          onclick="emit('update',{'screen':0.3})"
+        >
+          Normal Warp
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="e"
+          onclick="emit('update',{'screen':0.5})"
+        >
+          Medium Warp
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'screen':0.9})"
+        >
+          Fast Warp
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'screen':1})"
+        >
+          Full speed
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="y"
+          onclick="emit('update',{'screen':'ship2.jpg'})"
+        >
+          Ship
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="u"
+          onclick="emit('update',{'screen':'star2.jpg'})"
+        >
+          Explo
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="i"
+          onclick="emit('update',{'screen':'star3.jpeg'})"
+        >
+          Nebula
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="o"
+          onclick="emit('update',{'screen':'text2.jpg'})"
+        >
+          UFP
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="r"
+          onclick="emit('update',{'screen':'star4.jpg'})"
+        >
+          Vortex
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="t"
+          onclick="emit('update',{'screen':'star5.jpg'})"
+        >
+          Planet
+        </button>
+        <h5>Sounds</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="d"
+          onclick="emit('broadcast',{'sound':'info.wav'});"
+        >
+          Info
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="f"
+          onclick="emit('broadcast',{'sound':'processing.mp3'});"
+        >
+          Processing
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'sound':'warp.mp3'});"
+        >
+          Warp
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'sound':'warpout.mp3'});"
+        >
+          Warpout
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="j"
+          onclick="emit('broadcast',{'sound':'transporter.mp3'});"
+        >
+          Transporter
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="k"
+          onclick="emit('broadcast',{'sound':'phaser.mp3'});"
+        >
+          Phaser
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="l"
+          onclick="emit('broadcast',{'sound':'torpedo.mp3'});"
+        >
+          Torpedo
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey=";"
+          onclick="emit('broadcast',{'sound':'error.mp3'});"
+        >
+          Error
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="z"
+          onclick="emit('broadcast',{'sound':'explosion.mp3'});"
+        >
+          Explosion
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="x"
+          onclick="emit('broadcast',{'sound':'danger.mp3'});"
+        >
+          Danger
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="c"
+          onclick="emit('broadcast',{'sound':'intruder.mp3'});"
+        >
+          Intruder
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="]"
+          onclick="emit('broadcast',{'sound':'explosion2.mp3'});"
+        >
+          Explosion Small
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="}"
+          onclick="emit('broadcast',{'sound':'explosion3.wav'});"
+        >
+          Explosion Very Large
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'sound':'hail.mp3'});"
+        >
+          Call
+        </button>
+        <h5>Voices</h5>
+        <input type="text" id="speak" onkeypress="handlespeak(event)" />
+        <h5>Lockdown</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="v"
+          onclick="emit('update',{'commanderlockdown':true,'navigatorlockdown':true,'tacticallockdown':true,'operationslockdown':true,'engineerlockdown':true,'mvslockdown':false});"
+        >
+          Lock All Except MVS
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="b"
+          onclick="emit('update',{'commanderlockdown':false,'navigatorlockdown':false,'tacticallockdown':false,'operationslockdown':false,'engineerlockdown':false,'mvslockdown':false});"
+        >
+          Unlock All
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'commanderlockdown':true});"
+        >
+          Lock Commander
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'commanderlockdown':false});"
+        >
+          Unlock Commander
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'navigatorlockdown':true});"
+        >
+          Lock Navigator
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'navigatorlockdown':false});"
+        >
+          Unlock Navigator
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'tacticallockdown':true});"
+        >
+          Lock Tactical
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'tacticallockdown':false});"
+        >
+          Unlock Tactical
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'operationslockdown':true});"
+        >
+          Lock Operations
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'operationslockdown':false});"
+        >
+          Unlock Operations
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'engineerlockdown':true});"
+        >
+          Lock Engineer
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'engineerlockdown':false});"
+        >
+          Unlock Engineer
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'mvslockdown':true});"
+        >
+          Lock MVS
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'mvslockdown':false});"
+        >
+          Unlock MVS
+        </button>
+      </div>
+      <div class="col-md-2">
+        <h5>System Statuses</h5>
+        Warp
+        <input
+          type="checkbox"
+          id="warpbroken"
+          accesskey="g"
+          onchange="emit('update',{'warpbroken':document.getElementById('warpbroken').checked})"
+        />
+        Impulse
+        <input
+          type="checkbox"
+          id="impulsebroken"
+          onchange="emit('update',{'impulsebroken':document.getElementById('impulsebroken').checked})"
+        />
+        Thrusters
+        <input
+          type="checkbox"
+          id="thrusterbroken"
+          onchange="emit('update',{'thrusterbroken':document.getElementById('thrusterbroken').checked})"
+        />
+        Course
+        <input
+          type="checkbox"
+          id="coursebroken"
+          onchange="emit('update',{'coursebroken':document.getElementById('coursebroken').checked})"
+        />
+        Maps
+        <input
+          type="checkbox"
+          id="mapbroken"
+          onchange="emit('update',{'mapbroken':document.getElementById('mapbroken').checked})"
+        />
+        Targeting
+        <input
+          type="checkbox"
+          id="targetbroken"
+          accesskey="n"
+          onchange="emit('update',{'targetbroken':document.getElementById('targetbroken').checked})"
+        />
+        Shields
+        <input
+          type="checkbox"
+          id="shieldbroken"
+          onchange="emit('update',{'shieldbroken':document.getElementById('shieldbroken').checked})"
+        />
+        Phasers
+        <input
+          type="checkbox"
+          id="phaserbroken"
+          onchange="emit('update',{'phaserbroken':document.getElementById('phaserbroken').checked})"
+        />
+        Torpedoes
+        <input
+          type="checkbox"
+          id="torpedobroken"
+          onchange="emit('update',{'torpedobroken':document.getElementById('torpedobroken').checked})"
+        />
+        Hailing
+        <input
+          type="checkbox"
+          id="hailbroken"
+          onchange="emit('update',{'hailbroken':document.getElementById('hailbroken').checked})"
+        />
+        Probing
+        <input
+          type="checkbox"
+          id="probebroken"
+          onchange="emit('update',{'probebroken':document.getElementById('probebroken').checked})"
+        />
+        Scanning
+        <input
+          type="checkbox"
+          id="scanbroken"
+          onchange="emit('update',{'scanbroken':document.getElementById('scanbroken').checked})"
+        />
+        Analysis
+        <input
+          type="checkbox"
+          id="analysisbroken"
+          onchange="emit('update',{'analysisbroken':document.getElementById('analysisbroken').checked})"
+        />
+        Transporter
+        <input
+          type="checkbox"
+          id="transporterbroken"
+          accesskey="h"
+          onchange="emit('update',{'transporterbroken':document.getElementById('transporterbroken').checked})"
+        />
+        Power
+        <input
+          type="checkbox"
+          id="powerbroken"
+          onchange="emit('update',{'powerbroken':document.getElementById('powerbroken').checked})"
+        />
+        Cooling
+        <input
+          type="checkbox"
+          id="heatbroken"
+          onchange="emit('update',{'heatbroken':document.getElementById('heatbroken').checked})"
+        />
+        Diagnostics
+        <input
+          type="checkbox"
+          id="diagnosticbroken"
+          onchange="emit('update',{'diagnosticbroken':document.getElementById('diagnosticbroken').checked})"
+        />
+        Commands
+        <input
+          type="checkbox"
+          id="commandbroken"
+          onchange="emit('update',{'commandbroken':document.getElementById('commandbroken').checked})"
+        />
+        <h5>Automatic Stuff</h5>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'voice':'Hello. I am your main computer. I can provide basic assistance. Solutions to harder problems, can be obtained through your station interfaces.'});"
+        >
+          I'm your Computer
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'voice':'Online'});"
+        >
+          Online
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'voice':'Processing. Please wait.'});"
+        >
+          Processing
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'sound':'explosion.mp3','explosion':{'magnitude':100,'factor':100}});"
+        >
+          Explosion
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="\"
+          onclick="emit('broadcast',{'explosion':{'magnitude':100,'factor':data.factor}})"
+        >
+          Explosion (no sound)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'explosion':{'magnitude':20,'factor':1000}})"
+        >
+          Unstableness
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey="."
+          onclick="emit('broadcast',{'explosion':{'magnitude':50,'factor':data.factor}})"
+        >
+          Explosion (no sound)(small)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey=">"
+          onclick="emit('broadcast',{'explosion':{'magnitude':200,'factor':data.factor}})"
+        >
+          Explosion (no sound)(large)
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          accesskey=","
+          onclick="emit('broadcast',{'explosion':{'magnitude':0,'factor':1}})"
+        >
+          Stop All Explosions
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'reload':''})"
+        >
+          Reload Everyone
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('broadcast',{'reload':'/'})"
+        >
+          Kick Out Everyone
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'maxpower':300,'coolant':100,'systems':{'Main Computer':{'heat':0,'damage':100,'power':50},'Sensors':{'heat':0,'damage':100,'power':50},'Warp':{'heat':0,'damage':100,'power':50},'Shields':{'heat':0,'damage':100,'power':50},'Weapons':{'heat':0,'damage':100,'power':50},'Targeting':{'heat':0,'damage':100,'power':50},'Transporter':{'heat':0,'damage':100,'power':50}}})"
+        >
+          Default Systems
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'missiondata':'Commander - a Federation ship by the name of the UFS Atlas seems to have disappeared in the sector A13 sometime today. The Atlas is one of the Federation\'s most important ships, and this makes your mission very time sensitive. We last heard from them about 3 hours ago, when their engines failed for an unknown reason. Scanners from that time show inconclusive results. It is a very absurd situation, and we don\'t know what\'s going on.\n\nWe\'ve called on you because you are an experienced commander and we trust you to complete this mission. Scanners show some subspace anomalies in the area, so be careful. Your mission is to find the UFS Atlas and rescue it. Make sure to keep contact with us. We\'re planning to establish an uplink so that we may monitor your scanners and systems.\n\nFirst you need to travel to the coordinates 365, 2376, 24. We\'ve chosen this point because it is a safe distance away from the subspace anomalies in the area. Once you are to these coordinates, establish an uplink to Federation headquarters. Move in carefully and rescue the Atlas.\n\nGood luck on your mission!'})"
+        >
+          Mission Data: Time Loop
+        </button>
+        <button
+          class="btn btn-xs btn-primary"
+          onclick="emit('update',{'missiondata':'##_-TOP SECRET-_\n\nCommander of the USS Callisto - we have received troubling news. The following Planets of the Federation are the cause of our worries:\n\n* Paeron in Sector AYK-520\n* Rowe in Sector FJH-536\n\nThe governments of these planets claim to follow the Federation and its Values - however there have been reports of totalitarianism by the leaders, the effects of which include confusing laws and harsh requirements of the people. The exact reason why the governments are doing this is unknown, however, one thing\'s for certain: it must be investigated further.\n\nFrom our studies so far, this behavior seems to resemble most closely that of Joseph Stalin, a historical Earth leader who was harsh on his people in order to modernize his country. Indeed, the suspected planets seem to have low rates of trade and population, but their Stalin-like behavior barely seems to help trade, and seems to be adversely affecting their economy.\n\nYour Mission is to investigate and locate the root of this problem, and if required, to take necessary action to remove it.\n\nTo get to the planets specified, you must travel to coordinates 227, 0, 200; and 345, 124, 206, respectively. Investigating the problem may prove to be challenging since these planets have developed advanced radar systems. These systems are capable of accurately pinpointing ships as far as 1 AU away. Through our hacking efforts we have managed to reduce the range of these radar systems to 500 miles without detection by the said governments; however this is still not close enough for your transporter systems. We recommend that you increase power to your transporter systems or try destroying the radar to solve the problem.\n\nWe think that you may be able to hack into communication systems by either using your ships engineer command system or by taking over a government spaceship through your security teams. There may be other ways, however. In all your efforts, make sure that you are not caught by the planet\'s governments or any outsiders. \n\nOnce you have hacked into communications, search and see if you can locate why the governments are being harsh on their citizens. Once you have found out why, contact headquarters and stand by for further orders.\n\n###Good luck on your mission!'})"
+        >
+          Mission Data (Echoes of Stalin)
+        </button>
+        <button class="btn btn-xs btn-primary" onclick="reset()">
+          Reset All
+        </button>
+        <h5>Radar</h5>
+        <svg id="radarcanvas" width="100" height="100">
+          <rect
+            width="100"
+            height="100"
+            style="
+              fill: transparent;
+              stroke-width: 1;
+              stroke: rgb(0, 255, 0);
+              fill-opacity: 0;
+            "
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="50"
+            stroke="green"
+            stroke-width="1"
+            fill="red"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="30"
+            stroke="green"
+            stroke-width="1"
+            fill="yellow"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="10"
+            stroke="green"
+            stroke-width="1"
+            fill="blue"
+          />
+          <line
+            x1="50"
+            y1="0"
+            x2="50"
+            y2="100"
+            style="stroke: rgb(0, 255, 0); stroke-width: 1"
+          />
+          <line
+            x1="0"
+            y1="50"
+            x2="100"
+            y2="50"
+            style="stroke: rgb(0, 255, 0); stroke-width: 1"
+          />
+        </svg>
+        <button class="btn btn-xs btn-primary" onclick="startadd()">Add</button>
+        <button class="btn btn-xs btn-primary" onclick="startdel()">
+          Delete</button
+        ><br />
+        <input type="text" id="radarname" />
+        <h5>Targeting Focus</h5>
+        <input
+          type="text"
+          id="focus"
+          onchange="emit('update',{'probing':document.getElementById('probing').value})"
+        />
+      </div>
+    </div>
+  </body>
 </html>

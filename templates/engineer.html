@@ -1,57 +1,90 @@
 <html>
-<head>
-<title>Space Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/socket.io.js"></script>
-<script src="/static/js/engineer.js"></script>
-<script src="/static/js/station.js"></script>
-</head>
-<body>
-<div id="bodycontainer">
-	<ul class="nav nav-tabs nav-justified">
-  <li role="presentation" class="active" onclick="showengines();sound('buttonshort.wav');" id="enginestab"><a>Power</a></li>
-  <li role="presentation" onclick="showradar();sound('buttonshort.wav');" id="radartab"><a>Repair</a></li>
-  <li role="presentation" onclick="showsettings();sound('buttonshort.wav');" id="settingstab"><a>Settings</a></li>
-</ul>
-<div class="container" id="enginespage" style="display:initial">
-<div class="container">
-<h4>Power</h4>
-<div id="powerlist">
-</div>
-<h4>Heat</h4>
-<div id="heatlist">
-</div>
-<h4>Remaining Coolant: <span id="coolant"></span></h4>
-</div>
-</div>
-<div class="container" id="radarpage" style="display:none">
-<div class="container">
-<h4>Repair</h4>
-<div id="repairlist">
-</div>
-</div>
-</div>
-<div class="container" id="settingspage" style="display:none">
-<div class="container">
-<h4>Diagnostics</h4>
-<input type="text" class="form-control" id="diagnose" />
-<button class="btn btn-primary btn-lg" onclick="if(checkIt('diagnostic')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'diagnosing':document.getElementById('diagnose').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});">Run Diagnostic Scan</button>
-<h4 id="diagnosing" class="text-info"></h4>
-<h4>Diagnostic Results</h4>
-<p id="diagnostic" class="text-primary"></p>
-<hr />
-<h4>System Commands</h4>
-<input type="text" class="form-control" id="commanding" />
-<button class="btn btn-primary btn-lg" onclick="if(checkIt('command')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');">Execute Command</button>
-<h4>Command Results</h4>
-<p id="command" class="text-primary"></p>
-</div>
-</div>
-</div>
-</body>
+  <head>
+    <title>Space Center</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/favicon.ico"
+    />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/engineer.js"></script>
+    <script src="/static/js/station.js"></script>
+  </head>
+  <body>
+    <div id="bodycontainer">
+      <ul class="nav nav-tabs nav-justified">
+        <li
+          role="presentation"
+          class="active"
+          onclick="showengines();sound('buttonshort.wav');"
+          id="enginestab"
+        >
+          <a>Power</a>
+        </li>
+        <li
+          role="presentation"
+          onclick="showradar();sound('buttonshort.wav');"
+          id="radartab"
+        >
+          <a>Repair</a>
+        </li>
+        <li
+          role="presentation"
+          onclick="showsettings();sound('buttonshort.wav');"
+          id="settingstab"
+        >
+          <a>Settings</a>
+        </li>
+      </ul>
+      <div class="container" id="enginespage" style="display: initial">
+        <div class="container">
+          <h4>Power</h4>
+          <div id="powerlist"></div>
+          <h4>Heat</h4>
+          <div id="heatlist"></div>
+          <h4>Remaining Coolant: <span id="coolant"></span></h4>
+        </div>
+      </div>
+      <div class="container" id="radarpage" style="display: none">
+        <div class="container">
+          <h4>Repair</h4>
+          <div id="repairlist"></div>
+        </div>
+      </div>
+      <div class="container" id="settingspage" style="display: none">
+        <div class="container">
+          <h4>Diagnostics</h4>
+          <input type="text" class="form-control" id="diagnose" />
+          <button
+            class="btn btn-primary btn-lg"
+            onclick="if(checkIt('diagnostic')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'diagnosing':document.getElementById('diagnose').value});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+          >
+            Run Diagnostic Scan
+          </button>
+          <h4 id="diagnosing" class="text-info"></h4>
+          <h4>Diagnostic Results</h4>
+          <p id="diagnostic" class="text-primary"></p>
+          <hr />
+          <h4>System Commands</h4>
+          <input type="text" class="form-control" id="commanding" />
+          <button
+            class="btn btn-primary btn-lg"
+            onclick="if(checkIt('command')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'commanding':document.getElementById('commanding').value});sound('button.wav');"
+          >
+            Execute Command
+          </button>
+          <h4>Command Results</h4>
+          <p id="command" class="text-primary"></p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

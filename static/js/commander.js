@@ -1,7 +1,7 @@
 var conn_options = {
-'sync disconnect on unload':true
+  "sync disconnect on unload": true,
 };
-data = {}
+data = {};
 /*var peer = new Peer('commander', {key: 'x7imbejnpg2pgb9'}); 
 peer.on('error', function(err){
 if(err.type == "unavailable-id"){
@@ -20,47 +20,64 @@ peer.on('call', function(call) {
     console.log('Failed to get local stream' ,err);
   });
 });*/
-var socket = io.connect(window.location.protocol+'//'+document.domain+':'+location.port+'/commander',{});
-socket.on("update",function(json){
-	update(json);
-
+var socket = io.connect(
+  window.location.protocol +
+    "//" +
+    document.domain +
+    ":" +
+    location.port +
+    "/commander",
+  {}
+);
+socket.on("update", function (json) {
+  update(json);
 });
-function emit(key,json){
-	socket.emit(key,json);
+function emit(key, json) {
+  socket.emit(key, json);
 }
-function update(json){
-	for (var key in json) {
-  if (json.hasOwnProperty(key)) {
-    data[key] = json[key];
-    if(key == "missiondata"){
-    	document.getElementById("missiondata").innerHTML = markdown.toHTML(json[key]);
-    }
-    
-        if(key == "commanderlockdown"){
-                    	if(json[key] == true){
-                	  		document.getElementById("bodycontainer").style.display = "none";
-                	  	}
-                	  	else{
-                	  		document.getElementById("bodycontainer").style.display = "initial";
-                  	}
-    }
-    if(key == "alert"){
-    	if(json[key] == "0"){
-		document.getElementById("greenalertbutton").style['box-shadow'] = "0 0 30px #00FF00";
-		document.getElementById("yellowalertbutton").style['box-shadow'] = "none";
-		document.getElementById("redalertbutton").style['box-shadow'] = "none";
-	}
-	if(json[key] == "1"){
-		document.getElementById("greenalertbutton").style['box-shadow'] = "none";
-		document.getElementById("yellowalertbutton").style['box-shadow'] = "0 0 30px #FFFF00";
-		document.getElementById("redalertbutton").style['box-shadow'] = "none";
-	}
-	if(json[key] == "2"){
-		document.getElementById("greenalertbutton").style['box-shadow'] = "none";
-		document.getElementById("yellowalertbutton").style['box-shadow'] = "none";
-		document.getElementById("redalertbutton").style['box-shadow'] = "0 0 30px #FF0000";
-	}
+function update(json) {
+  for (var key in json) {
+    if (json.hasOwnProperty(key)) {
+      data[key] = json[key];
+      if (key == "missiondata") {
+        document.getElementById("missiondata").innerHTML = markdown.toHTML(
+          json[key]
+        );
+      }
+
+      if (key == "commanderlockdown") {
+        if (json[key] == true) {
+          document.getElementById("bodycontainer").style.display = "none";
+        } else {
+          document.getElementById("bodycontainer").style.display = "initial";
+        }
+      }
+      if (key == "alert") {
+        if (json[key] == "0") {
+          document.getElementById("greenalertbutton").style["box-shadow"] =
+            "0 0 30px #00FF00";
+          document.getElementById("yellowalertbutton").style["box-shadow"] =
+            "none";
+          document.getElementById("redalertbutton").style["box-shadow"] =
+            "none";
+        }
+        if (json[key] == "1") {
+          document.getElementById("greenalertbutton").style["box-shadow"] =
+            "none";
+          document.getElementById("yellowalertbutton").style["box-shadow"] =
+            "0 0 30px #FFFF00";
+          document.getElementById("redalertbutton").style["box-shadow"] =
+            "none";
+        }
+        if (json[key] == "2") {
+          document.getElementById("greenalertbutton").style["box-shadow"] =
+            "none";
+          document.getElementById("yellowalertbutton").style["box-shadow"] =
+            "none";
+          document.getElementById("redalertbutton").style["box-shadow"] =
+            "0 0 30px #FF0000";
+        }
+      }
     }
   }
-}
 }

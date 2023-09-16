@@ -1,7 +1,5 @@
-from flask import Flask,render_template,request,redirect,url_for,send_file
-from flask_socketio import SocketIO, emit, join_room, leave_room
-import urllib
-import crypt
+from flask import Flask,render_template,request,send_file
+from flask_socketio import SocketIO, emit
 import os
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -146,12 +144,11 @@ def mvs():
 	return render_template("mvs.html", **templateData)
 @app.route("/fd/", methods=['POST'])
 def fd():
-	personId = request.form['pass']
-	personId = crypt.crypt(personId, "xx")
-	if personId != "xxs.hRieCCdqA":
-	    return "<h1>Access denied. Please contact the admin for the password.</h1>"
+	password = request.form['pass']
+	if password != os.environ['PASSWORD']:
+		return "<h1>Access denied. Please contact the admin for the password.</h1>"
 	templateData = {
-		
+
 	}
 	return render_template("fd.html", **templateData)
 @app.errorhandler(404)
@@ -169,6 +166,6 @@ def internalerror(error):
 if __name__ == '__main__':
     print("Server running")
     if 'PORT' in os.environ:
-    	socketio.run(app, "0.0.0.0",int(os.environ['PORT']))
+      socketio.run(app, "0.0.0.0",int(os.environ['PORT']))
     else:
-    	socketio.run(app, "0.0.0.0", 3000)
+      socketio.run(app, "0.0.0.0", 3000)

@@ -1,28 +1,55 @@
 <html>
-<head>
-<title>Space Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/socket.io.js"></script>
-<script src="/static/js/markdown.js"></script>
-<script src="/static/js/peer.js"></script>
-<script src="/static/js/commander.js"></script>
-<script src="/static/js/station.js"></script>
-</head>
-<body>
-<div id="bodycontainer">
-<div class="container">
-	<div class="row">
-<button class="btn btn-success btn-lg col-md-4" id="greenalertbutton" onclick="emit('update',{'alert':'0'});sound('buttonshort.wav');" style="box-shadow: 0 0 30px #00FF00;">Green Alert</button>
-<button class="btn btn-warning btn-lg col-md-4" id="yellowalertbutton" onclick="emit('update',{'alert':'1'});sound('buttonshort.wav');">Yellow Alert</button>
-<button class="btn btn-danger btn-lg col-md-4" id="redalertbutton" onclick="emit('update',{'alert':'2'});sound('buttonshort.wav');">Red Alert</button></div>
-<h1>Mission Information</h1>
-<div id="missiondata"></div>
-</div>
-</div>
-</body>
+  <head>
+    <title>Space Center</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/favicon.ico"
+    />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/markdown.js"></script>
+    <script src="/static/js/peer.js"></script>
+    <script src="/static/js/commander.js"></script>
+    <script src="/static/js/station.js"></script>
+  </head>
+  <body>
+    <div id="bodycontainer">
+      <div class="container">
+        <div class="row">
+          <button
+            class="btn btn-success btn-lg col-md-4"
+            id="greenalertbutton"
+            onclick="emit('update',{'alert':'0'});sound('buttonshort.wav');"
+            style="box-shadow: 0 0 30px #00ff00"
+          >
+            Green Alert
+          </button>
+          <button
+            class="btn btn-warning btn-lg col-md-4"
+            id="yellowalertbutton"
+            onclick="emit('update',{'alert':'1'});sound('buttonshort.wav');"
+          >
+            Yellow Alert
+          </button>
+          <button
+            class="btn btn-danger btn-lg col-md-4"
+            id="redalertbutton"
+            onclick="emit('update',{'alert':'2'});sound('buttonshort.wav');"
+          >
+            Red Alert
+          </button>
+        </div>
+        <h1>Mission Information</h1>
+        <div id="missiondata"></div>
+      </div>
+    </div>
+  </body>
 </html>

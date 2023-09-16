@@ -1,91 +1,248 @@
 <html>
-<head>
-<title>Space Center</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
-<link rel="stylesheet" href="/static/css/style.css" type="text/css" />
-<link rel="shortcut icon" type="image/x-icon" href="/static/img/favicon.ico" />
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/socket.io.js"></script>
-<script src="/static/js/tactical.js"></script>
-<script src="/static/js/station.js"></script>
-</head>
-<body>
-<div id="bodycontainer">
-<ul class="nav nav-tabs nav-justified">
-<li role="presentation" class="active" onclick="showtarget();sound('buttonshort.wav');" id="targettab"><a>Targeting</a></li>
-<li role="presentation" onclick="showweapon();sound('buttonshort.wav');" id="weapontab"><a>Weapons</a></li>
-<li role="presentation" onclick="showsecurity();sound('buttonshort.wav');" id="securitytab"><a>Security</a></li>
-</ul>
-<div class="container" id="targetpage" style="display:initial">
-<div class="container">
-<h4>Targeting</h4>
-<h4>Currently Targeted: <span id="targeted"></span></h4>
-<br />
-<br />
-<select id="radarlist" class="form-control">
-</select><br />
-<button onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}target();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-warning">Target Ship</button><button onclick="cleartarget();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-danger">Clear Target</button>
-<br />
-<button onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'hull'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-primary">Target Hull</button><button onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'engines'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-primary">Target Engines</button><button onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'systems'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-primary">Target Systems</button><button onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':''});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});" class="btn btn-primary">Target All</button>
-<h4>Shields</h4>
-<h4>Shield Status: <span id="shields"></span></h4>
-<button onclick="if(checkIt('shield')){emit('broadcast',{'sound':'error.mp3'});return false;}shieldup();sound('button.wav');" class="btn btn-lg btn-success">Shields Up</button><button onclick="if(checkIt('shield')){emit('broadcast',{'sound':'error.mp3'});return false;}shielddown();sound('button.wav');" class="btn btn-lg btn-warning">Shields Down</button>
-</div>
-</div>
-<div class="container" id="weaponpage" style="display:none">
-<div class="container">
-<h4>Currently Targeted: <span id="target2"></span></h4>
-<h4 id="infoc" style="display:none;">Shields: <span id="cshields"></span>, Hull: <span id="chull"></span>, Engines: <span id="cengines"></span>, Systems: <span id="csystems"></span></h4>
-<h4>Phasers</h4>
-<div class="progress">
-  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser1" style="width: 0%;">
-  </div>
-</div>
-<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge1();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 1</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire1();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 1</button><br /><br />
-<div class="progress">
-  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser2" style="width: 0%;">
-  </div>
-</div>
-<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge2();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 2</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire2();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 2</button><br /><br />
-<div class="progress">
-  <div class="progress-bar progress-bar-warning" role="progressbar" id="phaser3" style="width: 0%;">
-  </div>
-</div>
-<button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge3();sound('buttonshort.wav');" class="btn btn-success">Charge Phaser 3</button><button onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire3();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});" class="btn btn-danger">Fire Phaser 3</button><br /><br />
-<h4>Torpedoes</h4>
-<h4><span id="torpedoes"></span> Left</h4>
-<button onclick="if(checkIt('torpedo')){emit('broadcast',{'sound':'error.mp3'});return false;}torpedo();sound('buttonshort.wav');emit('broadcast',{'sound':'torpedo.mp3'});" class="btn btn-lg btn-danger">Fire Torpedo</button>
-</div>
-</div>
-<div class="container" id="securitypage" style="display:none">
-<div class="container">
-<h4 class="text-danger" id="securityalert"></h4>
-<h4>Security Teams</h4>
-<h5>Team 1</h5>
-<input type="text" class="form-control" id="team1" />
-<button class="btn btn-info" onclick="send1();sound('button.wav');">Send</button>
-<button class="btn btn-info" onclick="retreat1();sound('button.wav');">Retreat</button>
-<h5>Team 2</h5>
-<input type="text" class="form-control" id="team2" />
-<button class="btn btn-info" onclick="send2();sound('button.wav');">Send</button>
-<button class="btn btn-info" onclick="retreat2();sound('button.wav');">Retreat</button>
-<h5>Team 3</h5>
-<input type="text" class="form-control" id="team3" />
-<button class="btn btn-info" onclick="send3();sound('button.wav');">Send</button>
-<button class="btn btn-info" onclick="retreat3();sound('button.wav');">Retreat</button>
-<h5>Team 4</h5>
-<input type="text" class="form-control" id="team4" />
-<button class="btn btn-info" onclick="send4();sound('button.wav');">Send</button>
-<button class="btn btn-info" onclick="retreat4();sound('button.wav');">Retreat</button>
-<h4>Hailing</h4>
-<h4 class="text-info" id="hailed"></h4>
-<input type="text" class="form-control" id="tohail" />
-<button class="btn btn-success" onclick="if(checkIt('hail')){emit('broadcast',{'sound':'error.mp3'});return false;}hail();sound('buttonshort.wav');emit('broadcast',{'sound':'hailstart.mp3'});">Open Hailing Frequencies</button><button class="btn btn-danger" onclick="emit('update',{'hailing':''});sound('buttonshort.wav');">Close Hailing Frequencies</button>
-<h4 class="text-info">Currently Hailing: <span id="hailing"></span></h4>
-</div>
-</div>
-</div>
-</body>
+  <head>
+    <title>Space Center</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="/static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/static/img/favicon.ico"
+    />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/socket.io.js"></script>
+    <script src="/static/js/tactical.js"></script>
+    <script src="/static/js/station.js"></script>
+  </head>
+  <body>
+    <div id="bodycontainer">
+      <ul class="nav nav-tabs nav-justified">
+        <li
+          role="presentation"
+          class="active"
+          onclick="showtarget();sound('buttonshort.wav');"
+          id="targettab"
+        >
+          <a>Targeting</a>
+        </li>
+        <li
+          role="presentation"
+          onclick="showweapon();sound('buttonshort.wav');"
+          id="weapontab"
+        >
+          <a>Weapons</a>
+        </li>
+        <li
+          role="presentation"
+          onclick="showsecurity();sound('buttonshort.wav');"
+          id="securitytab"
+        >
+          <a>Security</a>
+        </li>
+      </ul>
+      <div class="container" id="targetpage" style="display: initial">
+        <div class="container">
+          <h4>Targeting</h4>
+          <h4>Currently Targeted: <span id="targeted"></span></h4>
+          <br />
+          <br />
+          <select id="radarlist" class="form-control"></select
+          ><br />
+          <button
+            onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}target();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-warning"
+          >
+            Target Ship</button
+          ><button
+            onclick="cleartarget();sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-danger"
+          >
+            Clear Target
+          </button>
+          <br />
+          <button
+            onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'hull'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-primary"
+          >
+            Target Hull</button
+          ><button
+            onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'engines'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-primary"
+          >
+            Target Engines</button
+          ><button
+            onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':'systems'});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-primary"
+          >
+            Target Systems</button
+          ><button
+            onclick="if(checkIt('target')){emit('broadcast',{'sound':'error.mp3'});return false;}emit('update',{'focus':''});sound('button.wav');emit('broadcast',{'sound':'processing.mp3'});"
+            class="btn btn-primary"
+          >
+            Target All
+          </button>
+          <h4>Shields</h4>
+          <h4>Shield Status: <span id="shields"></span></h4>
+          <button
+            onclick="if(checkIt('shield')){emit('broadcast',{'sound':'error.mp3'});return false;}shieldup();sound('button.wav');"
+            class="btn btn-lg btn-success"
+          >
+            Shields Up</button
+          ><button
+            onclick="if(checkIt('shield')){emit('broadcast',{'sound':'error.mp3'});return false;}shielddown();sound('button.wav');"
+            class="btn btn-lg btn-warning"
+          >
+            Shields Down
+          </button>
+        </div>
+      </div>
+      <div class="container" id="weaponpage" style="display: none">
+        <div class="container">
+          <h4>Currently Targeted: <span id="target2"></span></h4>
+          <h4 id="infoc" style="display: none">
+            Shields: <span id="cshields"></span>, Hull:
+            <span id="chull"></span>, Engines: <span id="cengines"></span>,
+            Systems: <span id="csystems"></span>
+          </h4>
+          <h4>Phasers</h4>
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-warning"
+              role="progressbar"
+              id="phaser1"
+              style="width: 0%"
+            ></div>
+          </div>
+          <button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge1();sound('buttonshort.wav');"
+            class="btn btn-success"
+          >
+            Charge Phaser 1</button
+          ><button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire1();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});"
+            class="btn btn-danger"
+          >
+            Fire Phaser 1</button
+          ><br /><br />
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-warning"
+              role="progressbar"
+              id="phaser2"
+              style="width: 0%"
+            ></div>
+          </div>
+          <button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge2();sound('buttonshort.wav');"
+            class="btn btn-success"
+          >
+            Charge Phaser 2</button
+          ><button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire2();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});"
+            class="btn btn-danger"
+          >
+            Fire Phaser 2</button
+          ><br /><br />
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-warning"
+              role="progressbar"
+              id="phaser3"
+              style="width: 0%"
+            ></div>
+          </div>
+          <button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}charge3();sound('buttonshort.wav');"
+            class="btn btn-success"
+          >
+            Charge Phaser 3</button
+          ><button
+            onclick="if(checkIt('phaser')){emit('broadcast',{'sound':'error.mp3'});return false;}fire3();sound('buttonshort.wav');emit('broadcast',{'sound':'phaser.mp3'});"
+            class="btn btn-danger"
+          >
+            Fire Phaser 3</button
+          ><br /><br />
+          <h4>Torpedoes</h4>
+          <h4><span id="torpedoes"></span> Left</h4>
+          <button
+            onclick="if(checkIt('torpedo')){emit('broadcast',{'sound':'error.mp3'});return false;}torpedo();sound('buttonshort.wav');emit('broadcast',{'sound':'torpedo.mp3'});"
+            class="btn btn-lg btn-danger"
+          >
+            Fire Torpedo
+          </button>
+        </div>
+      </div>
+      <div class="container" id="securitypage" style="display: none">
+        <div class="container">
+          <h4 class="text-danger" id="securityalert"></h4>
+          <h4>Security Teams</h4>
+          <h5>Team 1</h5>
+          <input type="text" class="form-control" id="team1" />
+          <button class="btn btn-info" onclick="send1();sound('button.wav');">
+            Send
+          </button>
+          <button
+            class="btn btn-info"
+            onclick="retreat1();sound('button.wav');"
+          >
+            Retreat
+          </button>
+          <h5>Team 2</h5>
+          <input type="text" class="form-control" id="team2" />
+          <button class="btn btn-info" onclick="send2();sound('button.wav');">
+            Send
+          </button>
+          <button
+            class="btn btn-info"
+            onclick="retreat2();sound('button.wav');"
+          >
+            Retreat
+          </button>
+          <h5>Team 3</h5>
+          <input type="text" class="form-control" id="team3" />
+          <button class="btn btn-info" onclick="send3();sound('button.wav');">
+            Send
+          </button>
+          <button
+            class="btn btn-info"
+            onclick="retreat3();sound('button.wav');"
+          >
+            Retreat
+          </button>
+          <h5>Team 4</h5>
+          <input type="text" class="form-control" id="team4" />
+          <button class="btn btn-info" onclick="send4();sound('button.wav');">
+            Send
+          </button>
+          <button
+            class="btn btn-info"
+            onclick="retreat4();sound('button.wav');"
+          >
+            Retreat
+          </button>
+          <h4>Hailing</h4>
+          <h4 class="text-info" id="hailed"></h4>
+          <input type="text" class="form-control" id="tohail" />
+          <button
+            class="btn btn-success"
+            onclick="if(checkIt('hail')){emit('broadcast',{'sound':'error.mp3'});return false;}hail();sound('buttonshort.wav');emit('broadcast',{'sound':'hailstart.mp3'});"
+          >
+            Open Hailing Frequencies</button
+          ><button
+            class="btn btn-danger"
+            onclick="emit('update',{'hailing':''});sound('buttonshort.wav');"
+          >
+            Close Hailing Frequencies
+          </button>
+          <h4 class="text-info">
+            Currently Hailing: <span id="hailing"></span>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
