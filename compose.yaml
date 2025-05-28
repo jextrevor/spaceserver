@@ -7,3 +7,4 @@ services:
     environment:
       PASSWORD: ${PASSWORD}
       BASE_URL: https://spaceserver.trevorjex.com
+    restart: unless-stopped
